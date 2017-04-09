@@ -1,0 +1,16 @@
+﻿{
+	"is-c3-addon": true,
+	"type": "plugin",
+	"name": "My custom plugin",
+	"id": "MyCustomPlugin",
+	"version": "1.0.0.0",
+	"author": "Scirra",
+	"website": "https://www.construct.net",
+	"documentation": "https://www.construct.net",
+	"description": "Example custom Construct 3 plugin.",
+	"editor-scripts": [
+						"plugin.js",
+						"type.js",
+						"instance.js"
+					]
+}
