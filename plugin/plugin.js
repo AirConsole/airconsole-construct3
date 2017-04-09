@@ -12,12 +12,12 @@
 	const PLUGIN_ID = "AirConsole";
 	////////////////////////////////////////////
 	
-	const PLUGIN_VERSION = "1.0.0.0";
+	const PLUGIN_VERSION = "1.7.0.0";
 	const PLUGIN_CATEGORY = "web";
 	
 	let app = null;
 	
-	const PLUGIN_CLASS = SDK.Plugins.AirConsole = class AirConsole extends SDK.IPluginBase
+	const PLUGIN_CLASS = SDK.Plugins.C3AirConsole = class C3AirConsole extends SDK.IPluginBase
 	{
 		constructor()
 		{
@@ -29,7 +29,7 @@
 			this._info.SetDescription(lang(".description"));
 			this._info.SetVersion(PLUGIN_VERSION);
 			this._info.SetCategory(PLUGIN_CATEGORY);
-			this._info.SetAuthor("Scirra");
+			this._info.SetAuthor("Psychokiller1888");
 			this._info.SetHelpUrl(lang(".help-url"));
 			this._info.SetIsSingleGlobal(true);
 			

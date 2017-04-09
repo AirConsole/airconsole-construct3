@@ -14,38 +14,18 @@
 					}
 				},
 				"aceCategories": {
-					"custom": "Custom"
+					"signalling": "Signalling"
 				},
 				"conditions": {
-					"is-large-number": {
-						"list-name": "Is large number",
-						"display-text": "[i]{0}[/i] is a large number",
-						"description": "Test if a number is greater than 100.",
-						"params": {
-							"number": {
-								"name": "Number",
-								"desc": "Number to test if greater than 100."
-							}
-						}
-					}
-				},
-				"actions": {
-					"do-alert": {
-						"list-name": "Do alert",
-						"display-text": "Do alert",
-						"description": "Do a dummy alert."
-					}
-				},
-				"expressions": {
-					"double": {
-						"description": "Double a number.",
-						"translated-name": "Double",
-						"params": {
-							"number": {
-								"name": "Number",
-								"desc": "The number to double."
-							}
-						}
+					"on-connect": {
+						"list-name": "On connect",
+						"display-text": "On new connection",
+						"description": "Triggered when a device connects to the game.",
+					},
+					"on-disconnect": {
+						"list-name": "On disconnect",
+						"display-text": "On disconnection",
+						"description": "Triggered when a device disconnects from the game.",
 					}
 				}
 			}
