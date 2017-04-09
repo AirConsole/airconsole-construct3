@@ -1,12 +1,12 @@
 ﻿{
 	"languageTag": "en-US",
-	"fileDescription": "Strings for MyCustomPlugin.",
+	"fileDescription": "Extend your game with local multiplayer fun",
 	"text": {
 		"plugins": {
-			"mycustomplugin": {
-				"name": "MyCustom",
-				"description": "Testing a custom third-party plugin.",
-				"help-url": "https://www.scirra.com",
+			"airconsole": {
+				"name": "AirConsole",
+				"description": "Extend your game with local multiplayer fun",
+				"help-url": "https://github.com/Psychokiller1888/c3airconsole",
 				"properties": {
 					"test-property": {
 						"name": "Test property",

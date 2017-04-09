@@ -1,9 +1,9 @@
 "use strict";
 
 {
-	const PLUGIN_CLASS = SDK.Plugins.MyCustomPlugin;
+	const PLUGIN_CLASS = SDK.Plugins.AirConsole;
 	
-	PLUGIN_CLASS.Instance = class MyCustomInstance extends SDK.IInstanceBase
+	PLUGIN_CLASS.Instance = class AirConsole extends SDK.IInstanceBase
 	{
 		constructor(sdkType, inst)
 		{

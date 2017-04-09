@@ -9,21 +9,21 @@
 	// Only the plugin name is displayed in the editor, so to rename your plugin change the name but NOT the ID.
 	// If you want to completely replace a plugin, make it deprecated (it will be hidden but old projects keep working),
 	// and create an entirely new plugin with a different plugin ID.
-	const PLUGIN_ID = "MyCustomPlugin";
+	const PLUGIN_ID = "AirConsole";
 	////////////////////////////////////////////
 	
 	const PLUGIN_VERSION = "1.0.0.0";
-	const PLUGIN_CATEGORY = "general";
+	const PLUGIN_CATEGORY = "web";
 	
 	let app = null;
 	
-	const PLUGIN_CLASS = SDK.Plugins.MyCustomPlugin = class MyCustomPlugin extends SDK.IPluginBase
+	const PLUGIN_CLASS = SDK.Plugins.AirConsole = class AirConsole extends SDK.IPluginBase
 	{
 		constructor()
 		{
 			super(PLUGIN_ID);
 			
-			SDK.Lang.PushContext("plugins.mycustomplugin");
+			SDK.Lang.PushContext("plugins.airconsole");
 			
 			this._info.SetName(lang(".name"));
 			this._info.SetDescription(lang(".description"));
@@ -36,7 +36,7 @@
 			SDK.Lang.PushContext(".properties");
 			
 			this._info.SetProperties([
-				new SDK.PluginProperty("integer", "test-property", 0)
+				new SDK.PluginProperty("integer", "Max players", 4)
 			]);
 			
 			SDK.Lang.PopContext();		// .properties
