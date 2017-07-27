@@ -7,7 +7,7 @@
 				"scriptName": "OnConnect",
 				"highlight": false,
 				"isTrigger": true,
-				"isInvertible": true
+				"isInvertible": false
 			},
 			{
 				"id": "on-disconnect",
@@ -15,7 +15,31 @@
 				"scriptName": "OnDisconnect",
 				"highlight": false,
 				"isTrigger": true,
-				"isInvertible": true
+				"isInvertible": false
+			},
+			{
+				"id": "on-device-disconnect",
+				"c2id": 2,
+				"scriptName": "OnDeviceDisconnect",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			},
+			{
+				"id": "on-too-many-players",
+				"c2id": 3,
+				"scriptName": "OnTooManyPlayers",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			},
+			{
+				"id": "on-premium-connect",
+				"c2id": 4,
+				"scriptName": "OnPremiumConnect",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
 			}
 		]
 	}

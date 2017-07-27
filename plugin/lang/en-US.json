@@ -8,9 +8,9 @@
 				"description": "Extend your game with local multiplayer fun",
 				"help-url": "https://github.com/Psychokiller1888/c3airconsole",
 				"properties": {
-					"test-property": {
-						"name": "Test property",
-						"desc": "A test number property. Displayed by 'Alert' action."
+					"max-player": {
+						"name": "Max players",
+						"desc": "Set the maximum players allowed to connect before triggering the 'on too many players' trigger"
 					}
 				},
 				"aceCategories": {
@@ -20,12 +20,33 @@
 					"on-connect": {
 						"list-name": "On connect",
 						"display-text": "On new connection",
-						"description": "Triggered when a device connects to the game.",
+						"description": "Triggered when a device connects to the game."
 					},
 					"on-disconnect": {
 						"list-name": "On disconnect",
 						"display-text": "On disconnection",
+						"description": "Triggered when a device disconnects from the game."
+					},
+					"on-device-disconnect": {
+						"list-name": "On device disconnect",
+						"display-text": "On id {0} disconnects",
 						"description": "Triggered when a device disconnects from the game.",
+						"params": {
+							"number": {
+								"name": "Device id",
+								"desc": "Device id to track"
+							}
+						}
+					},
+					"on-too-many-players": {
+						"list-name": "On too many players",
+						"display-text": "On too many players",
+						"description": "Triggered when a device connects but the max player limit property is reached or exceeded."
+					},
+					"on-premium-connect": {
+						"list-name": "On premium connect",
+						"display-text": "On premium connect",
+						"description": "Triggered when a device becomes premium or when a premium device connects."
 					}
 				}
 			}
