@@ -136,5 +136,143 @@
 				"isInvertible": true
 			}
 		]
+	},
+	"Device and user": {
+		"conditions": [
+			{
+				"id": "is-device-user-connected",
+				"c2id": 10,
+				"scriptName": "IsUserLoggedIn",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			}
+		]
+	},
+	"device-and-users": {
+		"conditions": [
+			{
+				"id": "is-device-user-connected",
+				"c2id": 10,
+				"scriptName": "IsUserLoggedIn",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "on-device-profile-change",
+				"c2id": 17,
+				"scriptName": "OnDeviceProfileChange",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			},
+			{
+				"id": "on-custom-device-state-change",
+				"c2id": 18,
+				"scriptName": "OnCustomDeviceStateChange",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			},
+			{
+				"id": "is-premium",
+				"c2id": 19,
+				"scriptName": "IsPremium",
+				"highlight": false,
+				"isTrigger": false,
+				"isInvertible": true,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			}
+		]
+	},
+	"ads": {
+		"conditions": [
+			{
+				"id": "on-ad-complete",
+				"c2id": 11,
+				"scriptName": "OnAdComplete",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			},
+			{
+				"id": "on-ad-show",
+				"c2id": 12,
+				"scriptName": "OnAdShow",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			}
+		]
+	},
+	"persistent-data": {
+		"conditions": [
+			{
+				"id": "on-persistent-data-loaded",
+				"c2id": 13,
+				"scriptName": "OnPersistentDataLoaded",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			},
+			{
+				"id": "on-persistent-data-stored",
+				"c2id": 14,
+				"scriptName": "OnPersistentDataStored",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			}
+		]
+	},
+	"highscores": {
+		"conditions": [
+			{
+				"id": "on-receiving-highscores",
+				"c2id": 15,
+				"scriptName": "OnHighScores",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			},
+			{
+				"id": "on-highscores-stored",
+				"c2id": 16,
+				"scriptName": "OnHighScoreStored",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			}
+		]
+	},
+	"plugin": {
+		"conditions": [
+			{
+				"id": "is-plugin-offline",
+				"c2id": 20,
+				"scriptName": "IsPluginOffline",
+				"highlight": false,
+				"isTrigger": false,
+				"isInvertible": true
+			}
+		]
 	}
 }

@@ -15,7 +15,12 @@
 				},
 				"aceCategories": {
 					"signalling": "Signalling",
-					"messaging": "Messaging"
+					"messaging": "Messaging",
+					"device-and-user": "Device and user",
+					"ads": "Ads",
+					"persistent-data": "Persistent data",
+					"highscores": "Highscores",
+					"plugin": "Plugin"
 				},
 				"conditions": {
 					"on-connect": {
@@ -114,6 +119,73 @@
 						"list-name": "Is multipart message",
 						"display-text": "Is multipart message",
 						"description": "True if the last received message has more than one property set, false otherwise."
+					},
+					"is-device-user-connected": {
+						"list-name": "Is user logged in",
+						"display-text": "Is device id {0} user logged in",
+						"description": "True if the device's user is logged in, false otherwise.",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to check if connected"
+							}
+						}
+					},
+					"on-ad-complete": {
+						"list-name": "On ad complete",
+						"display-text": "On advertisement complete",
+						"description": "Triggered when an advertisement is finished or no advertisement was shown."
+					},
+					"on-ad-show": {
+						"list-name": "On ad show",
+						"display-text": "On advertisement showing",
+						"description": "Triggered when an advertisement is shown."
+					},
+					"on-persistent-data-loaded": {
+						"list-name": "On persistent data loaded",
+						"display-text": "On persistent data loaded",
+						"description": "Triggered when persistent data was loaded from RequestPersistentData."
+					},
+					"on-persistent-data-stored": {
+						"list-name": "On persistent data stored",
+						"display-text": "On persistent data stored",
+						"description": "Triggered when persistent data was stored from StorePersistentData."
+					},
+					"on-receiving-highscores": {
+						"list-name": "On receiving highscores",
+						"display-text": "On receiving highscores",
+						"description": "Triggered when highscores received."
+					},
+					"on-highscores-stored": {
+						"list-name": "On highscores stored",
+						"display-text": "On highscores stored",
+						"description": "Triggered when highscores storing is done."
+					},
+					"on-device-profile-change": {
+						"list-name": "On device profile change",
+						"display-text": "On device profile change",
+						"description": "Triggered when a device updates it's profile pic, nickname or email."
+					},
+					"on-custom-device-state-change": {
+						"list-name": "On custom device state change",
+						"display-text": "On custom device state change",
+						"description": "Triggered when a device updates it's custom device state."
+					},
+					"is-premium": {
+						"list-name": "Is premium",
+						"display-text": "Is device id {0} premium",
+						"description": "True if the device's user is premium, false otherwise.",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to check if premium"
+							}
+						}
+					},
+					"is-plugin-offline": {
+						"list-name": "Is plugin offline",
+						"display-text": "Is plugin offline",
+						"description": "True if the plugin loaded as offline, false otherwise."
 					}
 				}
 			}
