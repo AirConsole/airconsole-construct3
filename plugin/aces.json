@@ -135,6 +135,60 @@
 				"isTrigger": false,
 				"isInvertible": true
 			}
+		],
+		"actions": [
+			{
+				"id": "message",
+				"c2id": 1,
+				"scriptName": "Message",
+				"highlight": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					},
+					{
+						"id": "property-name",
+						"type": "string"
+					},
+					{
+						"id": "message",
+						"type": "string"
+					}
+				]
+			},
+			{
+				"id": "broadcast",
+				"c2id": 2,
+				"scriptName": "Broadcast",
+				"highlight": false,
+				"params": [
+					{
+						"id": "property-name",
+						"type": "string"
+					},
+					{
+						"id": "message",
+						"type": "string"
+					}
+				]
+			},
+			{
+				"id": "set-custom-device-state-property",
+				"c2id": 3,
+				"scriptName": "SetCustomDeviceStateProperty",
+				"highlight": false,
+				"params": [
+					{
+						"id": "property",
+						"type": "string"
+					},
+					{
+						"id": "value",
+						"type": "string"
+					}
+				]
+			}
 		]
 	},
 	"device-and-user": {
@@ -263,9 +317,7 @@
 				"id": "game-ready",
 				"c2id": 0,
 				"scriptName": "GameReady",
-				"highlight": false,
-				"isTrigger": false,
-				"isInvertible": false
+				"highlight": false
 			}
 		]
 	}

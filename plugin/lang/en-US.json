@@ -194,6 +194,55 @@
 						"list-name": "Game ready",
 						"display-text": "Set the game as ready",
 						"description": "Sets the game as ready. This will trigger OnConnect for all already connected devices."
+					},
+					"message": {
+						"list-name": "Message",
+						"display-text": "Send [i]{1}: {2}[/i] to device id {0}",
+						"description": "Sends a message to a specific device.",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to send the message to"
+							},
+							"property-name": {
+								"name": "Message property name",
+								"desc": "Message property name"
+							},
+							"message": {
+								"name": "Message",
+								"desc": "Message to send"
+							}
+						}
+					},
+					"broadcast": {
+						"list-name": "Broadcast",
+						"display-text": "Send [i]{0}: {1}[/i] to all connected devices",
+						"description": "Sends a message to all connected devices",
+						"params": {
+							"property-name": {
+								"name": "Message property name",
+								"desc": "Message property name"
+							},
+							"message": {
+								"name": "Message",
+								"desc": "Message to send"
+							}
+						}
+					},
+					"set-custom-device-state-property": {
+						"list-name": "Set custom device state property",
+						"display-text": "Set custom state property [i]{0}[/i] to [i]{1}[/i]",
+						"description": "Sets a device custom state property.",
+						"params": {
+							"property": {
+								"name": "Property",
+								"desc": "Device state property to set"
+							},
+							"value": {
+								"name": "Value",
+								"desc": "Device state value"
+							}
+						}
 					}
 				}
 			}
