@@ -14,7 +14,8 @@
 					}
 				},
 				"aceCategories": {
-					"signalling": "Signalling"
+					"signalling": "Signalling",
+					"messaging": "Messaging"
 				},
 				"conditions": {
 					"on-connect": {
@@ -29,10 +30,10 @@
 					},
 					"on-device-disconnect": {
 						"list-name": "On device disconnect",
-						"display-text": "On id {0} disconnects",
+						"display-text": "On device id {0} disconnects",
 						"description": "Triggered when a device disconnects from the game.",
 						"params": {
-							"number": {
+							"device-id": {
 								"name": "Device id",
 								"desc": "Device id to track"
 							}
@@ -47,6 +48,72 @@
 						"list-name": "On premium connect",
 						"display-text": "On premium connect",
 						"description": "Triggered when a device becomes premium or when a premium device connects."
+					},
+					"on-message": {
+						"list-name": "On message",
+						"display-text": "On message from any device",
+						"description": "Triggered when receiving a message from any device."
+					},
+					"on-message-from": {
+						"list-name": "On message from",
+						"display-text": "On message from device id {0}",
+						"description": "Triggered when receiving a message from a specific device.",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id the message should be from"
+							}
+						}
+					},
+					"on-message-is": {
+						"list-name": "On message is",
+						"display-text": "On message property {0} is {1}",
+						"description": "Triggered when receiving a message with a specific content.",
+						"params": {
+							"property-name": {
+								"name": "Property name",
+								"desc": "The message property to compare to"
+							},
+							"property-value": {
+								"name": "Property value",
+								"desc": "The message content awaited"
+							}
+						}
+					},
+					"on-message-from-is": {
+						"list-name": "On message from is",
+						"display-text": "On message property {0} is {1} and from device id {2}",
+						"description": "Triggered when receiving a message with a specific content from a specific device.",
+						"params": {
+							"property-name": {
+								"name": "Property name",
+								"desc": "The message property to compare to"
+							},
+							"property-value": {
+								"name": "Property value",
+								"desc": "The message content awaited"
+							},
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id the message should be from"
+							}
+						}
+					},
+					"on-message-has-property": {
+						"list-name": "On message has property",
+						"display-text": "On message has property {0}",
+						"description": "Triggered when a message from any device has a specific property.",
+						"params": {
+							"property-name": {
+								"name": "Property name",
+								"desc": "The property name to check the existence of"
+							}
+						}
+					},
+					"is-multipart-message": {
+						"list-name": "Is multipart message",
+						"display-text": "Is multipart message",
+						"description": "True if the last received message has more than one property set, false otherwise."
 					}
 				}
 			}

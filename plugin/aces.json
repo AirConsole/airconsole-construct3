@@ -23,7 +23,13 @@
 				"scriptName": "OnDeviceDisconnect",
 				"highlight": false,
 				"isTrigger": true,
-				"isInvertible": false
+				"isInvertible": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
 			},
 			{
 				"id": "on-too-many-players",
@@ -40,6 +46,94 @@
 				"highlight": false,
 				"isTrigger": true,
 				"isInvertible": false
+			}
+		]
+	},
+	"messaging": {
+		"conditions": [
+			{
+				"id": "on-message",
+				"c2id": 5,
+				"scriptName": "OnMessage",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			},
+			{
+				"id": "on-message-from",
+				"c2id": 6,
+				"scriptName": "OnMessageFrom",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "on-message-is",
+				"c2id": 7,
+				"scriptName": "OnMessageIs",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": true,
+				"params": [
+					{
+						"id": "property-name",
+						"type": "string"
+					},
+					{
+						"id": "property-value",
+						"type": "string"
+					}
+				]
+			},
+			{
+				"id": "on-message-from-is",
+				"c2id": 8,
+				"scriptName": "OnMessageFromIs",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": true,
+				"params": [
+					{
+						"id": "property-name",
+						"type": "string"
+					},
+					{
+						"id": "property-value",
+						"type": "string"
+					},
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "on-message-has-property",
+				"c2id": 9,
+				"scriptName": "OnMessageHasProperty",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": true,
+				"params": [
+					{
+						"id": "property-name",
+						"type": "string"
+					}
+				]
+			},
+			{
+				"id": "is-multipart-message",
+				"c2id": 21,
+				"scriptName": "IsMultipartMessage",
+				"highlight": false,
+				"isTrigger": false,
+				"isInvertible": true
 			}
 		]
 	}
