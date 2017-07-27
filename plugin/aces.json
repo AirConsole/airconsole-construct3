@@ -137,25 +137,7 @@
 			}
 		]
 	},
-	"Device and user": {
-		"conditions": [
-			{
-				"id": "is-device-user-connected",
-				"c2id": 10,
-				"scriptName": "IsUserLoggedIn",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					}
-				]
-			}
-		]
-	},
-	"device-and-users": {
+	"device-and-user": {
 		"conditions": [
 			{
 				"id": "is-device-user-connected",
