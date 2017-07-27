@@ -20,7 +20,8 @@
 					"ads": "Ads",
 					"persistent-data": "Persistent data",
 					"highscores": "Highscores",
-					"plugin": "Plugin"
+					"plugin": "Plugin",
+					"game": "Game"
 				},
 				"conditions": {
 					"on-connect": {
@@ -186,6 +187,13 @@
 						"list-name": "Is plugin offline",
 						"display-text": "Is plugin offline",
 						"description": "True if the plugin loaded as offline, false otherwise."
+					}
+				},
+				"actions": {
+					"game-ready": {
+						"list-name": "Game ready",
+						"display-text": "Set the game as ready",
+						"description": "Sets the game as ready. This will trigger OnConnect for all already connected devices."
 					}
 				}
 			}

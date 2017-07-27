@@ -256,5 +256,17 @@
 				"isInvertible": true
 			}
 		]
+	},
+	"game": {
+		"actions": [
+			{
+				"id": "game-ready",
+				"c2id": 0,
+				"scriptName": "GameReady",
+				"highlight": false,
+				"isTrigger": false,
+				"isInvertible": false
+			}
+		]
 	}
 }
