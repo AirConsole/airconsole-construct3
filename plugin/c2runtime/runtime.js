@@ -6,7 +6,7 @@ assert2(cr.plugins_, "cr.plugins_ not created");
 
 /////////////////////////////////////
 // Plugin class
-cr.plugins_.AirConsole2 = function(runtime) {
+cr.plugins_.AirConsole = function(runtime) {
 	this.runtime = runtime;
 };
 
@@ -37,7 +37,7 @@ function AirConsoleOffline() {
 
 (function ()
 {
-	var pluginProto = cr.plugins_.AirConsole2.prototype;
+	var pluginProto = cr.plugins_.AirConsole.prototype;
 
 	/////////////////////////////////////
 	// Object type class
