@@ -323,6 +323,15 @@
 					}
 				]
 			}
+		],
+		"expressions": [
+			{
+				"id": "get-persistent-data",
+				"c2id": 15,
+				"expressionName": "GetPersistentData",
+				"returnType": "string",
+				"isVariadicParameters": false
+			}
 		]
 	},
 	"highscores": {
@@ -415,6 +424,15 @@
 					}
 				]
 			}
+		],
+		"expressions": [
+			{
+				"id": "get-highscores",
+				"c2id": 16,
+				"expressionName": "GetHighscores",
+				"returnType": "string",
+				"isVariadicParameters": false
+			}
 		]
 	},
 	"plugin": {
@@ -426,6 +444,15 @@
 				"highlight": false,
 				"isTrigger": false,
 				"isInvertible": true
+			}
+		],
+		"expressions": [
+			{
+				"id": "is-plugin-offline",
+				"c2id": 17,
+				"expressionName": "IsPluginOffline",
+				"returnType": "number",
+				"isVariadicParameters": false
 			}
 		]
 	},

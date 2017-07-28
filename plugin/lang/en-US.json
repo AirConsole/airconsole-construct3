@@ -486,6 +486,18 @@
 					"get-active-player-device-ids": {
 						"description": "Returns a JSON converted C2Array of device_ids of the active players previously set by the screen by calling setActivePlayers. The first device_id in the array is the first player, the second device_id in the array is the second player etc.",
 						"translated-name": "GetActivePlayerDeviceIds"
+					},
+					"get-persistent-data": {
+						"description": "Returns a JSON converted C2Dictionary of the last loaded persistent data.",
+						"translated-name": "GetPersistentData"
+					},
+					"get-highscores": {
+						"description": "Returns a JSON converted C2Dictionary of the last loaded highscores.",
+						"translated-name": "GetHighscores"
+					},
+					"is-plugin-offline": {
+						"description": "Returns 1 if the plugin loaded as offline, else 0.",
+						"translated-name": "IsPluginOffline"
 					}
 				}
 			}
