@@ -16,3 +16,13 @@ Please report any bugs you encounter
 
 ## Installation for Construct2 imported games
 [Download the backward compatible plugin](backwardCompatibility/c3airconsole-backcomp.c3addon) and add it to your Construct3 project
+
+
+## Export your games and try them
+As of now I couldn't import airconsole script in the Construct3 plugin. This will be solved in the coming weeks. But for now, you will need to edit your "screen.html" ("index.html") and add, after line 5:
+
+```html
+<script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.7.0.js"></script>
+```
+
+Save your file and enjoy a working game on AirConsole!
