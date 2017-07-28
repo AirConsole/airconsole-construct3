@@ -1,8 +1,12 @@
 # c3airconsole
 An AirConsole plugin for Construct 3
 
-I just started the work on this plugin so don't expect it to work just yet.
+This plugin is in beta state and subject to a lot of changes
 
-The c3addon pacakge is usable and adds already a couple of functions, but not yet enough to test the plugin.
+You can find a c3p exemple file of our good old Pong game
 
-Beta release is to be expected around mid august 2017
+You can use the backward compatibility plugin to import any games you made with Construct2
+
+Prefer to use the normal plugin for new Construct3 projects
+
+Please report any bugs you encounter
