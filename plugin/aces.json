@@ -538,5 +538,48 @@
 				"isVariadicParameters": false
 			}
 		]
+	},
+	"profile": {
+		"expressions": [
+			{
+				"id": "get-profile-picture",
+				"c2id": 6,
+				"expressionName": "GetProfilePicture",
+				"returnType": "string",
+				"isVariadicParameters": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "get-nickname",
+				"c2id": 7,
+				"expressionName": "GetNickname",
+				"returnType": "string",
+				"isVariadicParameters": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "get-uid",
+				"c2id": 8,
+				"expressionName": "GetUID",
+				"returnType": "string",
+				"isVariadicParameters": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			}
+		]
 	}
 }

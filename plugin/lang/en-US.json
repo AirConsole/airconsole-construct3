@@ -25,7 +25,8 @@
 					"system": "System",
 					"browser": "Browser",
 					"ids": "Ids",
-					"data": "Data"
+					"data": "Data",
+					"profile": "Profile"
 				},
 				"conditions": {
 					"on-connect": {
@@ -409,6 +410,36 @@
 					"message-as-json": {
 						"description": "Returns a JSON string representation of the last message received.",
 						"translated-name": "MessageAsJSON"
+					},
+					"get-profile-picture": {
+						"description": "Returns the profile picture url of the specified device id.",
+						"translated-name": "GetProfilePicture",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to get the profile picture from"
+							}
+						}
+					},
+					"get-nickname": {
+						"description": "Returns the nickname of the specified device id.",
+						"translated-name": "GetNickname",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to get the nickname from"
+							}
+						}
+					},
+					"get-uid": {
+						"description": "Returns UID of the specified device id.",
+						"translated-name": "GetUID",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to get the uid from"
+							}
+						}
 					}
 				}
 			}
