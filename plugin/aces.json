@@ -485,6 +485,60 @@
 				"expressionName": "DeviceId",
 				"returnType": "number",
 				"isVariadicParameters": false
+			},
+			{
+				"id": "get-message-properties-count",
+				"c2id": 9,
+				"expressionName": "GetMessagePropertiesCount",
+				"returnType": "number",
+				"isVariadicParameters": false
+			},
+			{
+				"id": "get-master-controller-device-id",
+				"c2id": 10,
+				"expressionName": "GetMasterControllerDeviceID",
+				"returnType": "number",
+				"isVariadicParameters": false
+			},
+			{
+				"id": "convert-player-number-to-device-id",
+				"c2id": 11,
+				"expressionName": "ConvertPlayerNumberToDeviceId",
+				"returnType": "number",
+				"isVariadicParameters": false,
+				"params": [
+					{
+						"id": "player-number",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "convert-device-id-to-player-number",
+				"c2id": 12,
+				"expressionName": "ConvertDeviceIdToPlayerNumber",
+				"returnType": "number",
+				"isVariadicParameters": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "get-controller-device-ids",
+				"c2id": 13,
+				"expressionName": "GetControllerDeviceIDs",
+				"returnType": "string",
+				"isVariadicParameters": false
+			},
+			{
+				"id": "get-active-player-device-ids",
+				"c2id": 18,
+				"expressionName": "GetActivePlayerDeviceIds",
+				"returnType": "string",
+				"isVariadicParameters": false
 			}
 		]
 	},
@@ -572,6 +626,19 @@
 				"c2id": 8,
 				"expressionName": "GetUID",
 				"returnType": "string",
+				"isVariadicParameters": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "is-premium",
+				"c2id": 14,
+				"expressionName": "IsPremium",
+				"returnType": "number",
 				"isVariadicParameters": false,
 				"params": [
 					{

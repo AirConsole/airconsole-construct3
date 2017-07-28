@@ -440,6 +440,52 @@
 								"desc": "The device id to get the uid from"
 							}
 						}
+					},
+					"get-message-properties-count": {
+						"description": "Returns how many properties the last received message contains.",
+						"translated-name": "GetMessagePropertiesCount"
+					},
+					"get-master-controller-device-id": {
+						"description": "Returns the device id of the master controller.",
+						"translated-name": "GetMasterControllerDeviceID"
+					},
+					"convert-player-number-to-device-id": {
+						"description": "Converts the specified player number into its attributed device id.",
+						"translated-name": "ConvertPlayerNumberToDeviceId",
+						"params": {
+							"player-number": {
+								"name": "Player number",
+								"desc": "The player number to convert to device id"
+							}
+						}
+					},
+					"convert-device-id-to-player-number": {
+						"description": "Converts the specified device id into its attributed player number.",
+						"translated-name": "ConvertDeviceIdToPlayerNumber",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to convert to player number"
+							}
+						}
+					},
+					"get-controller-device-ids": {
+						"description": "Returns a JSON converted C2Array of all the device ids that have loaded your game.",
+						"translated-name": "GetControllerDeviceIDs"
+					},
+					"is-premium": {
+						"description": "Returns 1 if the specified device id is premium, else 0.",
+						"translated-name": "IsPremium",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to check if premium"
+							}
+						}
+					},
+					"get-active-player-device-ids": {
+						"description": "Returns a JSON converted C2Array of device_ids of the active players previously set by the screen by calling setActivePlayers. The first device_id in the array is the first player, the second device_id in the array is the second player etc.",
+						"translated-name": "GetActivePlayerDeviceIds"
 					}
 				}
 			}
