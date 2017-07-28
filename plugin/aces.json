@@ -84,7 +84,7 @@
 					{
 						"id": "property-name",
 						"type": "string",
-						"initialValue": "message"
+						"initialValue": "\"message\""
 					},
 					{
 						"id": "property-value",
@@ -103,7 +103,7 @@
 					{
 						"id": "property-name",
 						"type": "string",
-						"initialValue": "message"
+						"initialValue": "\"message\""
 					},
 					{
 						"id": "property-value",
@@ -152,7 +152,7 @@
 					{
 						"id": "property-name",
 						"type": "string",
-						"initialValue": "message"
+						"initialValue": "\"message\""
 					},
 					{
 						"id": "message",
@@ -169,7 +169,7 @@
 					{
 						"id": "property-name",
 						"type": "string",
-						"initialValue": "message"
+						"initialValue": "\"message\""
 					},
 					{
 						"id": "message",
@@ -261,6 +261,14 @@
 				"isTrigger": true,
 				"isInvertible": false
 			}
+		],
+		"actions": [
+			{
+				"id": "show-ad",
+				"c2id": 7,
+				"scriptName": "ShowAd",
+				"highlight": true
+			}
 		]
 	},
 	"persistent-data": {
@@ -280,6 +288,40 @@
 				"highlight": false,
 				"isTrigger": true,
 				"isInvertible": false
+			}
+		],
+		"actions": [
+			{
+				"id": "request-persistent-data",
+				"c2id": 10,
+				"scriptName": "RequestPersistentData",
+				"highlight": false,
+				"params": [
+					{
+						"id": "uids",
+						"type": "string"
+					}
+				]
+			},
+			{
+				"id": "store-persistent-data",
+				"c2id": 11,
+				"scriptName": "StorePersistentData",
+				"highlight": false,
+				"params": [
+					{
+						"id": "property",
+						"type": "string"
+					},
+					{
+						"id": "value",
+						"type": "string"
+					},
+					{
+						"id": "uid",
+						"type": "number"
+					}
+				]
 			}
 		]
 	},
@@ -316,26 +358,26 @@
 					{
 						"id": "level-version",
 						"type": "string",
-						"initialValue": "1.0"
+						"initialValue": "\"1.0\""
 					},
 					{
 						"id": "uids",
 						"type": "string",
-						"initialValue": "all"
+						"initialValue": "\"all\""
 					},
 					{
 						"id": "ranks",
 						"type": "string",
-						"initialValue": "world"
+						"initialValue": "\"world\""
 					},
 					{
 						"id": "total",
-						"type": "string",
+						"type": "number",
 						"initialValue": "8"
 					},
 					{
 						"id": "top",
-						"type": "string",
+						"type": "number",
 						"initialValue": "5"
 					}
 				]
@@ -353,7 +395,7 @@
 					{
 						"id": "level-version",
 						"type": "string",
-						"initialValue": "1.0"
+						"initialValue": "\"1.0\""
 					},
 					{
 						"id": "score",
@@ -393,7 +435,45 @@
 				"id": "game-ready",
 				"c2id": 0,
 				"scriptName": "GameReady",
+				"highlight": true
+			}
+		]
+	},
+	"system": {
+		"actions": [
+			{
+				"id": "set-active-players",
+				"c2id": 6,
+				"scriptName": "SetActivePlayers",
+				"highlight": false,
+				"params": [
+					{
+						"id": "max-players",
+						"type": "number"
+					}
+				]
+			}
+		]
+	},
+	"browser": {
+		"actions": [
+			{
+				"id": "navigate-home",
+				"c2id": 8,
+				"scriptName": "NavigateHome",
 				"highlight": false
+			},
+			{
+				"id": "navigate-to",
+				"c2id": 9,
+				"scriptName": "NavigateTo",
+				"highlight": false,
+				"params": [
+					{
+						"id": "url",
+						"type": "string"
+					}
+				]
 			}
 		]
 	}

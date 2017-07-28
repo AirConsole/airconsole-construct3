@@ -21,7 +21,9 @@
 					"persistent-data": "Persistent data",
 					"highscores": "Highscores",
 					"plugin": "Plugin",
-					"game": "Game"
+					"game": "Game",
+					"system": "System",
+					"browser": "Browser"
 				},
 				"conditions": {
 					"on-connect": {
@@ -246,7 +248,7 @@
 					},
 					"request-highscores": {
 						"list-name": "Request HighScores",
-						"display-text": "Request HighScores",
+						"display-text": "Request HighScores for [i]{0} v. {1}[/i] Uids: {2} Ranks: {3} Total: {4} Top: {5}",
 						"description": "Requests highscores. OnHighScores triggered when the highscores are returned.",
 						"params": {
 							"level-name": {
@@ -277,7 +279,7 @@
 					},
 					"store-highscores": {
 						"list-name": "Store HighScores",
-						"display-text": "Store HighScores",
+						"display-text": "Store HighScores for [i]{0} v. {1}[/i] Score: {2} Uid: {3} Data: {4} Score string: {5}",
 						"description": "Stores highscores. OnHighScoreStored triggered when the request is completed.",
 						"params": {
 							"level-name": {
@@ -303,6 +305,68 @@
 							"score-string": {
 								"name": "Score string",
 								"desc": "A short human readable representation of the score. (e.g. '4 points in 3s'). Defaults to 'X points' where x is the score converted to an integer"
+							}
+						}
+					},
+					"set-active-players": {
+						"list-name": "Set active players",
+						"display-text": "Set active players, max players: {0}",
+						"description": "Takes all currently connected controllers and assigns them a player number. Can only be called by the screen. The assigned player numbers always start with 0 and are consecutive. You can hardcode player numbers, but not device_ids. Once the screen has called setActivePlayers you can get the device_id of the first player by calling convertPlayerNumberToDeviceId(0), the device_id of the second player by using ConvertPlayerNumberToDeviceId(1). You can also convert device_ids to player numbers by using ConvertDeviceIdToPlayerNumber(device_id). You can get all device_ids that are active players by using GetActivePlayerDeviceIds().",
+						"params": {
+							"max-players": {
+								"name": "Maximum players",
+								"desc": "The maximum number of controllers that should get a player number assigned"
+							}
+						}
+					},
+					"show-ad": {
+						"list-name": "Show ad",
+						"display-text": "Show ad on controllers and screen",
+						"description": "Show ad on every connected controller and screen. onAdComplete is called when showing ad is over."
+					},
+					"navigate-home": {
+						"list-name": "Navigate home",
+						"display-text": "Navigate home",
+						"description": "Request that all devices return to the AirConsole store."
+					},
+					"navigate-to": {
+						"list-name": "Navigate to",
+						"display-text": "Navigate to {0}",
+						"description": "Request that all devices load a game by url.",
+						"params": {
+							"url": {
+								"name": "Url",
+								"desc": "The base url of the game to navigate to (excluding screen.html or controller.html)"
+							}
+						}
+					},
+					"request-persistent-data": {
+						"list-name": "Request persistent data",
+						"display-text": "Request persistent data for ids {0}.",
+						"description": "Requests persistent data from the servers. Calls 'On persistent data loaded' when done.",
+						"params": {
+							"uids": {
+								"name": "Uids",
+								"desc": "A comma separated list of the uids for which you would like to request the persistent data"
+							}
+						}
+					},
+					"store-persistent-data": {
+						"list-name": "Store persistent data",
+						"display-text": "Store persistent data {0} = {1} for uid {2}",
+						"description": "Stores a property-value pair persistently on the AirConsole servers. Storage is per game. Total storage can not exceed 1 MB per game and uid. Storage is public, not secure and anyone can request and tamper with it. Do not store sensitive data.",
+						"params": {
+							"property": {
+								"name": "Property",
+								"desc": "Persistent data property name"
+							},
+							"value": {
+								"name": "Value",
+								"desc": "Persistent data property value"
+							},
+							"uid": {
+								"name": "Uid",
+								"desc": "The uid for which the data should be stored"
 							}
 						}
 					}
