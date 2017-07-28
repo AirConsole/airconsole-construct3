@@ -243,6 +243,68 @@
 								"desc": "Device state value"
 							}
 						}
+					},
+					"request-highscores": {
+						"list-name": "Request HighScores",
+						"display-text": "Request HighScores",
+						"description": "Requests highscores. OnHighScores triggered when the highscores are returned.",
+						"params": {
+							"level-name": {
+								"name": "Level name",
+								"desc": "The name of the level"
+							},
+							"level-version": {
+								"name": "Level version",
+								"desc": "The version of the level"
+							},
+							"uids": {
+								"name": "Uids",
+								"desc": "A comma separated list of users UIDs that should be included in the result. Use 'all' for all connected controllers"
+							},
+							"ranks": {
+								"name": "Ranks",
+								"desc": "A comma separated list of high score rank types. High score rank types can include data from across the world, only a specific area or a users friends. Valid array entries are 'world', 'country', 'region', 'city', 'friends'. Use comma to separate the types if you need more than one"
+							},
+							"total": {
+								"name": "Total",
+								"desc": "Amount of high scores to return per rank type"
+							},
+							"top": {
+								"name": "Top",
+								"desc": "Amount of top high scores to return per rank type. top is part of total"
+							}
+						}
+					},
+					"store-highscores": {
+						"list-name": "Store HighScores",
+						"display-text": "Store HighScores",
+						"description": "Stores highscores. OnHighScoreStored triggered when the request is completed.",
+						"params": {
+							"level-name": {
+								"name": "Level name",
+								"desc": "The name of the level the user was playing. This should be a human readable string because it appears in the high score sharing image. You can also just pass an empty string"
+							},
+							"level-version": {
+								"name": "Level version",
+								"desc": "The version of the level the user was playing. This is for your internal use"
+							},
+							"score": {
+								"name": "Score",
+								"desc": "The score the user has achieved"
+							},
+							"uid": {
+								"name": "Uid",
+								"desc": "The UIDs of the users that achieved the high score. Can be a single uid or an array of uids. Default is the uid of this device. Use comma to separate multiple UIDS"
+							},
+							"data": {
+								"name": "Data",
+								"desc": "Custom high score data (e.g. can be used to implement Ghost modes or include data to verify that it is not a fake high score)"
+							},
+							"score-string": {
+								"name": "Score string",
+								"desc": "A short human readable representation of the score. (e.g. '4 points in 3s'). Defaults to 'X points' where x is the score converted to an integer"
+							}
+						}
 					}
 				}
 			}

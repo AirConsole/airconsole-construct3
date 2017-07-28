@@ -83,7 +83,8 @@
 				"params": [
 					{
 						"id": "property-name",
-						"type": "string"
+						"type": "string",
+						"initialValue": "message"
 					},
 					{
 						"id": "property-value",
@@ -101,7 +102,8 @@
 				"params": [
 					{
 						"id": "property-name",
-						"type": "string"
+						"type": "string",
+						"initialValue": "message"
 					},
 					{
 						"id": "property-value",
@@ -149,7 +151,8 @@
 					},
 					{
 						"id": "property-name",
-						"type": "string"
+						"type": "string",
+						"initialValue": "message"
 					},
 					{
 						"id": "message",
@@ -165,7 +168,8 @@
 				"params": [
 					{
 						"id": "property-name",
-						"type": "string"
+						"type": "string",
+						"initialValue": "message"
 					},
 					{
 						"id": "message",
@@ -296,6 +300,78 @@
 				"highlight": false,
 				"isTrigger": true,
 				"isInvertible": false
+			}
+		],
+		"actions": [
+			{
+				"id": "request-highscores",
+				"c2id": 4,
+				"scriptName": "RequestHighScores",
+				"highlight": false,
+				"params": [
+					{
+						"id": "level-name",
+						"type": "string"
+					},
+					{
+						"id": "level-version",
+						"type": "string",
+						"initialValue": "1.0"
+					},
+					{
+						"id": "uids",
+						"type": "string",
+						"initialValue": "all"
+					},
+					{
+						"id": "ranks",
+						"type": "string",
+						"initialValue": "world"
+					},
+					{
+						"id": "total",
+						"type": "string",
+						"initialValue": "8"
+					},
+					{
+						"id": "top",
+						"type": "string",
+						"initialValue": "5"
+					}
+				]
+			},
+			{
+				"id": "store-highscores",
+				"c2id": 5,
+				"scriptName": "StoreHighScores",
+				"highlight": false,
+				"params": [
+					{
+						"id": "level-name",
+						"type": "string"
+					},
+					{
+						"id": "level-version",
+						"type": "string",
+						"initialValue": "1.0"
+					},
+					{
+						"id": "score",
+						"type": "string"
+					},
+					{
+						"id": "uid",
+						"type": "string"
+					},
+					{
+						"id": "data",
+						"type": "string"
+					},
+					{
+						"id": "score-string",
+						"type": "string"
+					}
+				]
 			}
 		]
 	},
