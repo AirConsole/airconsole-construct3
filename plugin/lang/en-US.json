@@ -23,7 +23,9 @@
 					"plugin": "Plugin",
 					"game": "Game",
 					"system": "System",
-					"browser": "Browser"
+					"browser": "Browser",
+					"ids": "Ids",
+					"data": "Data"
 				},
 				"conditions": {
 					"on-connect": {
@@ -369,6 +371,44 @@
 								"desc": "The uid for which the data should be stored"
 							}
 						}
+					}
+				},
+				"expressions": {
+					"device-id": {
+						"description": "Returns the device id that last triggered an AirConsole condition.",
+						"translated-name": "DeviceId"
+					},
+					"message": {
+						"description": "Returns the last message received.",
+						"translated-name": "Message"
+					},
+					"message-at-property": {
+						"description": "Returns the last message received with a specific property name.",
+						"translated-name": "MessageAtProperty",
+						"params": {
+							"property-name": {
+								"name": "Property name",
+								"desc": "Property name"
+							}
+						}
+					},
+					"is-multipart-message": {
+						"description": "Returns 1 if the last message has more than 1 property, else 0.",
+						"translated-name": "IsMultipartMessage"
+					},
+					"message-has-property": {
+						"description": "Returns 1 if the last message has the specified property set, else 0.",
+						"translated-name": "MessageHasProperty",
+						"params": {
+							"property-name": {
+								"name": "Property name",
+								"desc": "Property name"
+							}
+						}
+					},
+					"message-as-json": {
+						"description": "Returns a JSON string representation of the last message received.",
+						"translated-name": "MessageAsJSON"
 					}
 				}
 			}

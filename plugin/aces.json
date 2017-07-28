@@ -476,5 +476,67 @@
 				]
 			}
 		]
+	},
+	"ids": {
+		"expressions": [
+			{
+				"id": "device-id",
+				"c2id": 0,
+				"expressionName": "DeviceId",
+				"returnType": "number",
+				"isVariadicParameters": false
+			}
+		]
+	},
+	"data": {
+		"expressions": [
+			{
+				"id": "message",
+				"c2id": 1,
+				"expressionName": "Message",
+				"returnType": "string",
+				"isVariadicParameters": false
+			},
+			{
+				"id": "message-at-property",
+				"c2id": 2,
+				"expressionName": "MessageAtProperty",
+				"returnType": "string",
+				"isVariadicParameters": false,
+				"params": [
+					{
+						"id": "property-name",
+						"type": "string"
+					}
+				]
+			},
+			{
+				"id": "is-multipart-message",
+				"c2id": 3,
+				"expressionName": "IsMultipartMessage",
+				"returnType": "number",
+				"isVariadicParameters": false
+			},
+			{
+				"id": "message-has-property",
+				"c2id": 4,
+				"expressionName": "MessageHasProperty",
+				"returnType": "number",
+				"isVariadicParameters": false,
+				"params": [
+					{
+						"id": "property-name",
+						"type": "string"
+					}
+				]
+			},
+			{
+				"id": "message-as-json",
+				"c2id": 5,
+				"expressionName": "MessageAsJSON",
+				"returnType": "string",
+				"isVariadicParameters": false
+			}
+		]
 	}
 }
