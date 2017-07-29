@@ -467,6 +467,13 @@
 		]
 	},
 	"system": {
+		"conditions": [
+			{
+				"id": "is-controller",
+				"scriptName": "IsController",
+				"highlight": false
+			}
+		],
 		"actions": [
 			{
 				"id": "set-active-players",
@@ -479,6 +486,14 @@
 						"type": "number"
 					}
 				]
+			}
+		],
+		"expressions": [
+			{
+				"id": "is-controller",
+				"expressionName": "IsController",
+				"returnType": "number",
+				"isVariadicParameters": false
 			}
 		]
 	},

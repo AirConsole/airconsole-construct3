@@ -49,8 +49,7 @@ function AirConsoleOffline() {
 	var typeProto = pluginProto.Type.prototype;
 
 	// called on startup for each object type
-	typeProto.onCreate = function() {
-	};
+	typeProto.onCreate = function() {};
 
 	/////////////////////////////////////
 	// Instance class
@@ -59,6 +58,7 @@ function AirConsoleOffline() {
 		this.type = type;
 		this.runtime = type.runtime;
 		this.maxPlayers;
+		this.isController;
 		this.gameReady = false;
 		this.deviceId;
 		this.message;
@@ -85,6 +85,7 @@ function AirConsoleOffline() {
 		}
 
 		this.maxPlayers = self.properties[0];
+		this.isController = self.properties[1];
 
 		this.airConsole.onConnect = function (deviceId) {
 			if (self.gameReady) {
@@ -278,6 +279,10 @@ function AirConsoleOffline() {
 
 	Cnds.prototype.IsMultipartMessage = function () {
 		return Object.keys(this.message).length > 1;
+	};
+
+	Cnds.prototype.IsController = function () {
+		return this.isController;
 	};
 
 	pluginProto.cnds = new Cnds();
@@ -520,6 +525,15 @@ function AirConsoleOffline() {
 		c2array['data'] = data;
 
 		ret.set_string(JSON.stringify(c2array));
+	};
+
+	Exps.prototype.IsController = function (ret) {
+		if (this.isController) {
+			ret.set_int(1);
+		}
+		else {
+			ret.set_int(0);
+		}
 	};
 
 	pluginProto.exps = new Exps();

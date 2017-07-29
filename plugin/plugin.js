@@ -36,7 +36,8 @@
 			SDK.Lang.PushContext(".properties");
 			
 			this._info.SetProperties([
-				new SDK.PluginProperty("integer", "max-players", 4)
+				new SDK.PluginProperty("integer", "max-players", 4),
+				new SDK.PluginProperty("check", "is-controller", false)
 			]);
 			
 			SDK.Lang.PopContext();		// .properties

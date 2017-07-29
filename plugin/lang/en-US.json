@@ -8,9 +8,13 @@
 				"description": "Extend your game with local multiplayer fun",
 				"help-url": "https://github.com/Psychokiller1888/c3airconsole",
 				"properties": {
-					"max-player": {
+					"max-players": {
 						"name": "Max players",
 						"desc": "Set the maximum players allowed to connect before triggering the 'on too many players' trigger"
+					},
+					"is-controller": {
+						"name": "Is controller",
+						"desc": "Check this if this project is intended to be a controller"
 					}
 				},
 				"aceCategories": {
@@ -192,6 +196,11 @@
 						"list-name": "Is plugin offline",
 						"display-text": "Is plugin offline",
 						"description": "True if the plugin loaded as offline, false otherwise."
+					},
+					"is-controller": {
+						"list-name": "Is controller",
+						"display-text": "Is controller",
+						"description": "True if this project is set as a controller"
 					}
 				},
 				"actions": {
@@ -498,6 +507,10 @@
 					"is-plugin-offline": {
 						"description": "Returns 1 if the plugin loaded as offline, else 0.",
 						"translated-name": "IsPluginOffline"
+					},
+					"is-controller": {
+						"description": "Returns 1 if the plugin is set as a controller, else 0.",
+						"translated-name": "IsController"
 					}
 				}
 			}
