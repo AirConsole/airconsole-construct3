@@ -200,7 +200,17 @@
 					"is-controller": {
 						"list-name": "Is controller",
 						"display-text": "Is controller",
-						"description": "True if this project is set as a controller"
+						"description": "True if this project is set as a controller."
+					},
+					"is-ad-showing": {
+						"list-name": "Is ad showing",
+						"display-text": "Is ad showing",
+						"description": "True if an ad is currently showing."
+					},
+					"ad-shown": {
+						"list-name": "Ad shown",
+						"display-text": "Ad shown",
+						"description": "True if an ad was shown."
 					}
 				},
 				"actions": {
@@ -427,6 +437,10 @@
 							"device-id": {
 								"name": "Device id",
 								"desc": "The device id to get the profile picture from"
+							},
+							"size": {
+								"name": "Picture size",
+								"desc": "The size in pixels of the picture. Default is 64"
 							}
 						}
 					},
@@ -511,6 +525,14 @@
 					"is-controller": {
 						"description": "Returns 1 if the plugin is set as a controller, else 0.",
 						"translated-name": "IsController"
+					},
+					"is-ad-showing": {
+						"description": "Returns 1 if ads are currently showing, else 0.",
+						"translated-name": "IsAdShowing"
+					},
+					"ad-shown": {
+						"description": "Returns 1 if ads were shown, else 0.",
+						"translated-name": "AdShown"
 					}
 				}
 			}

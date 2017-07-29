@@ -260,6 +260,20 @@
 				"highlight": false,
 				"isTrigger": true,
 				"isInvertible": false
+			},
+			{
+				"id": "is-ad-showing",
+				"scriptName": "IsAdShowing",
+				"highlight": false,
+				"isTrigger": false,
+				"isInvertible": true
+			},
+			{
+				"id": "ad-shown",
+				"scriptName": "AdShown",
+				"highlight": false,
+				"isTrigger": false,
+				"isInvertible": true
 			}
 		],
 		"actions": [
@@ -268,6 +282,20 @@
 				"c2id": 7,
 				"scriptName": "ShowAd",
 				"highlight": true
+			}
+		],
+		"expressions": [
+			{
+				"id": "is-ad-showing",
+				"expressionName": "IsAddShowing",
+				"returnType": "number",
+				"isVariadicParameters": false
+			},
+			{
+				"id": "ad-shown",
+				"expressionName": "AdShown",
+				"returnType": "number",
+				"isVariadicParameters": false
 			}
 		]
 	},
@@ -647,6 +675,11 @@
 					{
 						"id": "device-id",
 						"type": "number"
+					},
+					{
+						"id": "size",
+						"type": "number",
+						"initialValue": "64"
 					}
 				]
 			},
