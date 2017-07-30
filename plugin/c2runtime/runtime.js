@@ -80,14 +80,14 @@ function AirConsoleOffline() {
 			this.runningOffline = false;
 			if (self.properties[1] === true) {
 				var config = {orientation: 'AirConsole.ORIENTATION_LANDSCAPE', synchronize_time: false, setup_document: true, device_motion: false};
-				if (self.properties[2] === 1) {
+				if (self.properties[3] === 1) {
 					config.orientation = 'AirConsole.ORIENTATION_PORTRAIT';
 				}
-				if (self.properties[3] === true) {
+				if (self.properties[4] === true) {
 					config.synchronize_time = true;
 				}
-				if (self.properties[4] > 0) {
-					config.device_motion = self.properties[4];
+				if (self.properties[5] > 0) {
+					config.device_motion = self.properties[5];
 				}
 				this.airConsole = new AirConsole(config);
 			}

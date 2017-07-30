@@ -16,9 +16,17 @@
 						"name": "Is controller",
 						"desc": "Check this if this project is intended to be a controller"
 					},
+					"controller-only": {
+						"name": "Controller only",
+						"desc": "These properties only take effect if 'Is controller' is checked"
+					},
 					"orientation": {
 						"name": "Orientation",
-						"desc": "CONTROLLER ONLY - Sets this controller in either PORTRAIT or LANDSCAPE mode"
+						"desc": "CONTROLLER ONLY - Sets this controller in either PORTRAIT or LANDSCAPE mode",
+						"items": {
+							"landscape": "Landscape",
+							"portrait": "Portrait"
+						}
 					},
 					"synchronize-time": {
 						"name": "Synchronize time",
