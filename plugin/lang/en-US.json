@@ -15,6 +15,18 @@
 					"is-controller": {
 						"name": "Is controller",
 						"desc": "Check this if this project is intended to be a controller"
+					},
+					"orientation": {
+						"name": "Orientation",
+						"desc": "CONTROLLER ONLY - Sets this controller in either PORTRAIT or LANDSCAPE mode"
+					},
+					"synchronize-time": {
+						"name": "Synchronize time",
+						"desc": "CONTROLLER ONLY - Enable time synchronization with server. This is needed for 'getServerTime()'"
+					},
+					"device-motion": {
+						"name": "Device motion",
+						"desc": "CONTROLLER ONLY - If set > 0, onDeviceMotion gets called every 'Device motion' milliseconds with the data from the accelerometer and gyroscope"
 					}
 				},
 				"aceCategories": {

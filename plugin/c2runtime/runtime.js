@@ -78,7 +78,22 @@ function AirConsoleOffline() {
 		var self = this;
 		if (typeof AirConsole !== 'undefined') {
 			this.runningOffline = false;
-			this.airConsole = new AirConsole();
+			if (self.properties[1] === true) {
+				var config = {orientation: 'AirConsole.ORIENTATION_LANDSCAPE', synchronize_time: false, setup_document: true, device_motion: false};
+				if (self.properties[2] === 1) {
+					config.orientation = 'AirConsole.ORIENTATION_PORTRAIT';
+				}
+				if (self.properties[3] === true) {
+					config.synchronize_time = true;
+				}
+				if (self.properties[4] > 0) {
+					config.device_motion = self.properties[4];
+				}
+				this.airConsole = new AirConsole(config);
+			}
+			else {
+				this.airConsole = new AirConsole();
+			}
 		}
 		else {
 			this.runningOffline = true;

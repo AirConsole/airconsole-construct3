@@ -37,7 +37,10 @@
 			
 			this._info.SetProperties([
 				new SDK.PluginProperty("integer", "max-players", 4),
-				new SDK.PluginProperty("check", "is-controller", false)
+				new SDK.PluginProperty("check", "is-controller", false),
+				new SDK.PluginProperty("combo", "orientation", {items: ["LANDSCAPE", "PORTRAIT"]}),
+				new SDK.PluginProperty("check", "synchronize-time", false),
+				new SDK.PluginProperty("number", "device-motion", 0)
 			]);
 			
 			SDK.Lang.PopContext();		// .properties
