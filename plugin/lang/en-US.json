@@ -411,6 +411,26 @@
 								"desc": "The uid for which the data should be stored"
 							}
 						}
+					},
+					"edit-profile": {
+						"list-name": "Edit profile",
+						"display-text": "Edit profile",
+						"description": "Lets the user change his nickname, profile picture and email address. If you need a real nickname of the user, use this function. onDeviceProfileChange will be called if the user logs in. Controller only"
+					},
+					"set-orientation": {
+						"list-name": "Set orientation",
+						"display-text": "Set orientation to {0}",
+						"description": "Sets the device's orientation. Controller only",
+						"params": {
+							"orientation": {
+								"name": "Orientation",
+								"desc": "Desired orientation",
+								"items": {
+									"landscape": "Landscape",
+									"portrait": "Portrait"
+								}
+							}
+						}
 					}
 				},
 				"expressions": {
@@ -553,6 +573,10 @@
 					"ad-shown": {
 						"description": "Returns 1 if ads were shown, else 0.",
 						"translated-name": "AdShown"
+					},
+					"get-server-time": {
+						"description": "Returns the current time of the game server. This allows you to have a synchronized clock: You can send the server time in a message to know exactly at what point something happened on a device. To use this action you need to check 'Synchronize time' plugin parameters. Only usable by controller.",
+						"translated-name": "GetServerTime"
 					}
 				}
 			}

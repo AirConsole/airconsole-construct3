@@ -514,12 +514,30 @@
 						"type": "number"
 					}
 				]
+			},
+			{
+				"id": "set-orientation",
+				"scriptName": "SetOrientation",
+				"highlight": false,
+				"params": [
+					{
+						"id": "orientation",
+						"type": "combo",
+						"items": ["landscape", "portrait"]
+					}
+				]
 			}
 		],
 		"expressions": [
 			{
 				"id": "is-controller",
 				"expressionName": "IsController",
+				"returnType": "number",
+				"isVariadicParameters": false
+			},
+			{
+				"id": "get-server-time",
+				"expressionName": "GetServerTime",
 				"returnType": "number",
 				"isVariadicParameters": false
 			}
@@ -664,6 +682,13 @@
 		]
 	},
 	"profile": {
+		"actions": [
+			{
+				"id": "edit-profile",
+				"scriptName": "EditProfile",
+				"highlight": false
+			}
+		],
 		"expressions": [
 			{
 				"id": "get-profile-picture",

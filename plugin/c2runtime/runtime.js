@@ -386,6 +386,21 @@ function AirConsoleOffline() {
 		this.airConsole.storePersistentData(key, value, uid);
 	};
 
+	Acts.prototype.EditProfile = function () {
+		if (this.isController) {
+			this.airConsole.editProfile();
+		}
+		else {
+			console.warn('You can\' use "Edit profile" on screen');
+		}
+	};
+
+	Acts.prototype.SetOrientation = function (orientation) {
+		if (this.isController) {
+			this.airConsole.setOrientation((orientation === 1) ? 'AirConsole.ORIENTATION_PORTRAIT' : 'AirConsole.ORIENTATION_LANDSCAPE');
+		}
+	}
+
 	pluginProto.acts = new Acts();
 
 	//////////////////////////////////////
@@ -530,12 +545,7 @@ function AirConsoleOffline() {
 	};
 
 	Exps.prototype.IsPluginOffline = function (ret) {
-		if (this.runningOffline) {
-			ret.set_int(1);
-		}
-		else {
-			ret.set_int(0);
-		}
+		ret.set_int((this.runningOffline) ? 1 : 0);
 	};
 
 	Exps.prototype.GetActivePlayerDeviceIds = function (ret) {
@@ -554,12 +564,7 @@ function AirConsoleOffline() {
 	};
 
 	Exps.prototype.IsController = function (ret) {
-		if (this.isController) {
-			ret.set_int(1);
-		}
-		else {
-			ret.set_int(0);
-		}
+		ret.set_int((this.isController) ? 1 : 0);
 	};
 
 	Exps.prototype.IsAddShowing = function (ret) {
@@ -568,7 +573,11 @@ function AirConsoleOffline() {
 
 	Exps.prototype.AdShown = function (ret) {
 		ret.set_int(this.adCompleted);
-	}
+	};
+
+	Exps.prototype.GetServerTime = function (ret) {
+		ret.set_int((this.isController) ? this.airConsole.getServerTime() : 0);
+	};
 
 	pluginProto.exps = new Exps();
 
