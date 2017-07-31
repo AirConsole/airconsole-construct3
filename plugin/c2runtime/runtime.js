@@ -309,7 +309,7 @@ function AirConsoleOffline() {
 
 	Cnds.prototype.IsAdShowing = function () {
 		return this.adShowing === 1;
-	}:
+	};
 
 	pluginProto.cnds = new Cnds();
 
