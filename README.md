@@ -19,7 +19,11 @@ Please report any bugs you encounter
 
 
 ## Export your games and try them
-As of now I couldn't import airconsole script in the Construct3 plugin, as C3 sdk doesn't yet offer this possibility. This will be solved in the coming months. But for now, you need to edit your "screen.html" ("index.html") and add, after line 5:
+As of now I couldn't import airconsole script in the Construct3 plugin, as C3 sdk doesn't yet offer this possibility. This will be solved in the coming months.
+
+But for now, 2 solutions:
+* Use our provided tool: AirConsole.bat. Place it in your exported directory and simply run it.
+* Or edit your "screen.html" ("index.html") and add, after line 16:
 
 ```html
 <script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.7.0.js"></script>
