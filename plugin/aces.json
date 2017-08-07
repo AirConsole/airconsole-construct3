@@ -584,7 +584,7 @@
 			{
 				"id": "get-master-controller-device-id",
 				"c2id": 10,
-				"expressionName": "GetMasterControllerDeviceID",
+				"expressionName": "GetMasterControllerDeviceId",
 				"returnType": "number",
 				"isVariadicParameters": false
 			},
