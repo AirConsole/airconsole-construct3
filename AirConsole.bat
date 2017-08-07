@@ -13,6 +13,10 @@ echo #                         v1.0.0                       #
 echo ########################################################
 echo.
 
+echo This script is no longer usefull
+pause
+exit
+
 if not exist index.html (
 	echo index.html not found
 	echo Please run this batch file in your exported Construct3 game directory
