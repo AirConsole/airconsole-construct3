@@ -13,8 +13,8 @@ $(document).ready(function() {
 	var sendMessage = function(string) {
 		airConsole.message(AirConsole.SCREEN, {
 			message: string
-		});	
-	}
+		});
+	};
 
 	airConsole.onReady = function() {
 		airConsole.message(AirConsole.SCREEN, {
@@ -22,8 +22,7 @@ $(document).ready(function() {
 		});
 	};
 
-	airConsole.onMessage = function(deviceId, data) {
-	};
+	airConsole.onMessage = function(deviceId, data) {};
 	
 	$('#up').on(downEvent, function (event) {
 		sendMessage('up');
