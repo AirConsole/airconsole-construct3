@@ -17,3 +17,6 @@ More information and demos in the [wiki](https://github.com/AirConsole/airconsol
 
 ## Installation for Construct2 imported games
 [Download the backward compatible plugin](backwardCompatibility/c3airconsole-backcomp.c3addon) and add it to your Construct3 project
+
+
+You can find more about AirConsole and it's API on the [AirConsole Developers](https://developers.airconsole.com/) page
