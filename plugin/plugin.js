@@ -12,7 +12,7 @@
 	const PLUGIN_ID = "AirConsole";
 	////////////////////////////////////////////
 	
-	const PLUGIN_VERSION = "1.7.0.2";
+	const PLUGIN_VERSION = "1.7.0.3";
 	const PLUGIN_CATEGORY = "web";
 	
 	let app = null;
@@ -32,10 +32,10 @@
 			this._info.SetAuthor("Psychokiller1888");
 			this._info.SetHelpUrl(lang(".help-url"));
 			this._info.SetIsSingleGlobal(true);
-			this._info.AddFileDependency({
+			/*this._info.AddFileDependency({
 				filename: "airconsole-1.7.0.js",
 				type: "external-script"
-			});
+			});*/
 			
 			SDK.Lang.PushContext(".properties");
 			

@@ -11,28 +11,55 @@ cr.plugins_.AirConsole = function(runtime) {
 };
 
 function AirConsoleOffline() {
-	console.warn('You are currently offline or AirConsole could not be loaded. Plugin fallback to AirConsole mock.');
-	AirConsoleOffline.prototype.getNickname = function() {return 'undefined when offline'};
-	AirConsoleOffline.prototype.getProfilePicture = function() {return 'undefined when offline'};
-	AirConsoleOffline.prototype.getUID = function() {return -9999};
-	AirConsoleOffline.prototype.isPremium = function() {return false};
-	AirConsoleOffline.prototype.getControllerDeviceIds = function() {return []};
-	AirConsoleOffline.prototype.getCustomDeviceState = function() {return null};
-	AirConsoleOffline.prototype.isUserLoggedIn = function() {return false};
-	AirConsoleOffline.prototype.message = function() {};
-	AirConsoleOffline.prototype.broadcast = function() {};
-	AirConsoleOffline.prototype.requestHighScores = function() {};
-	AirConsoleOffline.prototype.storeHighScore = function() {};
-	AirConsoleOffline.prototype.setActivePlayers = function() {};
-	AirConsoleOffline.prototype.showAd = function() {};
-	AirConsoleOffline.prototype.navigateHome = function() {};
-	AirConsoleOffline.prototype.navigateTo = function() {};
-	AirConsoleOffline.prototype.requestPersistentData = function() {};
-	AirConsoleOffline.prototype.storePersistentData = function() {};
-	AirConsoleOffline.prototype.getMasterControllerDeviceId = function() {return -9999};
-	AirConsoleOffline.prototype.getActivePlayerDeviceIds = function() {return []};
-	AirConsoleOffline.prototype.convertPlayerNumberToDeviceId = function() {};
-	AirConsoleOffline.prototype.convertDeviceIdToPlayerNumber = function() {};
+	console.warn('You are currently offline or AirConsole could not be loaded. Plugin fallback to AirConsole mock-up.');
+	AirConsoleOffline.prototype.getNickname = function() {
+		console.log('AirConsole mock-up: Getting nickname');
+		return 'undefined when offline';
+	};
+	AirConsoleOffline.prototype.getProfilePicture = function() {
+		console.log('AirConsole mock-up: Getting profile picture');
+		return 'undefined when offline';
+	};
+	AirConsoleOffline.prototype.getUID = function() {
+		console.log('AirConsole mock-up: Getting UID');
+		return -9999;
+	};
+	AirConsoleOffline.prototype.isPremium = function() {
+		console.log('AirConsole mock-up: Checking if premium');
+		return false;
+	};
+	AirConsoleOffline.prototype.getControllerDeviceIds = function() {
+		console.log('AirConsole mock-up: Getting controller device ids');
+		return [];
+	};
+	AirConsoleOffline.prototype.getCustomDeviceState = function() {
+		console.log('AirConsole mock-up: Getting custom device state');
+		return null;
+	};
+	AirConsoleOffline.prototype.isUserLoggedIn = function() {
+		console.log('AirConsole mock-up: Checking if user is logged in');
+		return false;
+	};
+	AirConsoleOffline.prototype.message = function() {console.log('AirConsole mock-up: Sending a message')};
+	AirConsoleOffline.prototype.broadcast = function() {console.log('AirConsole mock-up: Broadcasting a message')};
+	AirConsoleOffline.prototype.requestHighScores = function() {console.log('AirConsole mock-up: Requesting highscores')};
+	AirConsoleOffline.prototype.storeHighScore = function() {console.log('AirConsole mock-up: Storing highscores')};
+	AirConsoleOffline.prototype.setActivePlayers = function() {console.log('AirConsole mock-up: Setting active players')};
+	AirConsoleOffline.prototype.showAd = function() {console.log('AirConsole mock-up: Showing ad')};
+	AirConsoleOffline.prototype.navigateHome = function() {console.log('AirConsole mock-up: Navigating home')};
+	AirConsoleOffline.prototype.navigateTo = function() {console.log('AirConsole mock-up: Navigating to given url')};
+	AirConsoleOffline.prototype.requestPersistentData = function() {console.log('AirConsole mock-up: Requesting persistent data')};
+	AirConsoleOffline.prototype.storePersistentData = function() {console.log('AirConsole mock-up: Storing persistent data')};
+	AirConsoleOffline.prototype.getMasterControllerDeviceId = function() {
+		console.log('AirConsole mock-up: Getting master controller device id');
+		return -9999;
+	};
+	AirConsoleOffline.prototype.getActivePlayerDeviceIds = function() {
+		console.log('AirConsole mock-up: Getting active player device ids');
+		return [];
+	};
+	AirConsoleOffline.prototype.convertPlayerNumberToDeviceId = function() {console.log('AirConsole mock-up: Converting player number to device id')};
+	AirConsoleOffline.prototype.convertDeviceIdToPlayerNumber = function() {console.log('AirConsole mock-up: Converting device id to player number')};
 }
 
 (function ()
@@ -68,13 +95,33 @@ function AirConsoleOffline() {
 		this.highscores = null;
 		this.emailAddress = null;
 		this.customData = null;
+		this.loadRetry = 0;
 	};
 
 	var instanceProto = pluginProto.Instance.prototype;
 
 	// called whenever an instance is created
+	// Because of Scirra's lack of brain, we can't specify an API on a remote URL (against all rules of the web saying not to bundle proprietary APIs
+	// so this dynamically loads AirConsole.
+	// 2017-08-15 - Psycho
 	instanceProto.onCreate = function()
 	{
+		var self = this;
+		// Are we previewing the project?
+		if (window.location.href.indexOf('preview.construct.net') > -1) {
+			self.initAirConsole();
+		}
+		else {
+			var script = document.createElement('script');
+			script.src = 'https://www.airconsole.com/api/airconsole-1.7.0.js';
+			script.onload = function() {
+				self.initAirConsole();
+			};
+			document.head.appendChild(script);
+		}
+	};
+
+	instanceProto.initAirConsole = function() {
 		var self = this;
 		if (typeof AirConsole !== 'undefined') {
 			this.runningOffline = false;
@@ -89,6 +136,7 @@ function AirConsoleOffline() {
 				if (self.properties[5] > 0) {
 					config.device_motion = self.properties[5];
 				}
+
 				this.airConsole = new AirConsole(config);
 			}
 			else {
@@ -135,8 +183,7 @@ function AirConsoleOffline() {
 			}
 		};
 
-		this.airConsole.onDeviceStateChange = function (deviceId, data) {
-		};
+		this.airConsole.onDeviceStateChange = function (deviceId, data) {};
 
 		this.airConsole.onCustomDeviceStateChange = function (deviceId, customData) {
 			self.deviceId = deviceId;
@@ -191,17 +238,15 @@ function AirConsoleOffline() {
 			self.deviceId = deviceId;
 			self.runtime.trigger(pluginProto.cnds.OnDeviceProfileChange, self);
 		};
-	};
+	}
 
 	// only called if a layout object - draw to a canvas 2D context
-	instanceProto.draw = function(ctx) {
-	};
+	instanceProto.draw = function(ctx) {};
 
 	// only called if a layout object in WebGL mode - draw to the WebGL context
 	// 'glw' is not a WebGL context, it's a wrapper - you can find its methods in GLWrap.js in the install
 	// directory or just copy what other plugins do.
-	instanceProto.drawGL = function (glw) {
-	};
+	instanceProto.drawGL = function (glw) {};
 
 	//////////////////////////////////////
 	// Conditions
@@ -318,10 +363,22 @@ function AirConsoleOffline() {
 	function Acts() {}
 
 	Acts.prototype.GameReady = function () {
-		this.gameReady = true;
-		var deviceIds = this.airConsole.getControllerDeviceIds();
-		for (var i = 0; i < deviceIds.length; i++) {
-			this.airConsole.onConnect(deviceIds[i]);
+		// Because we cannot bundle the API and it has to be dynamically loaded, check if the load already happened by checking AirConsole
+		// If it's undefined, try again later
+		if (this.runningOffline || this.loadRetry > 20) {
+			return;
+		}
+
+		if (typeof AirConsole !== 'undefined') {
+			this.gameReady = true;
+			var deviceIds = this.airConsole.getControllerDeviceIds();
+			for (var i = 0; i < deviceIds.length; i++) {
+				this.airConsole.onConnect(deviceIds[i]);
+			}
+		}
+		else {
+			this.loadRetry++;
+			setInterval(this.GameReady, 100);
 		}
 	};
 
