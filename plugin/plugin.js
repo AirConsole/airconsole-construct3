@@ -12,7 +12,7 @@
 	const PLUGIN_ID = "AirConsole";
 	////////////////////////////////////////////
 	
-	const PLUGIN_VERSION = "1.7.0.3";
+	const PLUGIN_VERSION = "1.7.0.4";
 	const PLUGIN_CATEGORY = "web";
 	
 	let app = null;
