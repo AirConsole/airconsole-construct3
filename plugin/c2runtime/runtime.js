@@ -126,6 +126,7 @@ function AirConsoleOffline() {
 		if (typeof AirConsole !== 'undefined') {
 			this.runningOffline = false;
 			if (self.properties[1] === true) {
+				self.gameReady = true;
 				var config = {orientation: 'AirConsole.ORIENTATION_LANDSCAPE', synchronize_time: false, setup_document: true, device_motion: false};
 				if (self.properties[3] === 1) {
 					config.orientation = 'AirConsole.ORIENTATION_PORTRAIT';
@@ -150,6 +151,14 @@ function AirConsoleOffline() {
 
 		this.maxPlayers = self.properties[0];
 		this.isController = self.properties[1];
+
+		if (this.isController) {
+			this.airConsole.onReady = function () {
+				self.airConsole.message(AirConsole.SCREEN, {
+					handshake: true
+				})
+			}
+		}
 
 		this.airConsole.onConnect = function (deviceId) {
 			if (self.gameReady) {
@@ -383,12 +392,10 @@ function AirConsoleOffline() {
 	};
 
 	Acts.prototype.Message = function (deviceId, property, value) {
-		//this.airConsole.postMessage_({ action: property, to: deviceId, data: value });
 		this.airConsole.message(deviceId, value);
 	};
 
 	Acts.prototype.Broadcast = function (property, message) {
-		//this.airConsole.postMessage_({ action: property, to: undefined, data: message });
 		this.airConsole.broadcast(message);
 	};
 
@@ -480,6 +487,9 @@ function AirConsoleOffline() {
 			else {
 				ret.set_string(JSON.stringify(this.message));
 			}
+		}
+		else {
+			ret.set_string(this.message);
 		}
 	};
 
