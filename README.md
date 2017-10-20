@@ -18,6 +18,9 @@ More information and demos in the [wiki](https://github.com/AirConsole/airconsol
 ## Installation for Construct2 imported games
 [Download the backward compatible plugin](backwardCompatibility/c3airconsole-backcomp.c3addon) and add it to your Construct3 project
 
+## About this Plugin
+This plugin was created and is maintained by Psychokiller1888 and not by the AirConsole Team. It has become so popular that the AirConsole Team has decided to host it in the official AirConsole GitHub account.
+
 ## About AirConsole
 
 [AirConsole.com](https://www.airconsole.com) is a great way for a unique game experience using your smartphones as controllers. Construct3 is a great 2D game creation tool that allows anybody, with or without coding experiences, to start developping their own games.
