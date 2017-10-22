@@ -702,6 +702,27 @@ function AirConsoleOffline() {
 		ret.set_int((this.isController) ? this.airConsole.getServerTime() : 0);
 	};
 
+	Exps.prototype.GetThisDeviceId = function (ret) {
+		if (this.isController) {
+			ret.set_int(this.airConsole.getDeviceId());
+		}
+		else {
+			ret.set_int(0);
+		}
+	};
+
+	Exps.prototype.MotionData = function (ret) {
+		if (this.motionData !== null) {
+			var c2Dictionary = new Object();
+			c2Dictionary['c2dictionary'] = true;
+			c2Dictionary['data'] = getProperties(this.motionData);
+			ret.set_string(JSON.stringify(c2Dictionary));
+		}
+		else {
+			ret.set_string('');
+		}
+	};
+
 	pluginProto.exps = new Exps();
 
 	function getProperties(object) {
