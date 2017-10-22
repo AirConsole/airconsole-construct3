@@ -241,6 +241,29 @@
 					}
 				]
 			}
+		],
+		"actions": [
+			{
+				"id": "vibrate",
+				"c2id": 18,
+				"scriptName": "Vibrate",
+				"highlight": false,
+				"params": [
+					{
+						"id": "time",
+						"type": "number"
+					}
+				]
+			}
+		],
+		"expressions": [
+			{
+				"id": "get-this-device-id",
+				"c2id": 22,
+				"expressionName": "GetThisDeviceId",
+				"returnType": "number",
+				"isVariadicParameters": false
+			}
 		]
 	},
 	"ads": {
@@ -687,6 +710,11 @@
 				"id": "edit-profile",
 				"scriptName": "EditProfile",
 				"highlight": false
+			},
+			{
+				"id": "get-premium",
+				"scriptName": "GetPremium",
+				"highlight": true
 			}
 		],
 		"expressions": [
@@ -746,6 +774,71 @@
 						"type": "number"
 					}
 				]
+			}
+		]
+	},
+	"controller-only": {
+		"conditions": [
+			{
+				"id": "on-device-motion",
+				"c2id": 24,
+				"scriptName": "OnDeviceMotion",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": true
+			}
+		],
+		"expressions": [
+			{
+				"id": "motion-data",
+				"c2id": 23,
+				"expressionName": "MotionData",
+				"returnType": "string",
+				"isVariadicParameters": false
+			}
+		]
+	},
+	"preset-message": {
+		"actions": [
+			{
+				"id": "send-preset-message",
+				"c2id": 12,
+				"scriptName": "SendPresetMessage",
+				"highlight": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "broadcast-preset-message",
+				"c2id": 13,
+				"scriptName": "BroadcastPresetMessage",
+				"highlight": false
+			},
+			{
+				"id": "set-message-property",
+				"c2id": 14,
+				"scriptName": "SetPresetMessage",
+				"highlight": false,
+				"params": [
+					{
+						"id": "property",
+						"type": "string"
+					},
+					{
+						"id": "value",
+						"type": "string"
+					}
+				]
+			},
+			{
+				"id": "clear-preset-message",
+				"c2id": 15,
+				"scriptName": "ClearPresetMessage",
+				"highlight": false
 			}
 		]
 	}

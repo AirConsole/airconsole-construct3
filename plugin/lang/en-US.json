@@ -50,7 +50,9 @@
 					"browser": "Browser",
 					"ids": "Ids",
 					"data": "Data",
-					"profile": "Profile"
+					"profile": "Profile",
+					"controller-only": "Controller only",
+					"preset-message": "Preset message"
 				},
 				"conditions": {
 					"on-connect": {
@@ -231,6 +233,11 @@
 						"list-name": "Ad shown",
 						"display-text": "Ad shown",
 						"description": "True if an ad was shown."
+					},
+					"on-device-motion": {
+						"list-name": "On device motion",
+						"display-text": "On device motion",
+						"description": "Triggered every X millisecond if the plugin property has the 'Device motion' property set higher than 0. This only works for controllers."
 					}
 				},
 				"actions": {
@@ -250,7 +257,7 @@
 							},
 							"property-name": {
 								"name": "Message property name",
-								"desc": "Message property name"
+								"desc": "Message property name (can only be 'message' for now)"
 							},
 							"message": {
 								"name": "Message",
@@ -265,7 +272,7 @@
 						"params": {
 							"property-name": {
 								"name": "Message property name",
-								"desc": "Message property name"
+								"desc": "Message property name (can only be 'message' for now)"
 							},
 							"message": {
 								"name": "Message",
@@ -431,6 +438,58 @@
 								}
 							}
 						}
+					},
+					"send-preset-message": {
+						"list-name": "Send preset message",
+						"display-text": "Send preset message to device id {0}.",
+						"description": "Sends a previously set message to a specific device.",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to send the preset message to"
+							}
+						}
+					},
+					"broadcast-preset-message": {
+						"list-name": "Broadcast preset message",
+						"display-text": "Broadcast preset message",
+						"description": "Sends the preset message to all connected devices."
+					},
+					"set-message-property": {
+						"list-name": "Set message property",
+						"display-text": "Set [i]{0}[/i] property to [i]{1}[/i]",
+						"description": "Sets a property of the preset message to the given value.",
+						"params": {
+							"property": {
+								"name": "Property",
+								"desc": "Preset message property name"
+							},
+							"value": {
+								"name": "Value",
+								"desc": "Preset message property value"
+							}
+						}
+					},
+					"clear-preset-message": {
+						"list-name": "Broadcast preset message",
+						"display-text": "Clear preset message",
+						"description": "Clear the preset message."
+					},
+					"get-premium": {
+						"list-name": "Get premium",
+						"display-text": "Get premium",
+						"description": "(Controller only) Offers the user to become a premium member. Can only be called from controllers. If you call getPremium in development mode, the device becomes premium immediately."
+					},
+					"vibrate": {
+						"list-name": "Vibrate",
+						"display-text": "Vibrate for {0}ms.",
+						"description": "(Controller only) Vibrate the controller for {0} millisecond.",
+						"params": {
+							"time": {
+								"name": "Time",
+								"desc": "Duration, in milliseconds, of the vibration."
+							}
+						}
 					}
 				},
 				"expressions": {
@@ -577,6 +636,14 @@
 					"get-server-time": {
 						"description": "Returns the current time of the game server. This allows you to have a synchronized clock: You can send the server time in a message to know exactly at what point something happened on a device. To use this action you need to check 'Synchronize time' plugin parameters. Only usable by controller.",
 						"translated-name": "GetServerTime"
+					},
+					"get-this-device-id": {
+						"description": "Returns the current device id from which this function is called.",
+						"translated-name": "GetThisDeviceId"
+					},
+					"motion-data": {
+						"description": "Returns a JSON converted C2Dictionary containing the device motion data. This works for controllers only, and the plugin should have it's 'Device motion' property set higher than 0.",
+						"translated-name": "MotionData"
 					}
 				}
 			}

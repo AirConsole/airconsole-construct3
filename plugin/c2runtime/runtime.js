@@ -96,6 +96,8 @@ function AirConsoleOffline() {
 		this.emailAddress = null;
 		this.customData = null;
 		this.loadRetry = 0;
+		this.presetMessage = {};
+		this.motionData = {};
 	};
 
 	var instanceProto = pluginProto.Instance.prototype;
@@ -202,15 +204,15 @@ function AirConsoleOffline() {
 
 		this.airConsole.onHighscores = function (highscores) {
 			if (highscores) {
-				self.highscores = highscore;
-				self.runtime.trigger(pluginProto.cnds.OnHighscores, self);
+				self.highscores = highscores;
+				self.runtime.trigger(pluginProto.cnds.OnHighScores, self);
 			}
 		};
 
-		this.airConsole.onHighscoreStored = function (highscore) {
-			if (highscore) {
-				self.highscores = highscore;
-				self.runtime.trigger(pluginProto.cnds.OnHighscoreStored, self);
+		this.airConsole.onHighscoreStored = function (highscores) {
+			if (highscores) {
+				self.highscores = highscores;
+				self.runtime.trigger(pluginProto.cnds.OnHighScoreStored, self);
 			}
 		};
 
@@ -247,7 +249,12 @@ function AirConsoleOffline() {
 			self.deviceId = deviceId;
 			self.runtime.trigger(pluginProto.cnds.OnDeviceProfileChange, self);
 		};
-	}
+
+		this.airConsole.onDeviceMotion = function (data) {
+			self.motionData = data;
+			self.runtime.trigger(pluginProto.cnds.OnDeviceMotion, self);
+		}
+	};
 
 	// only called if a layout object - draw to a canvas 2D context
 	instanceProto.draw = function(ctx) {};
@@ -290,11 +297,21 @@ function AirConsoleOffline() {
 	};
 
 	Cnds.prototype.OnMessageIs = function (property, value) {
-		return (this.message.hasOwnProperty(property) && this.message[property] == value);
+		if (typeof this.message === 'string') {
+			return this.message === value;
+		}
+		else {
+			return (this.message.hasOwnProperty(property) && this.message[property] == value);
+		}
 	};
 
 	Cnds.prototype.OnMessageFromIs = function (property, value, deviceId) {
-		return (this.message.hasOwnProperty(property) && this.message[property] == value && this.deviceId === deviceId);
+		if (typeof this.message === 'string') {
+			return (this.message === value && this.deviceId === deviceId);
+		}
+		else {
+			return (this.message.hasOwnProperty(property) && this.message[property] == value && this.deviceId === deviceId);
+		}
 	};
 
 	Cnds.prototype.OnMessageHasProperty = function (property) {
@@ -365,6 +382,10 @@ function AirConsoleOffline() {
 		return this.adShowing === 1;
 	};
 
+	Cnds.prototype.OnDeviceMotion = function () {
+		return true;
+	};
+
 	pluginProto.cnds = new Cnds();
 
 	//////////////////////////////////////
@@ -392,6 +413,15 @@ function AirConsoleOffline() {
 	};
 
 	Acts.prototype.Message = function (deviceId, property, value) {
+		if (property !== 'message') {
+			console.warn('Property other than "message" isn\'t currently supported');
+		}
+
+		var obj = parseJSON(value);
+		if (obj !== false) {
+			value = obj;
+		}
+
 		this.airConsole.message(deviceId, value);
 	};
 
@@ -461,9 +491,35 @@ function AirConsoleOffline() {
 
 	Acts.prototype.SetOrientation = function (orientation) {
 		if (this.isController) {
-			this.airConsole.setOrientation((orientation === 1) ? 'AirConsole.ORIENTATION_PORTRAIT' : 'AirConsole.ORIENTATION_LANDSCAPE');
+			this.airConsole.setOrientation((orientation === 1) ? AirConsole.ORIENTATION_PORTRAIT : AirConsole.ORIENTATION_LANDSCAPE);
 		}
-	}
+	};
+
+	Acts.prototype.SendPresetMessage = function(deviceId) {
+		if (this.runningOffline) return;
+
+		this.airConsole.message(deviceId, this.presetMessage);
+		this.presetMessage = {};
+	};
+
+	Acts.prototype.BroadcastPresetMessage = function () {
+		this.airConsole.broadcast(this.presetMessage);
+		this.presetMessage = {};
+	};
+
+	Acts.prototype.SetPresetMessage = function(key, value) {
+		this.presetMessage[key] = value;
+	};
+
+	Acts.prototype.ClearPresetMessage = function() {
+		this.presetMessage = {};
+	};
+
+	Acts.prototype.GetPremium = function () {
+		if (this.isController) {
+			this.airConsole.getPremium();
+		}
+	};
 
 	pluginProto.acts = new Acts();
 
@@ -646,6 +702,27 @@ function AirConsoleOffline() {
 		ret.set_int((this.isController) ? this.airConsole.getServerTime() : 0);
 	};
 
+	Exps.prototype.GetThisDeviceId = function (ret) {
+		if (this.isController) {
+			ret.set_int(this.airConsole.getDeviceId());
+		}
+		else {
+			ret.set_int(0);
+		}
+	};
+
+	Exps.prototype.MotionData = function (ret) {
+		if (this.motionData !== null) {
+			var c2Dictionary = new Object();
+			c2Dictionary['c2dictionary'] = true;
+			c2Dictionary['data'] = getProperties(this.motionData);
+			ret.set_string(JSON.stringify(c2Dictionary));
+		}
+		else {
+			ret.set_string('');
+		}
+	};
+
 	pluginProto.exps = new Exps();
 
 	function getProperties(object) {
@@ -665,6 +742,21 @@ function AirConsoleOffline() {
 			}
 		});
 		return data;
+	}
+
+	/**
+	 * Check if a given string is JSON or not
+	 * @param string
+	 * @return false or the parsed object
+	 */
+	function parseJSON(string) {
+		try {
+			var obj = JSON.parse(string);
+		}
+		catch (e) {
+			return false;
+		}
+		return obj;
 	}
 
 }());
