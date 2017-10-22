@@ -241,6 +241,20 @@
 					}
 				]
 			}
+		],
+		"actions": [
+			{
+				"id": "vibrate",
+				"c2id": 18,
+				"scriptName": "Vibrate",
+				"highlight": false,
+				"params": [
+					{
+						"id": "time",
+						"type": "number"
+					}
+				]
+			}
 		]
 	},
 	"ads": {

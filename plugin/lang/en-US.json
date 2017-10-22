@@ -479,6 +479,17 @@
 						"list-name": "Get premium",
 						"display-text": "Get premium",
 						"description": "(Controller only) Offers the user to become a premium member. Can only be called from controllers. If you call getPremium in development mode, the device becomes premium immediately."
+					},
+					"vibrate": {
+						"list-name": "Vibrate",
+						"display-text": "Vibrate for {0}ms.",
+						"description": "(Controller only) Vibrate the controller for {0} millisecond.",
+						"params": {
+							"time": {
+								"name": "Time",
+								"desc": "Duration, in milliseconds, of the vibration."
+							}
+						}
 					}
 				},
 				"expressions": {
