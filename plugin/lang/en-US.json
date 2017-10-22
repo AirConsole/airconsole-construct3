@@ -636,6 +636,14 @@
 					"get-server-time": {
 						"description": "Returns the current time of the game server. This allows you to have a synchronized clock: You can send the server time in a message to know exactly at what point something happened on a device. To use this action you need to check 'Synchronize time' plugin parameters. Only usable by controller.",
 						"translated-name": "GetServerTime"
+					},
+					"get-this-device-id": {
+						"description": "Returns the current device id from which this function is called.",
+						"translated-name": "GetThisDeviceId"
+					},
+					"motion-data": {
+						"description": "Returns a JSON converted C2Dictionary containing the device motion data. This works for controllers only, and the plugin should have it's 'Device motion' property set higher than 0.",
+						"translated-name": "MotionData"
 					}
 				}
 			}

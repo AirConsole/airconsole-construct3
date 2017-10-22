@@ -255,6 +255,15 @@
 					}
 				]
 			}
+		],
+		"expressions": [
+			{
+				"id": "get-this-device-id",
+				"c2id": 22,
+				"expressionName": "GetThisDeviceId",
+				"returnType": "number",
+				"isVariadicParameters": false
+			}
 		]
 	},
 	"ads": {
@@ -777,6 +786,15 @@
 				"highlight": false,
 				"isTrigger": true,
 				"isInvertible": true
+			}
+		],
+		"expressions": [
+			{
+				"id": "motion-data",
+				"c2id": 23,
+				"expressionName": "MotionData",
+				"returnType": "string",
+				"isVariadicParameters": false
 			}
 		]
 	},
