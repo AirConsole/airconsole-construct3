@@ -50,7 +50,8 @@
 					"browser": "Browser",
 					"ids": "Ids",
 					"data": "Data",
-					"profile": "Profile"
+					"profile": "Profile",
+					"controller-only": "Controller only"
 				},
 				"conditions": {
 					"on-connect": {
@@ -231,6 +232,11 @@
 						"list-name": "Ad shown",
 						"display-text": "Ad shown",
 						"description": "True if an ad was shown."
+					},
+					"on-device-motion": {
+						"list-name": "On device motion",
+						"display-text": "On device motion",
+						"description": "Triggered every X millisecond if the plugin property has the 'Device motion' property set higher than 0. This only works for controllers."
 					}
 				},
 				"actions": {

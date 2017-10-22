@@ -748,5 +748,17 @@
 				]
 			}
 		]
+	},
+	"controller-only": {
+		"conditions": [
+			{
+				"id": "on-device-motion",
+				"c2id": 24,
+				"scriptName": "OnDeviceMotion",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": true
+			}
+		]
 	}
 }

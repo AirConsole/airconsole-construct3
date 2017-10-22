@@ -96,6 +96,7 @@ function AirConsoleOffline() {
 		this.emailAddress = null;
 		this.customData = null;
 		this.loadRetry = 0;
+		this.motionData = {};
 	};
 
 	var instanceProto = pluginProto.Instance.prototype;
@@ -247,7 +248,12 @@ function AirConsoleOffline() {
 			self.deviceId = deviceId;
 			self.runtime.trigger(pluginProto.cnds.OnDeviceProfileChange, self);
 		};
-	}
+
+		this.airConsole.onDeviceMotion = function (data) {
+			self.motionData = data;
+			self.runtime.trigger(pluginProto.cnds.OnDeviceMotion, self);
+		}
+	};
 
 	// only called if a layout object - draw to a canvas 2D context
 	instanceProto.draw = function(ctx) {};
@@ -373,6 +379,10 @@ function AirConsoleOffline() {
 
 	Cnds.prototype.IsAdShowing = function () {
 		return this.adShowing === 1;
+	};
+
+	Cnds.prototype.OnDeviceMotion = function () {
+		return true;
 	};
 
 	pluginProto.cnds = new Cnds();
