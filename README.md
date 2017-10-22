@@ -13,7 +13,7 @@ Please report any bugs you encounter
 More information and demos in the [wiki](https://github.com/AirConsole/airconsole-construct3/wiki)
 
 ## Installation for new Construct3 projects
-[Download the plugin](plugin/airconsole.c3addon) and add it to your Construct3 project
+[Download the latest plugin](https://github.com/AirConsole/airconsole-construct3/releases) and add it to your Construct3 project
 
 ## Installation for Construct2 imported games
 [Download the backward compatible plugin](backwardCompatibility/c3airconsole-backcomp.c3addon) and add it to your Construct3 project
