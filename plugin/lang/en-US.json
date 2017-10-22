@@ -51,7 +51,8 @@
 					"ids": "Ids",
 					"data": "Data",
 					"profile": "Profile",
-					"controller-only": "Controller only"
+					"controller-only": "Controller only",
+					"preset-message": "Preset message"
 				},
 				"conditions": {
 					"on-connect": {
@@ -256,7 +257,7 @@
 							},
 							"property-name": {
 								"name": "Message property name",
-								"desc": "Message property name"
+								"desc": "Message property name (can only be 'message' for now)"
 							},
 							"message": {
 								"name": "Message",
@@ -271,7 +272,7 @@
 						"params": {
 							"property-name": {
 								"name": "Message property name",
-								"desc": "Message property name"
+								"desc": "Message property name (can only be 'message' for now)"
 							},
 							"message": {
 								"name": "Message",
@@ -473,6 +474,11 @@
 						"list-name": "Broadcast preset message",
 						"display-text": "Clear preset message",
 						"description": "Clear the preset message."
+					},
+					"get-premium": {
+						"list-name": "Get premium",
+						"display-text": "Get premium",
+						"description": "(Controller only) Offers the user to become a premium member. Can only be called from controllers. If you call getPremium in development mode, the device becomes premium immediately."
 					}
 				},
 				"expressions": {

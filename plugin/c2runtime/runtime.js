@@ -515,6 +515,12 @@ function AirConsoleOffline() {
 		this.presetMessage = {};
 	};
 
+	Acts.prototype.GetPremium = function () {
+		if (this.isController) {
+			this.airConsole.getPremium();
+		}
+	};
+
 	pluginProto.acts = new Acts();
 
 	//////////////////////////////////////

@@ -687,6 +687,11 @@
 				"id": "edit-profile",
 				"scriptName": "EditProfile",
 				"highlight": false
+			},
+			{
+				"id": "get-premium",
+				"scriptName": "GetPremium",
+				"highlight": true
 			}
 		],
 		"expressions": [
