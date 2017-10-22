@@ -760,5 +760,49 @@
 				"isInvertible": true
 			}
 		]
+	},
+	"preset-message": {
+		"actions": [
+			{
+				"id": "send-preset-message",
+				"c2id": 12,
+				"scriptName": "SendPresetMessage",
+				"highlight": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "broadcast-preset-message",
+				"c2id": 13,
+				"scriptName": "BroadcastPresetMessage",
+				"highlight": false
+			},
+			{
+				"id": "set-message-property",
+				"c2id": 14,
+				"scriptName": "SetPresetMessage",
+				"highlight": false,
+				"params": [
+					{
+						"id": "property",
+						"type": "string"
+					},
+					{
+						"id": "value",
+						"type": "string"
+					}
+				]
+			},
+			{
+				"id": "clear-preset-message",
+				"c2id": 15,
+				"scriptName": "ClearPresetMessage",
+				"highlight": false
+			}
+		]
 	}
 }

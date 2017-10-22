@@ -96,6 +96,7 @@ function AirConsoleOffline() {
 		this.emailAddress = null;
 		this.customData = null;
 		this.loadRetry = 0;
+		this.presetMessage = {};
 		this.motionData = {};
 	};
 
@@ -492,6 +493,26 @@ function AirConsoleOffline() {
 		if (this.isController) {
 			this.airConsole.setOrientation((orientation === 1) ? AirConsole.ORIENTATION_PORTRAIT : AirConsole.ORIENTATION_LANDSCAPE);
 		}
+	};
+
+	Acts.prototype.SendPresetMessage = function(deviceId) {
+		if (this.runningOffline) return;
+
+		this.airConsole.message(deviceId, this.presetMessage);
+		this.presetMessage = {};
+	};
+
+	Acts.prototype.BroadcastPresetMessage = function () {
+		this.airConsole.broadcast(this.presetMessage);
+		this.presetMessage = {};
+	};
+
+	Acts.prototype.SetPresetMessage = function(key, value) {
+		this.presetMessage[key] = value;
+	};
+
+	Acts.prototype.ClearPresetMessage = function() {
+		this.presetMessage = {};
 	};
 
 	pluginProto.acts = new Acts();
