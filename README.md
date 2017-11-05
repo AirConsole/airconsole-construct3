@@ -9,6 +9,8 @@ You can use the backward compatibility plugin to import any games you made with 
 
 Please report any bugs you encounter
 
+This plugin allows you to build both games and the controllers with Construct3! Don't forget to check out the external merging tool when you need to package your game before testing: https://github.com/Psychokiller1888/AirConsoleMerger/releases
+
 ## How to use
 More information and demos in the [wiki](https://github.com/AirConsole/airconsole-construct3/wiki)
 
