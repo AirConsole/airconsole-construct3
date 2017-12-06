@@ -260,6 +260,22 @@
 				"highlight": false,
 				"isTrigger": true,
 				"isInvertible": false
+			},
+			{
+				"id": "ad-shown",
+				"c2id": 22,
+				"scriptName": "AdShown",
+				"highlight": false,
+				"isTrigger": false,
+				"isInvertible": true
+			},
+			{
+				"id": "is-ad-showing",
+				"c2id": 23,
+				"scriptName": "IsAdShowing",
+				"highlight": false,
+				"isTrigger": false,
+				"isInvertible": true
 			}
 		],
 		"actions": [
@@ -268,6 +284,22 @@
 				"c2id": 7,
 				"scriptName": "ShowAd",
 				"highlight": true
+			}
+		],
+		"expressions": [
+			{
+				"id": "is-ad-showing",
+				"c2id": 21,
+				"expressionName": "IsAddShowing",
+				"returnType": "number",
+				"isVariadicParameters": false
+			},
+			{
+				"id": "ad-shown",
+				"c2id": 20,
+				"expressionName": "AdShown",
+				"returnType": "number",
+				"isVariadicParameters": false
 			}
 		]
 	},
@@ -628,10 +660,30 @@
 				"expressionName": "GetProfilePicture",
 				"returnType": "string",
 				"isVariadicParameters": false,
+				"isDeprecated": true,
 				"params": [
 					{
 						"id": "device-id",
 						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "get-profile-picture-with-size",
+				"c2id": 19,
+				"expressionName": "GetProfilePictureWithSize",
+				"returnType": "string",
+				"isVariadicParameters": false,
+				"isDeprecated": true,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					},
+					{
+						"id": "size",
+						"type": "number",
+						"initialValue": "64"
 					}
 				]
 			},
@@ -673,6 +725,118 @@
 						"type": "number"
 					}
 				]
+			}
+		]
+	},
+	"controller-only": {
+		"actions": [
+			{
+				"id": "edit-profile",
+				"c2id": 16,
+				"scriptName": "EditProfile",
+				"highlight": false
+			},
+			{
+				"id": "get-premium",
+				"c2id": 17,
+				"scriptName": "GetPremium",
+				"highlight": false
+			},
+			{
+				"id": "vibrate",
+				"c2id": 18,
+				"scriptName": "Vibrate",
+				"highlight": false,
+				"params": [
+					{
+						"id": "time",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "set-orientation",
+				"c2id": 19,
+				"scriptName": "SetOrientation",
+				"highlight": false,
+				"params": [
+					{
+						"id": "orientation",
+						"type": "combo",
+						"initial-value": "landscape",
+						"items": ["landscape", "portrait"]
+					}
+				]
+			}
+		],
+		"conditions": [
+			{
+				"id": "on-device-motion",
+				"c2id": 24,
+				"scriptName": "OnDeviceMotion",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			}
+		],
+		"expressions": [
+			{
+				"id": "get-this-device-id",
+				"c2id": 22,
+				"expressionName": "GetThisDeviceId",
+				"returnType": "number",
+				"isVariadicParameters": false
+			},
+			{
+				"id": "motion-data",
+				"c2id": 23,
+				"expressionName": "MotionData",
+				"returnType": "string",
+				"isVariadicParameters": false
+			}
+		]
+	},
+	"preset-message": {
+		"actions": [
+			{
+				"id": "send-preset-message",
+				"c2id": 12,
+				"scriptName": "SendPresetMessage",
+				"highlight": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "broadcast-preset-message",
+				"c2id": 13,
+				"scriptName": "BroadcastPresetMessage",
+				"highlight": false
+			},
+			{
+				"id": "set-message-property",
+				"c2id": 14,
+				"scriptName": "SetPresetMessage",
+				"highlight": false,
+				"params": [
+					{
+						"id": "property",
+						"type": "string"
+					},
+					{
+						"id": "value",
+						"type": "string"
+					}
+				]
+			},
+			{
+				"id": "clear-preset-message",
+				"c2id": 15,
+				"scriptName": "ClearPresetMessage",
+				"highlight": false
 			}
 		]
 	}

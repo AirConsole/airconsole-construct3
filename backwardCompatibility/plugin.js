@@ -12,7 +12,7 @@
 	const PLUGIN_ID = "AirConsole2";
 	////////////////////////////////////////////
 	
-	const PLUGIN_VERSION = "1.7.0.0";
+	const PLUGIN_VERSION = "1.7.0.1";
 	const PLUGIN_CATEGORY = "web";
 	
 	let app = null;
@@ -36,7 +36,12 @@
 			SDK.Lang.PushContext(".properties");
 			
 			this._info.SetProperties([
-				new SDK.PluginProperty("integer", "max-players", 4)
+				new SDK.PluginProperty("integer", "max-players", 4),
+				new SDK.PluginProperty("check", "is-controller", false),
+				new SDK.PluginProperty("group", "controller-only"),
+				new SDK.PluginProperty("combo", "orientation", {initialValue: "landscape", items: ["landscape", "portrait"]}),
+				new SDK.PluginProperty("check", "synchronize-time", false),
+				new SDK.PluginProperty("integer", "device-motion", 0)
 			]);
 			
 			SDK.Lang.PopContext();		// .properties

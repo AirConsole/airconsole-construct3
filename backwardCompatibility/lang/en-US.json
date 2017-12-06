@@ -11,6 +11,30 @@
 					"max-player": {
 						"name": "Max players",
 						"desc": "Set the maximum players allowed to connect before triggering the 'on too many players' trigger"
+					},
+					"is-controller": {
+						"name": "Is controller",
+						"desc": "Check this if this project is intended to be a controller"
+					},
+					"controller-only": {
+						"name": "Controller only",
+						"desc": "These properties only take effect if 'Is controller' is checked"
+					},
+					"orientation": {
+						"name": "Orientation",
+						"desc": "CONTROLLER ONLY - Sets this controller in either PORTRAIT or LANDSCAPE mode",
+						"items": {
+							"landscape": "Landscape",
+							"portrait": "Portrait"
+						}
+					},
+					"synchronize-time": {
+						"name": "Synchronize time",
+						"desc": "CONTROLLER ONLY - Enable time synchronization with server. This is needed for 'getServerTime()'"
+					},
+					"device-motion": {
+						"name": "Device motion",
+						"desc": "CONTROLLER ONLY - If set > 0, onDeviceMotion gets called every 'Device motion' milliseconds with the data from the accelerometer and gyroscope"
 					}
 				},
 				"aceCategories": {
@@ -26,7 +50,9 @@
 					"browser": "Browser",
 					"ids": "Ids",
 					"data": "Data",
-					"profile": "Profile"
+					"profile": "Profile",
+					"controller-only": "Controller only",
+					"preset-message": "Preset message"
 				},
 				"conditions": {
 					"on-connect": {
@@ -192,6 +218,21 @@
 						"list-name": "Is plugin offline",
 						"display-text": "Is plugin offline",
 						"description": "True if the plugin loaded as offline, false otherwise."
+					},
+					"ad-shown": {
+						"list-name": "Ad shown",
+						"display-text": "Ad shown",
+						"description": "True if an ad was shown."
+					},
+					"is-ad-showing": {
+						"list-name": "Is ad showing",
+						"display-text": "Is ad showing",
+						"description": "True if an ad is currently showing."
+					},
+					"on-device-motion": {
+						"list-name": "On device motion",
+						"display-text": "On device motion",
+						"description": "Triggered every X millisecond if the plugin property has the 'Device motion' property set higher than 0. This only works for controllers."
 					}
 				},
 				"actions": {
@@ -211,7 +252,7 @@
 							},
 							"property-name": {
 								"name": "Message property name",
-								"desc": "Message property name"
+								"desc": "Message property name. (Can only be 'message' for now)"
 							},
 							"message": {
 								"name": "Message",
@@ -226,7 +267,7 @@
 						"params": {
 							"property-name": {
 								"name": "Message property name",
-								"desc": "Message property name"
+								"desc": "Message property name. (Can only be 'message' for now)"
 							},
 							"message": {
 								"name": "Message",
@@ -372,6 +413,78 @@
 								"desc": "The uid for which the data should be stored"
 							}
 						}
+					},
+					"send-preset-message": {
+						"list-name": "Send preset message",
+						"display-text": "Send preset message to device id {0}.",
+						"description": "Sends a previously set message to a specific device.",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to send the preset message to"
+							}
+						}
+					},
+					"broadcast-preset-message": {
+						"list-name": "Broadcast preset message",
+						"display-text": "Send preset message to all connected devices.",
+						"description": "Sends a previously set message to all connected devices."
+					},
+					"set-message-property": {
+						"list-name": "Store persistent data",
+						"display-text": "Set [i]{0}[/i] property to [i]{1}[/i]",
+						"description": "Sets a property to the given value in a preset message",
+						"params": {
+							"property": {
+								"name": "Property",
+								"desc": "The message property."
+							},
+							"value": {
+								"name": "Value",
+								"desc": "The message property value."
+							}
+						}
+					},
+					"clear-preset-message": {
+						"list-name": "Clear preset message",
+						"display-text": "Clear the preset message.",
+						"description": "Clears the preset message."
+					},
+					"edit-profile": {
+						"list-name": "Edit profile",
+						"display-text": "(Controller only) Edit the player profile.",
+						"description": "(Controller only) Edit the player profile."
+					},
+					"get-premium": {
+						"list-name": "Get premium",
+						"display-text": "(Controller only) Get premium",
+						"description": "Offers the user to become a premium member. Can only be called from controllers. If you call getPremium in development mode, the device becomes premium immediately."
+					},
+					"vibrate": {
+						"list-name": "Vibrate",
+						"display-text": "(Controller only) Vibrate the controller for {0} millisecond.",
+						"description": "Vibrates the controller for millisecond.",
+						"params": {
+							"time": {
+								"name": "Time",
+								"desc": "Duration, in milliseconds, of the vibration."
+							}
+						}
+					},
+					"set-orientation": {
+						"list-name": "Set orientation",
+						"display-text": "(Controller only) Set orientation to {0}.",
+						"description": "Sets the controller orientation",
+						"params": {
+							"orientation": {
+								"name": "Orientation",
+								"desc": "Desired controller orientation.",
+								"items": {
+									"landscape": "Landscape",
+									"portrait": "Portrait"
+								}
+							}
+						}
 					}
 				},
 				"expressions": {
@@ -498,6 +611,36 @@
 					"is-plugin-offline": {
 						"description": "Returns 1 if the plugin loaded as offline, else 0.",
 						"translated-name": "IsPluginOffline"
+					},
+					"get-profile-picture-with-size": {
+						"description": "Returns the profile picture url of the specified device id.",
+						"translated-name": "GetProfilePicture",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to get the profile picture from"
+							},
+							"size": {
+								"name": "Picture size",
+								"desc": "The size in pixels of the picture. Default is 64"
+							}
+						}
+					},
+					"is-ad-showing": {
+						"description": "Returns 1 if ads are currently showing, else 0.",
+						"translated-name": "IsAdShowing"
+					},
+					"ad-shown": {
+						"description": "Returns 1 if ads were shown, else 0.",
+						"translated-name": "AdShown"
+					},
+					"get-this-device-id": {
+						"description": "Returns the current device id from which this function is called.",
+						"translated-name": "GetThisDeviceId"
+					},
+					"motion-data": {
+						"description": "Returns a JSON converted C2Dictionary containing the device motion data. This works for controllers only, and the plugin should have it's 'Device motion' property set higher than 0.",
+						"translated-name": "MotionData"
 					}
 				}
 			}
