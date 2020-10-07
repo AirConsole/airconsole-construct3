@@ -1,4 +1,7 @@
-# AirConsole Construct3
+**ATTENTION:** THIS PLUGIN IS NOT MAINTAINED ANYMORE. We, however, appreciate any pull requests. Thank you for your understanding
+
+
+# AirConsole Construct3 - Community Plugin
 An AirConsole plugin for Construct 3
 
 You can find a c3p example file of our good old Pong game
