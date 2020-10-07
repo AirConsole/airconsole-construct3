@@ -1,4 +1,4 @@
-**ATTENTION:** THIS PLUGIN IS NOT MAINTAINED ANYMORE. We, however, appreciate any pull requests. Thank you for your understanding
+⚡ ⚡ ⚡ **ATTENTION:** THIS PLUGIN IS NOT MAINTAINED ANYMORE. We, however, appreciate any pull requests. Thank you for your understanding
 
 
 # AirConsole Construct3 - Community Plugin
