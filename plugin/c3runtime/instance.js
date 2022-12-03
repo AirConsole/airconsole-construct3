@@ -1,15 +1,47 @@
 const C3 = self.C3
 
-C3.Plugins.C3AirConsole.Instance = class SingleGlobalInstance extends C3.SDKInstanceBase {
+C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKInstanceBase {
 	constructor(inst, properties) {
 		super(inst)
 
-		// Initialise object properties
-		this._testProperty = 0
+		this.airConsole = null
+		this.gameReady = false
+		this.maxPlayers = 0
+		this.isController = false
+		this.useTranslation = false
+		this.orientation = 'portrait'
+		this.syncTime = false
+		this.deviceMotion = 0
 
-		if (properties)		// note properties may be null in some cases
-		{
-			this._testProperty = properties[0]
+		if (properties) {
+			this.maxPlayers = properties[0]
+			this.isController = properties[1]
+			this.useTranslation = properties[2]
+			this.orientation = properties[3]
+			this.syncTime = properties[4]
+			this.deviceMotion = properties[5]
+		}
+		this.InitAirConsole()
+	}
+
+	InitAirConsole() {
+		if (typeof AirConsole !== 'undefined') {
+			if (this.isController === 1) {
+				let config = {
+					orientation:      this.orientation === 0 ? AirConsole.ORIENTATION_LANDSCAPE : AirConsole.ORIENTATION_PORTRAIT,
+					synchronize_time: this.syncTime,
+					setup_document:   true,
+					device_motion:    this.deviceMotion,
+					translation:      this.useTranslation
+				}
+				this.airConsole = AirConsole(config)
+			} else {
+				this.airConsole = AirConsole()
+			}
+			this.gameReady = true
+			console.log('AirConsole init')
+		} else {
+			console.log('AirConsole API not loaded')
 		}
 	}
 
@@ -17,47 +49,42 @@ C3.Plugins.C3AirConsole.Instance = class SingleGlobalInstance extends C3.SDKInst
 		super.Release()
 	}
 
-	_SetTestProperty(n) {
-		this._testProperty = n
+	getProperties(object) {
+		if (object === null || typeof object === 'object') {
+			return
+		}
+
+		let data = {}
+		for (let [property, value] of Object.entries(object)) {
+			if (typeof value === 'object') {
+				let c3Dictionary = {}
+				c3Dictionary['c2dictionary'] = true
+				c3Dictionary['data'] = this.getProperties(value)
+				data[property] = JSON.stringify(c3Dictionary)
+			} else {
+				if (typeof value === 'boolean') {
+					value = (!value) ? 0 : 1
+				}
+				data[property] = value
+			}
+		}
+		return data
 	}
 
-	_GetTestProperty() {
-		return this._testProperty
+	parseJSON(string) {
+		let obj
+		try {
+			obj = JSON.parse(string)
+		} catch (e) {
+			obj = false
+		}
+		return obj
 	}
 
 	SaveToJson() {
-		return {
-			// data to be saved for savegames
-		}
+		return {}
 	}
 
 	LoadFromJson(o) {
-		// load state for savegames
-	}
-
-	GetScriptInterfaceClass() {
-		return self.IMySingleGlobalInstance
-	}
-}
-
-// Script interface. Use a WeakMap to safely hide the internal implementation details from the
-// caller using the script interface.
-const map = new WeakMap()
-
-self.IMySingleGlobalInstance = class IMySingleGlobalInstance extends self.IInstance {
-	constructor() {
-		super()
-
-		// Map by SDK instance
-		map.set(this, self.IInstance._GetInitInst().GetSdkInstance())
-	}
-
-	get testProperty() {
-		return map.get(this)._GetTestProperty()
-	}
-
-	// Example setter/getter property on script interface
-	set testProperty(n) {
-		map.get(this)._SetTestProperty(n)
 	}
 }

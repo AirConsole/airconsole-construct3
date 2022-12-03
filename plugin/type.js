@@ -1,8 +1,8 @@
 const SDK = self.SDK
 
-const PLUGIN_CLASS = SDK.Plugins.C3AirConsole
+const PLUGIN_CLASS = SDK.Plugins.AirConsole
 
-PLUGIN_CLASS.Type = class C3AirConsole extends SDK.ITypeBase {
+PLUGIN_CLASS.Type = class AirConsoleType extends SDK.ITypeBase {
 	constructor(sdkPlugin, iObjectType) {
 		super(sdkPlugin, iObjectType)
 	}

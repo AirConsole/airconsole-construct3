@@ -1,6 +1,6 @@
 const C3 = self.C3
 
-C3.Plugins.C3AirConsole.Type = class SingleGlobalType extends C3.SDKTypeBase {
+C3.Plugins.AirConsole.Type = class AirConsoleType extends C3.SDKTypeBase {
 	constructor(objectClass) {
 		super(objectClass)
 	}
