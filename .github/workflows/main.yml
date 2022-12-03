@@ -1,8 +1,6 @@
 name: Build c2addon
 
-on:
-  release:
-    types: [created]
+on: push
 
 jobs:
   build:
