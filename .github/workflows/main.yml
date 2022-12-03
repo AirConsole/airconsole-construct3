@@ -6,21 +6,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 🔧 Install zip
+      - name: ➕ Install zip
         uses: actions/checkout@v2
-      - name: 🔧 Packaging c2addon
+      - name: 📦️ Packaging c2addon
         uses: vimtor/action-zip@v1
         with:
           files: plugin/
           dest: airconsole.c3addon
-      - name: 🔧 Saving artifact for testing
+      - name: ✅ Saving artifact for testing
         uses: actions/upload-artifact@v1
         with:
           name: airconsole.c3addon
           path: ${{ github.workspace }}/airconsole.c3addon
-      - name: 🔧 Commit and push
+      - name: 🔖 Commit and push
         uses: EndBug/add-and-commit@v7
         with:
           add: '["${{ github.workspace }}/airconsole.c3addon"]'
-          message: 'Deploying plugin'
+          message: '🚀 Deploying plugin'
           push: true
