@@ -25,6 +25,7 @@ C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKInstance
 	}
 
 	InitAirConsole() {
+		console.log('Initializing AirConsole')
 		if (typeof AirConsole !== 'undefined') {
 			if (this.isController === 1) {
 				let config = {
@@ -39,9 +40,8 @@ C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKInstance
 				this.airConsole = AirConsole()
 			}
 			this.gameReady = true
-			console.log('AirConsole init')
 		} else {
-			console.log('AirConsole API not loaded')
+			console.warn('Failed loading AirConsole API')
 		}
 	}
 

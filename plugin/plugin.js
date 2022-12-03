@@ -16,7 +16,11 @@ const PLUGIN_CLASS = SDK.Plugins.AirConsole = class AirConsole extends SDK.IPlug
 		this._info.SetAuthor('Psychokiller1888')
 		this._info.SetHelpUrl(self.lang('.help-url'))
 		this._info.SetIsSingleGlobal(true)
-		this._info.AddRemoteScriptDependency('https://www.airconsole.com/api/airconsole-1.8.0.js')
+		//this._info.AddRemoteScriptDependency('https://www.airconsole.com/api/airconsole-1.8.0.js')
+		this._info.AddFileDependency({
+			filename: 'airconsole.js',
+			type: 'inline-script'
+		})
 
 		SDK.Lang.PushContext('.properties')
 
