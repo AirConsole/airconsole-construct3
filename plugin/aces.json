@@ -1,845 +1,914 @@
 ﻿{
-	"signalling": {
-		"conditions": [
-			{
-				"id": "on-connect",
-				"c2id": 0,
-				"scriptName": "OnConnect",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			},
-			{
-				"id": "on-disconnect",
-				"c2id": 1,
-				"scriptName": "OnDisconnect",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			},
-			{
-				"id": "on-device-disconnect",
-				"c2id": 2,
-				"scriptName": "OnDeviceDisconnect",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					}
-				]
-			},
-			{
-				"id": "on-too-many-players",
-				"c2id": 3,
-				"scriptName": "OnTooManyPlayers",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			},
-			{
-				"id": "on-premium-connect",
-				"c2id": 4,
-				"scriptName": "OnPremiumConnect",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			}
+  "signalling": {
+	"conditions": [
+	  {
+		"id": "on-connect",
+		"c2id": 0,
+		"scriptName": "OnConnect",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-disconnect",
+		"c2id": 1,
+		"scriptName": "OnDisconnect",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-device-disconnect",
+		"c2id": 2,
+		"scriptName": "OnDeviceDisconnect",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  }
 		]
-	},
-	"messaging": {
-		"conditions": [
-			{
-				"id": "on-message",
-				"c2id": 5,
-				"scriptName": "OnMessage",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			},
-			{
-				"id": "on-message-from",
-				"c2id": 6,
-				"scriptName": "OnMessageFrom",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					}
-				]
-			},
-			{
-				"id": "on-message-is",
-				"c2id": 7,
-				"scriptName": "OnMessageIs",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": true,
-				"params": [
-					{
-						"id": "property-name",
-						"type": "string",
-						"initialValue": "\"message\""
-					},
-					{
-						"id": "property-value",
-						"type": "string"
-					}
-				]
-			},
-			{
-				"id": "on-message-from-is",
-				"c2id": 8,
-				"scriptName": "OnMessageFromIs",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": true,
-				"params": [
-					{
-						"id": "property-name",
-						"type": "string",
-						"initialValue": "\"message\""
-					},
-					{
-						"id": "property-value",
-						"type": "string"
-					},
-					{
-						"id": "device-id",
-						"type": "number"
-					}
-				]
-			},
-			{
-				"id": "on-message-has-property",
-				"c2id": 9,
-				"scriptName": "OnMessageHasProperty",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": true,
-				"params": [
-					{
-						"id": "property-name",
-						"type": "string"
-					}
-				]
-			},
-			{
-				"id": "is-multipart-message",
-				"c2id": 21,
-				"scriptName": "IsMultipartMessage",
-				"highlight": false,
-				"isTrigger": false,
-				"isInvertible": true
-			}
-		],
-		"actions": [
-			{
-				"id": "message",
-				"c2id": 1,
-				"scriptName": "Message",
-				"highlight": false,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					},
-					{
-						"id": "property-name",
-						"type": "string",
-						"initialValue": "\"message\""
-					},
-					{
-						"id": "message",
-						"type": "string"
-					}
-				]
-			},
-			{
-				"id": "broadcast",
-				"c2id": 2,
-				"scriptName": "Broadcast",
-				"highlight": false,
-				"params": [
-					{
-						"id": "property-name",
-						"type": "string",
-						"initialValue": "\"message\""
-					},
-					{
-						"id": "message",
-						"type": "string"
-					}
-				]
-			},
-			{
-				"id": "set-custom-device-state-property",
-				"c2id": 3,
-				"scriptName": "SetCustomDeviceStateProperty",
-				"highlight": false,
-				"params": [
-					{
-						"id": "property",
-						"type": "string"
-					},
-					{
-						"id": "value",
-						"type": "string"
-					}
-				]
-			}
+	  },
+	  {
+		"id": "on-too-many-players",
+		"c2id": 3,
+		"scriptName": "OnTooManyPlayers",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-premium-connect",
+		"c2id": 4,
+		"scriptName": "OnPremiumConnect",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-mute",
+		"c2id": 25,
+		"scriptName": "OnMute",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-unmute",
+		"c2id": 26,
+		"scriptName": "OnUnmute",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-pause",
+		"c2id": 27,
+		"scriptName": "OnPause",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-resume",
+		"c2id": 28,
+		"scriptName": "OnResume",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  }
+	]
+  },
+  "messaging": {
+	"conditions": [
+	  {
+		"id": "on-message",
+		"c2id": 5,
+		"scriptName": "OnMessage",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-message-from",
+		"c2id": 6,
+		"scriptName": "OnMessageFrom",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  }
 		]
-	},
-	"device-and-user": {
-		"conditions": [
-			{
-				"id": "is-device-user-connected",
-				"c2id": 10,
-				"scriptName": "IsUserLoggedIn",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					}
-				]
-			},
-			{
-				"id": "on-device-profile-change",
-				"c2id": 17,
-				"scriptName": "OnDeviceProfileChange",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			},
-			{
-				"id": "on-custom-device-state-change",
-				"c2id": 18,
-				"scriptName": "OnCustomDeviceStateChange",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			},
-			{
-				"id": "is-premium",
-				"c2id": 19,
-				"scriptName": "IsPremium",
-				"highlight": false,
-				"isTrigger": false,
-				"isInvertible": true,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					}
-				]
-			}
-		],
-		"actions": [
-			{
-				"id": "vibrate",
-				"c2id": 18,
-				"scriptName": "Vibrate",
-				"highlight": false,
-				"params": [
-					{
-						"id": "time",
-						"type": "number"
-					}
-				]
-			}
-		],
-		"expressions": [
-			{
-				"id": "get-this-device-id",
-				"c2id": 22,
-				"expressionName": "GetThisDeviceId",
-				"returnType": "number",
-				"isVariadicParameters": false
-			}
+	  },
+	  {
+		"id": "on-message-is",
+		"c2id": 7,
+		"scriptName": "OnMessageIs",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": true,
+		"params": [
+		  {
+			"id": "property-name",
+			"type": "string",
+			"initialValue": "\"message\""
+		  },
+		  {
+			"id": "property-value",
+			"type": "string"
+		  }
 		]
-	},
-	"ads": {
-		"conditions": [
-			{
-				"id": "on-ad-complete",
-				"c2id": 11,
-				"scriptName": "OnAdComplete",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			},
-			{
-				"id": "on-ad-show",
-				"c2id": 12,
-				"scriptName": "OnAdShow",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			},
-			{
-				"id": "is-ad-showing",
-				"scriptName": "IsAdShowing",
-				"highlight": false,
-				"isTrigger": false,
-				"isInvertible": true
-			},
-			{
-				"id": "ad-shown",
-				"scriptName": "AdShown",
-				"highlight": false,
-				"isTrigger": false,
-				"isInvertible": true
-			}
-		],
-		"actions": [
-			{
-				"id": "show-ad",
-				"c2id": 7,
-				"scriptName": "ShowAd",
-				"highlight": true
-			}
-		],
-		"expressions": [
-			{
-				"id": "is-ad-showing",
-				"expressionName": "IsAddShowing",
-				"returnType": "number",
-				"isVariadicParameters": false
-			},
-			{
-				"id": "ad-shown",
-				"expressionName": "AdShown",
-				"returnType": "number",
-				"isVariadicParameters": false
-			}
+	  },
+	  {
+		"id": "on-message-from-is",
+		"c2id": 8,
+		"scriptName": "OnMessageFromIs",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": true,
+		"params": [
+		  {
+			"id": "property-name",
+			"type": "string",
+			"initialValue": "\"message\""
+		  },
+		  {
+			"id": "property-value",
+			"type": "string"
+		  },
+		  {
+			"id": "device-id",
+			"type": "number"
+		  }
 		]
-	},
-	"persistent-data": {
-		"conditions": [
-			{
-				"id": "on-persistent-data-loaded",
-				"c2id": 13,
-				"scriptName": "OnPersistentDataLoaded",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			},
-			{
-				"id": "on-persistent-data-stored",
-				"c2id": 14,
-				"scriptName": "OnPersistentDataStored",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			}
-		],
-		"actions": [
-			{
-				"id": "request-persistent-data",
-				"c2id": 10,
-				"scriptName": "RequestPersistentData",
-				"highlight": false,
-				"params": [
-					{
-						"id": "uids",
-						"type": "string"
-					}
-				]
-			},
-			{
-				"id": "store-persistent-data",
-				"c2id": 11,
-				"scriptName": "StorePersistentData",
-				"highlight": false,
-				"params": [
-					{
-						"id": "property",
-						"type": "string"
-					},
-					{
-						"id": "value",
-						"type": "string"
-					},
-					{
-						"id": "uid",
-						"type": "number"
-					}
-				]
-			}
-		],
-		"expressions": [
-			{
-				"id": "get-persistent-data",
-				"c2id": 15,
-				"expressionName": "GetPersistentData",
-				"returnType": "string",
-				"isVariadicParameters": false
-			}
+	  },
+	  {
+		"id": "on-message-has-property",
+		"c2id": 9,
+		"scriptName": "OnMessageHasProperty",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": true,
+		"params": [
+		  {
+			"id": "property-name",
+			"type": "string"
+		  }
 		]
-	},
-	"highscores": {
-		"conditions": [
-			{
-				"id": "on-receiving-highscores",
-				"c2id": 15,
-				"scriptName": "OnHighScores",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			},
-			{
-				"id": "on-highscores-stored",
-				"c2id": 16,
-				"scriptName": "OnHighScoreStored",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": false
-			}
-		],
-		"actions": [
-			{
-				"id": "request-highscores",
-				"c2id": 4,
-				"scriptName": "RequestHighScores",
-				"highlight": false,
-				"params": [
-					{
-						"id": "level-name",
-						"type": "string"
-					},
-					{
-						"id": "level-version",
-						"type": "string",
-						"initialValue": "\"1.0\""
-					},
-					{
-						"id": "uids",
-						"type": "string",
-						"initialValue": "\"all\""
-					},
-					{
-						"id": "ranks",
-						"type": "string",
-						"initialValue": "\"world\""
-					},
-					{
-						"id": "total",
-						"type": "number",
-						"initialValue": "8"
-					},
-					{
-						"id": "top",
-						"type": "number",
-						"initialValue": "5"
-					}
-				]
-			},
-			{
-				"id": "store-highscores",
-				"c2id": 5,
-				"scriptName": "StoreHighScores",
-				"highlight": false,
-				"params": [
-					{
-						"id": "level-name",
-						"type": "string"
-					},
-					{
-						"id": "level-version",
-						"type": "string",
-						"initialValue": "\"1.0\""
-					},
-					{
-						"id": "score",
-						"type": "string"
-					},
-					{
-						"id": "uid",
-						"type": "string"
-					},
-					{
-						"id": "data",
-						"type": "string"
-					},
-					{
-						"id": "score-string",
-						"type": "string"
-					}
-				]
-			}
-		],
-		"expressions": [
-			{
-				"id": "get-highscores",
-				"c2id": 16,
-				"expressionName": "GetHighscores",
-				"returnType": "string",
-				"isVariadicParameters": false
-			}
+	  },
+	  {
+		"id": "is-multipart-message",
+		"c2id": 21,
+		"scriptName": "IsMultipartMessage",
+		"highlight": false,
+		"isTrigger": false,
+		"isInvertible": true
+	  }
+	],
+	"actions": [
+	  {
+		"id": "message",
+		"c2id": 1,
+		"scriptName": "Message",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  },
+		  {
+			"id": "property-name",
+			"type": "string",
+			"initialValue": "\"message\""
+		  },
+		  {
+			"id": "message",
+			"type": "string"
+		  }
 		]
-	},
-	"plugin": {
-		"conditions": [
-			{
-				"id": "is-plugin-offline",
-				"c2id": 20,
-				"scriptName": "IsPluginOffline",
-				"highlight": false,
-				"isTrigger": false,
-				"isInvertible": true
-			}
-		],
-		"expressions": [
-			{
-				"id": "is-plugin-offline",
-				"c2id": 17,
-				"expressionName": "IsPluginOffline",
-				"returnType": "number",
-				"isVariadicParameters": false
-			}
+	  },
+	  {
+		"id": "broadcast",
+		"c2id": 2,
+		"scriptName": "Broadcast",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "property-name",
+			"type": "string",
+			"initialValue": "\"message\""
+		  },
+		  {
+			"id": "message",
+			"type": "string"
+		  }
 		]
-	},
-	"game": {
-		"actions": [
-			{
-				"id": "game-ready",
-				"c2id": 0,
-				"scriptName": "GameReady",
-				"highlight": true
-			}
+	  },
+	  {
+		"id": "set-custom-device-state-property",
+		"c2id": 3,
+		"scriptName": "SetCustomDeviceStateProperty",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "property",
+			"type": "string"
+		  },
+		  {
+			"id": "value",
+			"type": "string"
+		  }
 		]
-	},
-	"system": {
-		"conditions": [
-			{
-				"id": "is-controller",
-				"scriptName": "IsController",
-				"highlight": false
-			}
-		],
-		"actions": [
-			{
-				"id": "set-active-players",
-				"c2id": 6,
-				"scriptName": "SetActivePlayers",
-				"highlight": false,
-				"params": [
-					{
-						"id": "max-players",
-						"type": "number"
-					}
-				]
-			},
-			{
-				"id": "set-orientation",
-				"scriptName": "SetOrientation",
-				"highlight": false,
-				"params": [
-					{
-						"id": "orientation",
-						"type": "combo",
-						"items": ["landscape", "portrait"]
-					}
-				]
-			}
-		],
-		"expressions": [
-			{
-				"id": "is-controller",
-				"expressionName": "IsController",
-				"returnType": "number",
-				"isVariadicParameters": false
-			},
-			{
-				"id": "get-server-time",
-				"expressionName": "GetServerTime",
-				"returnType": "number",
-				"isVariadicParameters": false
-			}
+	  }
+	]
+  },
+  "device-and-user": {
+	"conditions": [
+	  {
+		"id": "is-device-user-connected",
+		"c2id": 10,
+		"scriptName": "IsUserLoggedIn",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  }
 		]
-	},
-	"browser": {
-		"actions": [
-			{
-				"id": "navigate-home",
-				"c2id": 8,
-				"scriptName": "NavigateHome",
-				"highlight": false
-			},
-			{
-				"id": "navigate-to",
-				"c2id": 9,
-				"scriptName": "NavigateTo",
-				"highlight": false,
-				"params": [
-					{
-						"id": "url",
-						"type": "string"
-					}
-				]
-			}
+	  },
+	  {
+		"id": "on-device-profile-change",
+		"c2id": 17,
+		"scriptName": "OnDeviceProfileChange",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-custom-device-state-change",
+		"c2id": 18,
+		"scriptName": "OnCustomDeviceStateChange",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "is-premium",
+		"c2id": 19,
+		"scriptName": "IsPremium",
+		"highlight": false,
+		"isTrigger": false,
+		"isInvertible": true,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  }
 		]
-	},
-	"ids": {
-		"expressions": [
-			{
-				"id": "device-id",
-				"c2id": 0,
-				"expressionName": "DeviceId",
-				"returnType": "number",
-				"isVariadicParameters": false
-			},
-			{
-				"id": "get-message-properties-count",
-				"c2id": 9,
-				"expressionName": "GetMessagePropertiesCount",
-				"returnType": "number",
-				"isVariadicParameters": false
-			},
-			{
-				"id": "get-master-controller-device-id",
-				"c2id": 10,
-				"expressionName": "GetMasterControllerDeviceId",
-				"returnType": "number",
-				"isVariadicParameters": false
-			},
-			{
-				"id": "convert-player-number-to-device-id",
-				"c2id": 11,
-				"expressionName": "ConvertPlayerNumberToDeviceId",
-				"returnType": "number",
-				"isVariadicParameters": false,
-				"params": [
-					{
-						"id": "player-number",
-						"type": "number"
-					}
-				]
-			},
-			{
-				"id": "convert-device-id-to-player-number",
-				"c2id": 12,
-				"expressionName": "ConvertDeviceIdToPlayerNumber",
-				"returnType": "number",
-				"isVariadicParameters": false,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					}
-				]
-			},
-			{
-				"id": "get-controller-device-ids",
-				"c2id": 13,
-				"expressionName": "GetControllerDeviceIDs",
-				"returnType": "string",
-				"isVariadicParameters": false
-			},
-			{
-				"id": "get-active-player-device-ids",
-				"c2id": 18,
-				"expressionName": "GetActivePlayerDeviceIds",
-				"returnType": "string",
-				"isVariadicParameters": false
-			}
+	  }
+	],
+	"actions": [
+	  {
+		"id": "vibrate",
+		"c2id": 18,
+		"scriptName": "Vibrate",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "time",
+			"type": "number"
+		  }
 		]
-	},
-	"data": {
-		"expressions": [
-			{
-				"id": "message",
-				"c2id": 1,
-				"expressionName": "Message",
-				"returnType": "string",
-				"isVariadicParameters": false
-			},
-			{
-				"id": "message-at-property",
-				"c2id": 2,
-				"expressionName": "MessageAtProperty",
-				"returnType": "string",
-				"isVariadicParameters": false,
-				"params": [
-					{
-						"id": "property-name",
-						"type": "string"
-					}
-				]
-			},
-			{
-				"id": "is-multipart-message",
-				"c2id": 3,
-				"expressionName": "IsMultipartMessage",
-				"returnType": "number",
-				"isVariadicParameters": false
-			},
-			{
-				"id": "message-has-property",
-				"c2id": 4,
-				"expressionName": "MessageHasProperty",
-				"returnType": "number",
-				"isVariadicParameters": false,
-				"params": [
-					{
-						"id": "property-name",
-						"type": "string"
-					}
-				]
-			},
-			{
-				"id": "message-as-json",
-				"c2id": 5,
-				"expressionName": "MessageAsJSON",
-				"returnType": "string",
-				"isVariadicParameters": false
-			}
+	  }
+	],
+	"expressions": [
+	  {
+		"id": "get-this-device-id",
+		"c2id": 22,
+		"expressionName": "GetThisDeviceId",
+		"returnType": "number",
+		"isVariadicParameters": false
+	  }
+	]
+  },
+  "ads": {
+	"conditions": [
+	  {
+		"id": "on-ad-complete",
+		"c2id": 11,
+		"scriptName": "OnAdComplete",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-ad-show",
+		"c2id": 12,
+		"scriptName": "OnAdShow",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "is-ad-showing",
+		"scriptName": "IsAdShowing",
+		"highlight": false,
+		"isTrigger": false,
+		"isInvertible": true
+	  },
+	  {
+		"id": "ad-shown",
+		"scriptName": "AdShown",
+		"highlight": false,
+		"isTrigger": false,
+		"isInvertible": true
+	  }
+	],
+	"actions": [
+	  {
+		"id": "show-ad",
+		"c2id": 7,
+		"scriptName": "ShowAd",
+		"highlight": true
+	  }
+	],
+	"expressions": [
+	  {
+		"id": "is-ad-showing",
+		"expressionName": "IsAddShowing",
+		"returnType": "number",
+		"isVariadicParameters": false
+	  },
+	  {
+		"id": "ad-shown",
+		"expressionName": "AdShown",
+		"returnType": "number",
+		"isVariadicParameters": false
+	  }
+	]
+  },
+  "persistent-data": {
+	"conditions": [
+	  {
+		"id": "on-persistent-data-loaded",
+		"c2id": 13,
+		"scriptName": "OnPersistentDataLoaded",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-persistent-data-stored",
+		"c2id": 14,
+		"scriptName": "OnPersistentDataStored",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  }
+	],
+	"actions": [
+	  {
+		"id": "request-persistent-data",
+		"c2id": 10,
+		"scriptName": "RequestPersistentData",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "uids",
+			"type": "string"
+		  }
 		]
-	},
-	"profile": {
-		"actions": [
-			{
-				"id": "edit-profile",
-				"scriptName": "EditProfile",
-				"highlight": false
-			},
-			{
-				"id": "get-premium",
-				"scriptName": "GetPremium",
-				"highlight": true
-			}
-		],
-		"expressions": [
-			{
-				"id": "get-profile-picture",
-				"c2id": 6,
-				"expressionName": "GetProfilePicture",
-				"returnType": "string",
-				"isVariadicParameters": false,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					},
-					{
-						"id": "size",
-						"type": "number",
-						"initialValue": "64"
-					}
-				]
-			},
-			{
-				"id": "get-nickname",
-				"c2id": 7,
-				"expressionName": "GetNickname",
-				"returnType": "string",
-				"isVariadicParameters": false,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					}
-				]
-			},
-			{
-				"id": "get-uid",
-				"c2id": 8,
-				"expressionName": "GetUID",
-				"returnType": "string",
-				"isVariadicParameters": false,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					}
-				]
-			},
-			{
-				"id": "is-premium",
-				"c2id": 14,
-				"expressionName": "IsPremium",
-				"returnType": "number",
-				"isVariadicParameters": false,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					}
-				]
-			}
+	  },
+	  {
+		"id": "store-persistent-data",
+		"c2id": 11,
+		"scriptName": "StorePersistentData",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "property",
+			"type": "string"
+		  },
+		  {
+			"id": "value",
+			"type": "string"
+		  },
+		  {
+			"id": "uid",
+			"type": "number"
+		  }
 		]
-	},
-	"controller-only": {
-		"conditions": [
-			{
-				"id": "on-device-motion",
-				"c2id": 24,
-				"scriptName": "OnDeviceMotion",
-				"highlight": false,
-				"isTrigger": true,
-				"isInvertible": true
-			}
-		],
-		"expressions": [
-			{
-				"id": "motion-data",
-				"c2id": 23,
-				"expressionName": "MotionData",
-				"returnType": "string",
-				"isVariadicParameters": false
-			}
+	  }
+	],
+	"expressions": [
+	  {
+		"id": "get-persistent-data",
+		"c2id": 15,
+		"expressionName": "GetPersistentData",
+		"returnType": "string",
+		"isVariadicParameters": false
+	  }
+	]
+  },
+  "highscores": {
+	"conditions": [
+	  {
+		"id": "on-receiving-highscores",
+		"c2id": 15,
+		"scriptName": "OnHighScores",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  },
+	  {
+		"id": "on-highscores-stored",
+		"c2id": 16,
+		"scriptName": "OnHighScoreStored",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": false
+	  }
+	],
+	"actions": [
+	  {
+		"id": "request-highscores",
+		"c2id": 4,
+		"scriptName": "RequestHighScores",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "level-name",
+			"type": "string"
+		  },
+		  {
+			"id": "level-version",
+			"type": "string",
+			"initialValue": "\"1.0\""
+		  },
+		  {
+			"id": "uids",
+			"type": "string",
+			"initialValue": "\"all\""
+		  },
+		  {
+			"id": "ranks",
+			"type": "string",
+			"initialValue": "\"world\""
+		  },
+		  {
+			"id": "total",
+			"type": "number",
+			"initialValue": "8"
+		  },
+		  {
+			"id": "top",
+			"type": "number",
+			"initialValue": "5"
+		  }
 		]
-	},
-	"preset-message": {
-		"actions": [
-			{
-				"id": "send-preset-message",
-				"c2id": 12,
-				"scriptName": "SendPresetMessage",
-				"highlight": false,
-				"params": [
-					{
-						"id": "device-id",
-						"type": "number"
-					}
-				]
-			},
-			{
-				"id": "broadcast-preset-message",
-				"c2id": 13,
-				"scriptName": "BroadcastPresetMessage",
-				"highlight": false
-			},
-			{
-				"id": "set-message-property",
-				"c2id": 14,
-				"scriptName": "SetPresetMessage",
-				"highlight": false,
-				"params": [
-					{
-						"id": "property",
-						"type": "string"
-					},
-					{
-						"id": "value",
-						"type": "string"
-					}
-				]
-			},
-			{
-				"id": "clear-preset-message",
-				"c2id": 15,
-				"scriptName": "ClearPresetMessage",
-				"highlight": false
-			}
+	  },
+	  {
+		"id": "store-highscores",
+		"c2id": 5,
+		"scriptName": "StoreHighScores",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "level-name",
+			"type": "string"
+		  },
+		  {
+			"id": "level-version",
+			"type": "string",
+			"initialValue": "\"1.0\""
+		  },
+		  {
+			"id": "score",
+			"type": "string"
+		  },
+		  {
+			"id": "uid",
+			"type": "string"
+		  },
+		  {
+			"id": "data",
+			"type": "string"
+		  },
+		  {
+			"id": "score-string",
+			"type": "string"
+		  }
 		]
-	}
+	  }
+	],
+	"expressions": [
+	  {
+		"id": "get-highscores",
+		"c2id": 16,
+		"expressionName": "GetHighscores",
+		"returnType": "string",
+		"isVariadicParameters": false
+	  }
+	]
+  },
+  "plugin": {
+	"conditions": [
+	  {
+		"id": "is-plugin-offline",
+		"c2id": 20,
+		"scriptName": "IsPluginOffline",
+		"highlight": false,
+		"isTrigger": false,
+		"isInvertible": true
+	  }
+	],
+	"expressions": [
+	  {
+		"id": "is-plugin-offline",
+		"c2id": 17,
+		"expressionName": "IsPluginOffline",
+		"returnType": "number",
+		"isVariadicParameters": false
+	  }
+	]
+  },
+  "game": {
+	"actions": [
+	  {
+		"id": "game-ready",
+		"c2id": 0,
+		"scriptName": "GameReady",
+		"highlight": true
+	  }
+	]
+  },
+  "system": {
+	"conditions": [
+	  {
+		"id": "is-controller",
+		"scriptName": "IsController",
+		"highlight": false
+	  }
+	],
+	"actions": [
+	  {
+		"id": "set-active-players",
+		"c2id": 6,
+		"scriptName": "SetActivePlayers",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "max-players",
+			"type": "number"
+		  }
+		]
+	  },
+	  {
+		"id": "set-orientation",
+		"scriptName": "SetOrientation",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "orientation",
+			"type": "combo",
+			"items": [
+			  "landscape",
+			  "portrait"
+			]
+		  }
+		]
+	  }
+	],
+	"expressions": [
+	  {
+		"id": "is-controller",
+		"expressionName": "IsController",
+		"returnType": "number",
+		"isVariadicParameters": false
+	  },
+	  {
+		"id": "get-server-time",
+		"expressionName": "GetServerTime",
+		"returnType": "number",
+		"isVariadicParameters": false
+	  }
+	]
+  },
+  "browser": {
+	"actions": [
+	  {
+		"id": "navigate-home",
+		"c2id": 8,
+		"scriptName": "NavigateHome",
+		"highlight": false
+	  },
+	  {
+		"id": "navigate-to",
+		"c2id": 9,
+		"scriptName": "NavigateTo",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "url",
+			"type": "string"
+		  }
+		]
+	  }
+	]
+  },
+  "ids": {
+	"expressions": [
+	  {
+		"id": "device-id",
+		"c2id": 0,
+		"expressionName": "DeviceId",
+		"returnType": "number",
+		"isVariadicParameters": false
+	  },
+	  {
+		"id": "get-message-properties-count",
+		"c2id": 9,
+		"expressionName": "GetMessagePropertiesCount",
+		"returnType": "number",
+		"isVariadicParameters": false
+	  },
+	  {
+		"id": "get-master-controller-device-id",
+		"c2id": 10,
+		"expressionName": "GetMasterControllerDeviceId",
+		"returnType": "number",
+		"isVariadicParameters": false
+	  },
+	  {
+		"id": "convert-player-number-to-device-id",
+		"c2id": 11,
+		"expressionName": "ConvertPlayerNumberToDeviceId",
+		"returnType": "number",
+		"isVariadicParameters": false,
+		"params": [
+		  {
+			"id": "player-number",
+			"type": "number"
+		  }
+		]
+	  },
+	  {
+		"id": "convert-device-id-to-player-number",
+		"c2id": 12,
+		"expressionName": "ConvertDeviceIdToPlayerNumber",
+		"returnType": "number",
+		"isVariadicParameters": false,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  }
+		]
+	  },
+	  {
+		"id": "get-controller-device-ids",
+		"c2id": 13,
+		"expressionName": "GetControllerDeviceIDs",
+		"returnType": "string",
+		"isVariadicParameters": false
+	  },
+	  {
+		"id": "get-active-player-device-ids",
+		"c2id": 18,
+		"expressionName": "GetActivePlayerDeviceIds",
+		"returnType": "string",
+		"isVariadicParameters": false
+	  }
+	]
+  },
+  "data": {
+	"expressions": [
+	  {
+		"id": "message",
+		"c2id": 1,
+		"expressionName": "Message",
+		"returnType": "string",
+		"isVariadicParameters": false
+	  },
+	  {
+		"id": "message-at-property",
+		"c2id": 2,
+		"expressionName": "MessageAtProperty",
+		"returnType": "string",
+		"isVariadicParameters": false,
+		"params": [
+		  {
+			"id": "property-name",
+			"type": "string"
+		  }
+		]
+	  },
+	  {
+		"id": "is-multipart-message",
+		"c2id": 3,
+		"expressionName": "IsMultipartMessage",
+		"returnType": "number",
+		"isVariadicParameters": false
+	  },
+	  {
+		"id": "message-has-property",
+		"c2id": 4,
+		"expressionName": "MessageHasProperty",
+		"returnType": "number",
+		"isVariadicParameters": false,
+		"params": [
+		  {
+			"id": "property-name",
+			"type": "string"
+		  }
+		]
+	  },
+	  {
+		"id": "message-as-json",
+		"c2id": 5,
+		"expressionName": "MessageAsJSON",
+		"returnType": "string",
+		"isVariadicParameters": false
+	  }
+	]
+  },
+  "profile": {
+	"actions": [
+	  {
+		"id": "edit-profile",
+		"scriptName": "EditProfile",
+		"highlight": false
+	  },
+	  {
+		"id": "get-premium",
+		"scriptName": "GetPremium",
+		"highlight": true
+	  }
+	],
+	"expressions": [
+	  {
+		"id": "get-profile-picture",
+		"c2id": 6,
+		"expressionName": "GetProfilePicture",
+		"returnType": "string",
+		"isVariadicParameters": false,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  },
+		  {
+			"id": "size",
+			"type": "number",
+			"initialValue": "64"
+		  }
+		]
+	  },
+	  {
+		"id": "get-nickname",
+		"c2id": 7,
+		"expressionName": "GetNickname",
+		"returnType": "string",
+		"isVariadicParameters": false,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  }
+		]
+	  },
+	  {
+		"id": "get-uid",
+		"c2id": 8,
+		"expressionName": "GetUID",
+		"returnType": "string",
+		"isVariadicParameters": false,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  }
+		]
+	  },
+	  {
+		"id": "is-premium",
+		"c2id": 14,
+		"expressionName": "IsPremium",
+		"returnType": "number",
+		"isVariadicParameters": false,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  }
+		]
+	  }
+	]
+  },
+  "controller-only": {
+	"conditions": [
+	  {
+		"id": "on-device-motion",
+		"c2id": 24,
+		"scriptName": "OnDeviceMotion",
+		"highlight": false,
+		"isTrigger": true,
+		"isInvertible": true
+	  }
+	],
+	"expressions": [
+	  {
+		"id": "motion-data",
+		"c2id": 23,
+		"expressionName": "MotionData",
+		"returnType": "string",
+		"isVariadicParameters": false
+	  }
+	]
+  },
+  "preset-message": {
+	"actions": [
+	  {
+		"id": "send-preset-message",
+		"c2id": 12,
+		"scriptName": "SendPresetMessage",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  }
+		]
+	  },
+	  {
+		"id": "broadcast-preset-message",
+		"c2id": 13,
+		"scriptName": "BroadcastPresetMessage",
+		"highlight": false
+	  },
+	  {
+		"id": "set-message-property",
+		"c2id": 14,
+		"scriptName": "SetPresetMessage",
+		"highlight": false,
+		"params": [
+		  {
+			"id": "property",
+			"type": "string"
+		  },
+		  {
+			"id": "value",
+			"type": "string"
+		  }
+		]
+	  },
+	  {
+		"id": "clear-preset-message",
+		"c2id": 15,
+		"scriptName": "ClearPresetMessage",
+		"highlight": false
+	  }
+	]
+  },
+  "translations": {
+	"expressions": [
+	  {
+		"id": "get-language",
+		"c2id": 24,
+		"expressionName": "GetLanguage",
+		"returnType": "string",
+		"isVariadicParameters": false,
+		"params": [
+		  {
+			"id": "device-id",
+			"type": "number"
+		  }
+		]
+	  },
+	  {
+		"id": "get-translation",
+		"c2id": 25,
+		"expressionName": "GetTranslation",
+		"returnType": "string",
+		"isVariadicParameters": false,
+		"params": [
+		  {
+			"id": "string-id",
+			"type": "string"
+		  },
+		  {
+			"id": "replacements",
+			"type": "string"
+		  }
+		]
+	  }
+	]
+  }
 }
