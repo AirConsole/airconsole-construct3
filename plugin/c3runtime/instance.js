@@ -1,8 +1,9 @@
 const C3 = self.C3
+const DOM_COMPONENT_ID = 'AirConsole'
 
-C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKInstanceBase {
+C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKDOMInstanceBase {
 	constructor(inst, properties) {
-		super(inst)
+		super(inst, DOM_COMPONENT_ID)
 
 		this.airConsole = null
 		this.gameReady = false
@@ -21,28 +22,19 @@ C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKInstance
 			this.syncTime = properties[4]
 			this.deviceMotion = properties[5]
 		}
-		this.InitAirConsole()
+		this.StartAirConsole()
 	}
 
-	InitAirConsole() {
-		console.log('Initializing AirConsole')
-		if (typeof AirConsole !== 'undefined') {
-			if (this.isController === 1) {
-				let config = {
-					orientation:      this.orientation === 0 ? AirConsole.ORIENTATION_LANDSCAPE : AirConsole.ORIENTATION_PORTRAIT,
-					synchronize_time: this.syncTime,
-					setup_document:   true,
-					device_motion:    this.deviceMotion,
-					translation:      this.useTranslation
-				}
-				this.airConsole = AirConsole(config)
-			} else {
-				this.airConsole = AirConsole()
-			}
-			this.gameReady = true
-		} else {
-			console.warn('Failed loading AirConsole API')
+	StartAirConsole() {
+		console.log('Starting AirConsole')
+		let config = {
+			orientation:      this.orientation === 0 ? 'landscape' : 'portrait',
+			synchronize_time: this.syncTime,
+			setup_document:   true,
+			device_motion:    this.deviceMotion,
+			translation:      this.useTranslation
 		}
+		this.airConsole = this.InitAirConsole(config)
 	}
 
 	Release() {

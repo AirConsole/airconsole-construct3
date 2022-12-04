@@ -14,6 +14,7 @@
 	"instance.js"
   ],
   "file-list": [
+	"c3runtime/domSide.js",
 	"c3runtime/plugin.js",
 	"c3runtime/type.js",
 	"c3runtime/instance.js",
