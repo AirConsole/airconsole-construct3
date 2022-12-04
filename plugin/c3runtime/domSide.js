@@ -16,7 +16,7 @@
 
 	// NOTE: use a unique DOM component ID to ensure it doesn't clash with anything else
 	// This must also match the ID in instance.js and plugin.js.
-	const DOM_COMPONENT_ID = 'AirConsole'
+	const DOM_COMPONENT_ID = 'C3AirConsole'
 
 	function StopPropagation(e) {
 		e.stopPropagation()
@@ -25,11 +25,38 @@
 	const HANDLER_CLASS = class AirConsoleDOMHandler extends self.DOMElementHandler {
 		constructor(iRuntime) {
 			super(iRuntime, DOM_COMPONENT_ID)
+			this.AddDOMElementMessageHandler('initAirconsole', function (elem, data) {
+				console.log('Initializing AirConsole')
+				return new AirConsole(data)
+			})
 		}
 
-		InitAirConsole(config) {
-			console.log('Initializing AirConsole')
-			return new AirConsole(config)
+		CreateElement(elementId, e) {
+			const elem = document.createElement('button')
+			elem.style.position = 'absolute'
+
+			// Prevent touches reaching the canvas
+			elem.addEventListener('touchstart', StopPropagation)
+			elem.addEventListener('touchmove', StopPropagation)
+			elem.addEventListener('touchend', StopPropagation)
+
+			// Prevent clicks being blocked
+			elem.addEventListener('mousedown', StopPropagation)
+			elem.addEventListener('mouseup', StopPropagation)
+
+			// Prevent key presses being blocked by the Keyboard object
+			elem.addEventListener('keydown', StopPropagation)
+			elem.addEventListener('keyup', StopPropagation)
+
+			// The create message includes the state retrieved by GetElementState() in instance.js,
+			// so also update the element state based on those details.
+			this.UpdateState(elem, e)
+
+			return elem
+		}
+
+		UpdateState(elem, e) {
+			elem.textContent = e['text']
 		}
 	}
 

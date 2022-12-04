@@ -1,5 +1,5 @@
 const C3 = self.C3
-const DOM_COMPONENT_ID = 'AirConsole'
+const DOM_COMPONENT_ID = 'C3AirConsole'
 
 C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKDOMInstanceBase {
 	constructor(inst, properties) {
@@ -22,6 +22,7 @@ C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKDOMInsta
 			this.syncTime = properties[4]
 			this.deviceMotion = properties[5]
 		}
+		this.CreateElement()
 		this.StartAirConsole()
 	}
 
@@ -34,7 +35,13 @@ C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKDOMInsta
 			device_motion:    this.deviceMotion,
 			translation:      this.useTranslation
 		}
-		this.airConsole = this.InitAirConsole(config)
+		//this.airConsole = this.CreateElement(config)
+		this.PostToDOMElementAsync('initAirconsole', config).then(result => {
+			console.log('AirConsole init success')
+		}).catch(error => {
+			console.warn('AirConsole init failed, falling back to offline mockup')
+			// TODO mockup
+		})
 	}
 
 	Release() {
