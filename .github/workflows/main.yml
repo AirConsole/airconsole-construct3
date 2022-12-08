@@ -1,4 +1,4 @@
-name: Build c2addon
+name: Build c3addon
 
 on: push
 

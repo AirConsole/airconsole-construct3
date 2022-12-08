@@ -1,83 +1,30 @@
 const C3 = self.C3
 const DOM_COMPONENT_ID = 'C3AirConsole'
 
-C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKDOMInstanceBase {
+C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKInstanceBase {
 	constructor(inst, properties) {
 		super(inst, DOM_COMPONENT_ID)
 
-		this.airConsole = null
-		this.gameReady = false
-		this.maxPlayers = 0
-		this.isController = false
-		this.useTranslation = false
-		this.orientation = 'portrait'
-		this.syncTime = false
-		this.deviceMotion = 0
-
-		if (properties) {
-			this.maxPlayers = properties[0]
-			this.isController = properties[1]
-			this.useTranslation = properties[2]
-			this.orientation = properties[3]
-			this.syncTime = properties[4]
-			this.deviceMotion = properties[5]
-		}
-		this.CreateElement()
-		this.StartAirConsole()
+		this.StartAirConsole(properties)
 	}
 
-	StartAirConsole() {
+	StartAirConsole(properties) {
 		console.log('Starting AirConsole')
 		let config = {
-			orientation:      this.orientation === 0 ? 'landscape' : 'portrait',
-			synchronize_time: this.syncTime,
+			max_players:			properties[0],
+			is_controller: 		properties[1],
+			translation:      properties[2],
+			orientation:      properties[3] === 0 ? 'landscape' : 'portrait',
+			synchronize_time: properties[4],
 			setup_document:   true,
-			device_motion:    this.deviceMotion,
-			translation:      this.useTranslation
+			device_motion:    properties[5]
 		}
 		//this.airConsole = this.CreateElement(config)
-		this.PostToDOMElementAsync('initAirconsole', config).then(result => {
-			console.log('AirConsole init success')
-		}).catch(error => {
-			console.warn('AirConsole init failed, falling back to offline mockup')
-			// TODO mockup
-		})
+		this.PostToDOMAsync('initAirconsole', config)
 	}
 
 	Release() {
 		super.Release()
-	}
-
-	getProperties(object) {
-		if (object === null || typeof object === 'object') {
-			return
-		}
-
-		let data = {}
-		for (let [property, value] of Object.entries(object)) {
-			if (typeof value === 'object') {
-				let c3Dictionary = {}
-				c3Dictionary['c2dictionary'] = true
-				c3Dictionary['data'] = this.getProperties(value)
-				data[property] = JSON.stringify(c3Dictionary)
-			} else {
-				if (typeof value === 'boolean') {
-					value = (!value) ? 0 : 1
-				}
-				data[property] = value
-			}
-		}
-		return data
-	}
-
-	parseJSON(string) {
-		let obj
-		try {
-			obj = JSON.parse(string)
-		} catch (e) {
-			obj = false
-		}
-		return obj
 	}
 
 	SaveToJson() {
@@ -85,5 +32,27 @@ C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKDOMInsta
 	}
 
 	LoadFromJson(o) {
+	}
+}
+
+// Script interface. Use a WeakMap to safely hide the internal implementation details from the
+// caller using the script interface.
+const map = new WeakMap()
+
+self.IMyDOMMessagingInstance = class IMyDOMMessagingInstance extends self.IInstance {
+	constructor() {
+		super()
+
+		// Map by SDK instance
+		map.set(this, self.IInstance._GetInitInst().GetSdkInstance())
+	}
+
+	get testProperty() {
+		return map.get(this)._GetTestProperty()
+	}
+
+	// Example setter/getter property on script interface
+	set testProperty(n) {
+		map.get(this)._SetTestProperty(n)
 	}
 }

@@ -15,8 +15,4 @@ PLUGIN_CLASS.Instance = class AirConsoleInstance extends SDK.IInstanceBase {
 
 	OnPropertyChanged(id, value) {
 	}
-
-	LoadC2Property(name, valueString) {
-		return false		// not handled
-	}
 }
