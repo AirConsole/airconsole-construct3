@@ -12,7 +12,6 @@
 			])
 
 			this.airConsole = null
-			this.airConsoleMockup = null
 			this.gameReaedy = false
 			this.runningOffline = true
 
@@ -45,7 +44,12 @@
 			this.syncTime = properties[4]
 			this.deviceMotion = properties[5]
 
-			if (typeof AirConsole !== 'undefined') {
+			/* Ok, because this took me a week to remember...
+			   AirConsole needs to run in the main window to be able to post messages. This is not an issue when running a compiled game
+			   but becomes an issue when previewing your Construct 2/3 projects as the preview runs in a separate window. This is why, if we are in preview mode
+			   we need to fall back to the offline mockup of AirConsole
+			 */
+			if (typeof AirConsole !== 'undefined' && window.location.href.indexOf('preview.construct.net') === -1) {
 				this.runningOffline = false
 				let config = {}
 				if (this.isController) {
@@ -56,10 +60,8 @@
 						setup_document:   true,
 						device_motion:    this.deviceMotion
 					}
-					this.airConsole = new AirConsole(config)
-				} else {
-					this.airConsole = new AirConsole(config)
 				}
+				this.airConsole = new AirConsole(config)
 			} else {
 				this.runningOffline = true
 				this.airConsole = new AIRCONSOLE_MOCKUP()
@@ -194,7 +196,7 @@
 
 	const AIRCONSOLE_MOCKUP = class AirConsoleOffline {
 		constructor() {
-			console.warn('You are currently offline or AirConsole could not be loaded. Plugin fallback to AirConsole mock-up.')
+			console.warn('You are currently offline or previewing your project or AirConsole could not be loaded. Plugin fallback to AirConsole mock-up.')
 			this.getNickname = function () {
 				console.log('AirConsole mock-up: Getting nickname')
 				return 'undefined when offline'
