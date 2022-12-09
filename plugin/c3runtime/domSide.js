@@ -22,8 +22,8 @@
 			this.orientation = 'portrait'
 			this.syncTime = false
 			this.deviceMotion = 0
-			this.deviceId
-			this.message
+			this.deviceId = null
+			this.message = null
 			this.adCompleted = 0
 			this.adShowing = 0
 			this.persistentData = null
