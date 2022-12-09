@@ -5,6 +5,8 @@ C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKInstance
 	constructor(inst, properties) {
 		super(inst, DOM_COMPONENT_ID)
 
+		this.AddDOMMessageHandler('onDisconnect', this._OnDisconnect)
+
 		this.StartAirConsole(properties)
 	}
 
@@ -21,6 +23,10 @@ C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKInstance
 		}
 		//this.airConsole = this.CreateElement(config)
 		this.PostToDOMAsync('initAirconsole', config)
+	}
+
+	_OnDisconnect(data) {
+		this.Trigger(C3.Plugins.AirConsole.Cnds.OnDisconnect)
 	}
 
 	Release() {

@@ -47,8 +47,9 @@
 
 			if (typeof AirConsole !== 'undefined') {
 				this.runningOffline = false
+				let config = {}
 				if (this.isController) {
-					const config = {
+					config = {
 						translation:      this.useTranslation,
 						orientation:      this.orientation === 0 ? AirConsole.ORIENTATION_LANDSCAPE : AirConsole.ORIENTATION_PORTRAIT,
 						synchronize_time: this.syncTime,
@@ -57,7 +58,7 @@
 					}
 					this.airConsole = new AirConsole(config)
 				} else {
-					this.airConsole = new AirConsole()
+					this.airConsole = new AirConsole(config)
 				}
 			} else {
 				this.runningOffline = true
@@ -72,23 +73,24 @@
 				}
 			}
 
+			this.PostToRuntime('onDisconnect', {'deviceId': 1})
+
 			this.airConsole.onDisconnect = function (deviceId) {
-				if (self.gameReady) {
-					self.deviceId = deviceId
-					self.runtime.trigger(pluginProto.cnds.OnDisconnect, self)
-					self.runtime.trigger(pluginProto.cnds.OnDeviceDisconnect, self)
-				}
+				this.deviceId = deviceId
+				this.PostToRuntime('onDisconnect', {'deviceId': deviceId})
+				//this.runtime.trigger(pluginProto.cnds.OnDisconnect, self)
+				//this.runtime.trigger(pluginProto.cnds.OnDeviceDisconnect, self)
 			}
 
 			this.airConsole.onMessage = function (deviceId, data) {
-				if (self.gameReady && data) {
-					self.deviceId = deviceId
-					self.message = data
-					self.runtime.trigger(pluginProto.cnds.OnMessage, self)
-					self.runtime.trigger(pluginProto.cnds.OnMessageFrom, self)
-					self.runtime.trigger(pluginProto.cnds.OnMessageIs, self)
-					self.runtime.trigger(pluginProto.cnds.OnMessageFromIs, self)
-					self.runtime.trigger(pluginProto.cnds.OnMessageHasProperty, self)
+				if (data) {
+					this.deviceId = deviceId
+					this.message = data
+					this.runtime.trigger(pluginProto.cnds.OnMessage, self)
+					this.runtime.trigger(pluginProto.cnds.OnMessageFrom, self)
+					this.runtime.trigger(pluginProto.cnds.OnMessageIs, self)
+					this.runtime.trigger(pluginProto.cnds.OnMessageFromIs, self)
+					this.runtime.trigger(pluginProto.cnds.OnMessageHasProperty, self)
 				}
 			}
 
