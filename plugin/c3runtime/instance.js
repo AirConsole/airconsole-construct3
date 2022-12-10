@@ -1,16 +1,18 @@
 const C3 = self.C3
 const DOM_COMPONENT_ID = 'C3AirConsole'
+let me
+let conditions
 
 C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKInstanceBase {
 	constructor(inst, properties) {
 		super(inst, DOM_COMPONENT_ID)
-
+		me = this.GetRuntime()
+		conditions = this.GetPlugin().constructor.Cnds
 		this.AddDOMMessageHandlers([
 			['onDisconnect', this._OnDisconnect]
 		])
-
 		this._StartAirConsole(properties)
-		this.Trigger(C3.Plugins.AirConsole.Cnds.OnDisconnect)
+		me.Trigger(conditions.OnDisconnect)
 	}
 
 	_StartAirConsole(properties) {
@@ -19,6 +21,7 @@ C3.Plugins.AirConsole.Instance = class AirConsoleInstance extends C3.SDKInstance
 	}
 
 	_OnDisconnect(data) {
-		this.Trigger(C3.Plugins.AirConsole.Cnds.OnDisconnect)
+		console.log('messaged')
+		me.Trigger(C3.Plugins.AirConsole.Cnds.OnDisconnect)
 	}
 }
