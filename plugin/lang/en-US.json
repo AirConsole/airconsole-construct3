@@ -66,14 +66,14 @@
 			"description": "Triggered when a device connects to the game."
 		  },
 		  "on-disconnect": {
-			"list-name": "On disconnect",
-			"display-text": "On disconnection",
-			"description": "Triggered when a device disconnects from the game."
+			"list-name": "On any disconnect",
+			"display-text": "On any disconnection",
+			"description": "Triggered when any device disconnects from the game."
 		  },
 		  "on-device-disconnect": {
 			"list-name": "On device disconnect",
 			"display-text": "On device id {0} disconnects",
-			"description": "Triggered when a device disconnects from the game.",
+			"description": "Triggered when a specific device disconnects from the game.",
 			"params": {
 			  "device-id": {
 				"name": "Device id",

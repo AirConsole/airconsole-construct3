@@ -84,6 +84,7 @@
 				//this.runtime.trigger(pluginProto.cnds.OnDeviceDisconnect, self)
 			}
 
+			// BELOW THIS NOT YET PORTED
 			this.airConsole.onMessage = function (deviceId, data) {
 				if (data) {
 					this.deviceId = deviceId
