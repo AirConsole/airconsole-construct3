@@ -1,7 +1,7 @@
 'use strict'
 
 {
-	const DOM_COMPONENT_ID = 'C3AirConsole'
+	const DOM_COMPONENT_ID = 'AirConsole'
 
 	const HANDLER_CLASS = class AirConsoleDOMHandler extends self.DOMHandler {
 		constructor(iRuntime) {

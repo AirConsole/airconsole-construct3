@@ -1,32 +1,32 @@
 ﻿{
-  "is-c3-addon": true,
-  "type": "plugin",
-  "name": "AirConsole",
-  "id": "AirConsole",
-  "version": "1.8.0.0",
-  "author": "Psychokiller1888 for N-Dream AG",
-  "website": "https://www.sickrabbitstudios.com",
-  "documentation": "https://github.com/AirConsole/airconsole-construct3/wiki",
-  "description": "Extend your game with local multiplayer fun.",
-  "editor-scripts": [
-	"plugin.js",
-	"type.js",
-	"instance.js"
-  ],
-  "file-list": [
-	"c3runtime/domSide.js",
-	"c3runtime/plugin.js",
-	"c3runtime/type.js",
-	"c3runtime/instance.js",
-	"c3runtime/conditions.js",
-	"c3runtime/actions.js",
-	"c3runtime/expressions.js",
-	"lang/en-US.json",
-	"aces.json",
-	"addon.json",
-	"icon.svg",
-	"instance.js",
-	"plugin.js",
-	"type.js"
-  ]
+	"is-c3-addon": true,
+	"type": "plugin",
+	"name": "AirConsole",
+	"id": "AirConsole",
+	"version": "1.8.0.0",
+	"author": "Psychokiller1888 for N-Dream AG",
+	"website": "https://www.sickrabbitstudios.com",
+	"documentation": "https://github.com/AirConsole/airconsole-construct3/wiki",
+	"description": "Extend your game with local multiplayer fun.",
+	"editor-scripts": [
+		"plugin.js",
+		"type.js",
+		"instance.js"
+	],
+	"file-list": [
+		"c3runtime/domSide.js",
+		"c3runtime/plugin.js",
+		"c3runtime/type.js",
+		"c3runtime/instance.js",
+		"c3runtime/conditions.js",
+		"c3runtime/actions.js",
+		"c3runtime/expressions.js",
+		"lang/en-US.json",
+		"aces.json",
+		"addon.json",
+		"icon.svg",
+		"instance.js",
+		"plugin.js",
+		"type.js"
+	]
 }
