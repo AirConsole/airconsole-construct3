@@ -3,7 +3,7 @@
   "fileDescription": "Extend your game with local multiplayer fun",
   "text": {
 	"plugins": {
-	  "airconsole": {
+	  "ndream_airconsole": {
 		"name": "AirConsole",
 		"description": "Extend your game with local multiplayer fun",
 		"help-url": "https://github.com/AirConsole/airconsole-construct3/wiki",
