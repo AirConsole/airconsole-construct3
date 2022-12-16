@@ -17,4 +17,4 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    http.server.test(HandlerClass=MyHTTPRequestHandler)
+    http.server.test(HandlerClass=MyHTTPRequestHandler, port=8080)

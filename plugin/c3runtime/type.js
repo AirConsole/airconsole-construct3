@@ -1,14 +1,18 @@
-const C3 = self.C3
+'use strict';
 
-C3.Plugins.AirConsole.Type = class AirConsoleType extends C3.SDKTypeBase {
-	constructor(objectClass) {
-		super(objectClass)
-	}
+{
+	const C3 = self.C3
 
-	Release() {
-		super.Release()
-	}
+	C3.Plugins.ndream_AirConsole.Type = class ndream_AirConsoleType extends C3.SDKTypeBase {
+		constructor(objectClass) {
+			super(objectClass)
+		}
 
-	OnCreate() {
+		Release() {
+			super.Release()
+		}
+
+		OnCreate() {
+		}
 	}
 }

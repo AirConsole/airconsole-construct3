@@ -2,10 +2,10 @@
 	"is-c3-addon": true,
 	"type": "plugin",
 	"name": "AirConsole",
-	"id": "AirConsole",
+	"id": "ndream_AirConsole",
 	"version": "1.8.0.0",
-	"author": "Psychokiller1888 for N-Dream AG",
-	"website": "https://www.sickrabbitstudios.com",
+	"author": "Psycho for N-Dream AG",
+	"website": "https://www.airconsole.com/",
 	"documentation": "https://github.com/AirConsole/airconsole-construct3/wiki",
 	"description": "Extend your game with local multiplayer fun.",
 	"editor-scripts": [

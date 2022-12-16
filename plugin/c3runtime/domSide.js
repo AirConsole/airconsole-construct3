@@ -1,9 +1,9 @@
 'use strict'
 
 {
-	const DOM_COMPONENT_ID = 'AirConsole'
+	const DOM_COMPONENT_ID = 'ndream_AirConsole'
 
-	const HANDLER_CLASS = class AirConsoleDOMHandler extends self.DOMHandler {
+	const HANDLER_CLASS = class ndream_AirConsoleDOMHandler extends self.DOMHandler {
 		constructor(iRuntime) {
 			super(iRuntime, DOM_COMPONENT_ID)
 
@@ -80,85 +80,7 @@
 			this.airConsole.onDisconnect = function (deviceId) {
 				this.deviceId = deviceId
 				this.PostToRuntime('onDisconnect', {'deviceId': deviceId})
-				//this.runtime.trigger(pluginProto.cnds.OnDisconnect, self)
-				//this.runtime.trigger(pluginProto.cnds.OnDeviceDisconnect, self)
 			}
-
-			// BELOW THIS NOT YET PORTED
-			this.airConsole.onMessage = function (deviceId, data) {
-				if (data) {
-					this.deviceId = deviceId
-					this.message = data
-					this.runtime.trigger(pluginProto.cnds.OnMessage, self)
-					this.runtime.trigger(pluginProto.cnds.OnMessageFrom, self)
-					this.runtime.trigger(pluginProto.cnds.OnMessageIs, self)
-					this.runtime.trigger(pluginProto.cnds.OnMessageFromIs, self)
-					this.runtime.trigger(pluginProto.cnds.OnMessageHasProperty, self)
-				}
-			}
-
-			this.airConsole.onDeviceStateChange = function (deviceId, data) {
-			}
-
-			this.airConsole.onCustomDeviceStateChange = function (deviceId, customData) {
-				self.deviceId = deviceId
-				self.customData = customData
-				self.runtime.trigger(pluginProto.cnds.OnCustomDeviceStateChange, self)
-			}
-
-			this.airConsole.onHighscores = function (highscores) {
-				if (highscores) {
-					self.highscores = highscores
-					self.runtime.trigger(pluginProto.cnds.OnHighScores, self)
-				}
-			}
-
-			this.airConsole.onHighscoreStored = function (highscores) {
-				if (highscores) {
-					self.highscores = highscores
-					self.runtime.trigger(pluginProto.cnds.OnHighScoreStored, self)
-				}
-			}
-
-			this.airConsole.onAdComplete = function (adWasShown) {
-				self.adCompleted = (adWasShown) ? 1 : 0
-				self.adShowing = 0
-				self.runtime.trigger(pluginProto.cnds.OnAdComplete, self)
-			}
-
-			this.airConsole.onAdShow = function () {
-				self.adShowing = 1
-				self.runtime.trigger(pluginProto.cnds.OnAdShow, self)
-			}
-
-			this.airConsole.onPremium = function (deviceId) {
-				if (self.gameReady) {
-					self.deviceId = deviceId
-					self.runtime.trigger(pluginProto.cnds.OnPremium, self)
-				}
-			}
-
-			this.airConsole.onPersistentDataLoaded = function (data) {
-				if (data) {
-					self.persistentData = data
-					self.runtime.trigger(pluginProto.cnds.OnPersistentDataLoaded, self)
-				}
-			}
-
-			this.airConsole.onPersistentDataStored = function (uid) {
-				self.runtime.trigger(pluginProto.cnds.OnPersistentDataStored, self)
-			}
-
-			this.airConsole.onDeviceProfileChange = function (deviceId) {
-				self.deviceId = deviceId
-				self.runtime.trigger(pluginProto.cnds.OnDeviceProfileChange, self)
-			}
-
-			this.airConsole.onDeviceMotion = function (data) {
-				self.motionData = data
-				self.runtime.trigger(pluginProto.cnds.OnDeviceMotion, self)
-			}
-
 			console.log('AirConsole init success')
 		}
 

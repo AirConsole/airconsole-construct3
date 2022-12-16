@@ -1,18 +1,25 @@
-const SDK = self.SDK
+'use strict';
 
-const PLUGIN_CLASS = SDK.Plugins.AirConsole
+(function () {
+	const PLUGIN_CLASS = SDK.Plugins.ndream_AirConsole
 
-PLUGIN_CLASS.Instance = class AirConsoleInstance extends SDK.IInstanceBase {
-	constructor(sdkType, inst) {
-		super(sdkType, inst)
+	PLUGIN_CLASS.Instance = class ndream_AirConsoleInstance extends SDK.IInstanceBase {
+		constructor(sdkType, inst) {
+			super(sdkType, inst)
+		}
+
+		Release() {
+		}
+
+		OnCreate() {
+		}
+
+		OnPropertyChanged(id, value) {
+		}
+
+		LoadC2Property(name, valueString) {
+			return false		// not handled
+		}
 	}
 
-	Release() {
-	}
-
-	OnCreate() {
-	}
-
-	OnPropertyChanged(id, value) {
-	}
-}
+}())

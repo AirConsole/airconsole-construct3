@@ -1,11 +1,15 @@
-const C3 = self.C3
+'use strict';
 
-C3.Plugins.AirConsole = class AirConsolePlugin extends C3.SDKPluginBase {
-	constructor(opts) {
-		super(opts)
-	}
+{
+	const C3 = self.C3
 
-	Release() {
-		super.Release()
+	C3.Plugins.ndream_AirConsole = class ndream_AirConsolePlugin extends C3.SDKPluginBase {
+		constructor(opts) {
+			super(opts)
+		}
+
+		Release() {
+			super.Release()
+		}
 	}
 }

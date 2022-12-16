@@ -1,7 +1,9 @@
 'use strict'
 
 {
-	self.C3.Plugins.AirConsole.Cnds = {
+	const C3 = self.C3
+
+	C3.Plugins.ndream_AirConsole.Cnds = {
 		OnConnect() {
 			return true
 		},
