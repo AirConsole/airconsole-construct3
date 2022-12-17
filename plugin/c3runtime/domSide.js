@@ -8,30 +8,16 @@
 			super(iRuntime, DOM_COMPONENT_ID)
 
 			this.AddRuntimeMessageHandlers([
-				['initAirconsole', data => this._OnInitAirconsole(data)]
+				['initAirConsole', data => this._OnInitAirconsole(data)]
 			])
 
 			this.airConsole = null
-			this.gameReaedy = false
-			this.runningOffline = true
-
-			this.maxPlayers = 0
-			this.isController = false
-			this.useTranslation = false
-			this.orientation = 'portrait'
-			this.syncTime = false
-			this.deviceMotion = 0
-			this.deviceId = null
-			this.message = null
-			this.adCompleted = 0
-			this.adShowing = 0
-			this.persistentData = null
-			this.highscores = null
-			this.emailAddress = null
-			this.customData = null
-			this.loadRetry = 0
-			this.presetMessage = {}
-			this.motionData = {}
+			this.maxPlayers = null
+			this.isController = null
+			this.useTranslation = null
+			this.orientation = null
+			this.syncTime = null
+			this.deviceMotion = null
 		}
 
 		_OnInitAirconsole(properties) {
@@ -49,8 +35,9 @@
 			   but becomes an issue when previewing your Construct 2/3 projects as the preview runs in a separate window. This is why, if we are in preview mode
 			   we need to fall back to the offline mockup of AirConsole
 			 */
+			let runningOffline = true
 			if (typeof AirConsole !== 'undefined' && window.location.href.indexOf('preview.construct.net') === -1) {
-				this.runningOffline = false
+				runningOffline = false
 				let config = {}
 				if (this.isController) {
 					config = {
@@ -63,7 +50,6 @@
 				}
 				this.airConsole = new AirConsole(config)
 			} else {
-				this.runningOffline = true
 				this.airConsole = new AIRCONSOLE_MOCKUP()
 			}
 
@@ -75,13 +61,83 @@
 				}
 			}
 
-			this.PostToRuntime('onDisconnect', {'deviceId': 1})
+			this.airConsole.onConnect = function (deviceId) {
+				if (this.airConsole.getControllerDeviceIds().length > this.maxPlayers) {
+					this.PostToRuntime('OnTooManyPlayers')
+				} else {
+					this.PostToRuntime('OnConnect', {'deviceId': deviceId})
+				}
+			}
 
 			this.airConsole.onDisconnect = function (deviceId) {
-				this.deviceId = deviceId
-				this.PostToRuntime('onDisconnect', {'deviceId': deviceId})
+				this.PostToRuntime('onDisconnect')
+				this.PostToRuntime('onDeviceDisconnect', {'deviceId': deviceId})
 			}
-			console.log('AirConsole init success')
+
+			this.airConsole.onMessage = function (deviceId, data) {
+				if (data) {
+					let payload = {'deviceId': deviceId, 'message': data}
+					this.PostToRuntime('onMessage', payload)
+					this.PostToRuntime('onMessageFrom', payload)
+					this.PostToRuntime('onMessageIs', payload)
+					this.PostToRuntime('onMessageFromIs', payload)
+					this.PostToRuntime('onMessageHasProperty', payload)
+				}
+			}
+
+			this.airConsole.onDeviceStateChange = function (deviceId, data) {
+			}
+
+			this.airConsole.onCustomDeviceStateChange = function (deviceId, customData) {
+				this.PostToRuntime('onCustomDeviceStateChange', {'deviceId': deviceId, 'customData': customData})
+			}
+
+			this.airConsole.onHighscores = function (highscores) {
+				if (highscores) {
+					this.PostToRuntime('onHighscores', {'highscores': highscores})
+				}
+			}
+
+			this.airConsole.onHighscoreStored = function (highscores) {
+				if (highscores) {
+					this.PostToRuntime('onHighscoreStored', {'highscores': highscores})
+				}
+			}
+
+			this.airConsole.onAdComplete = function (adWasShown) {
+				this.PostToRuntime('onAdComplete', {'adWasShown': adWasShown})
+			}
+
+			this.airConsole.onAdShow = function () {
+				this.PostToRuntime('onAdShow')
+			}
+
+			this.airConsole.onPremium = function (deviceId) {
+				this.PostToRuntime('onPremium', {'deviceId': deviceId})
+			}
+
+			this.airConsole.onPersistentDataLoaded = function (data) {
+				if (data) {
+					this.PostToRuntime('onPersistentDataLoaded', {'persistentData': data})
+				}
+			}
+
+			this.airConsole.onPersistentDataStored = function (uid) {
+				this.PostToRuntime('onPersistentDataStored')
+			}
+
+			this.airConsole.onDeviceProfileChange = function (deviceId) {
+				this.PostToRuntime('onDeviceProfileChange', {'deviceId': deviceId})
+			}
+
+			this.airConsole.onDeviceMotion = function (data) {
+				this.PostToRuntime('onDeviceMotion', {'motionData': data})
+			}
+
+			console.log('AirConsole initialization success')
+			return {
+				'runningOffline': runningOffline
+			}
 		}
 
 		getProperties(object) {
