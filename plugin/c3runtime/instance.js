@@ -27,6 +27,7 @@ C3.Plugins.ndream_AirConsole.Instance = class ndream_AirConsoleInstance extends 
 			['onDeviceMotion', data => this._OnDeviceMotion(data)]
 		])
 
+		this.properties = properties
 		this.gameReady = false
 		this.runningOffline = true
 
@@ -180,5 +181,15 @@ C3.Plugins.ndream_AirConsole.Instance = class ndream_AirConsoleInstance extends 
 		if (!this.gameReady) return
 		this.motionData = data['motionData']
 		this.Trigger(C3.Plugins.ndream_AirConsole.Cnds.OnDeviceMotion)
+	}
+
+	parseJSON(string) {
+		let obj
+		try {
+			obj = JSON.parse(string)
+		} catch (e) {
+			obj = false
+		}
+		return obj
 	}
 }

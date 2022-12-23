@@ -8,7 +8,26 @@
 			super(iRuntime, DOM_COMPONENT_ID)
 
 			this.AddRuntimeMessageHandlers([
-				['initAirConsole', data => this._OnInitAirconsole(data)]
+				['initAirConsole', data => this._OnInitAirconsole(data)],
+				['isPremium', deviceId => this._IsPremium(deviceId)],
+				['isUserLoggedIn', deviceId => this._IsUserLoggedIn(deviceId)],
+				['getControllerDeviceIds', _ => this._GetControllerDeviceIds()],
+				['onConnect', deviceId => this._OnConnect(deviceId)],
+				['message', data => this._Message(data)],
+				['broadcast', message => this._Broadcast(message)],
+				['setCustomDeviceState', data => this._SetCustomDeviceState(data)],
+				['requestHighScores', data => this._RequestHighScores(data)],
+				['storeHighScores', data => this._StoreHighScores(data)],
+				['setActivePlayers', data => this._SetActivePlayers(data)],
+				['showAd', _ => this._ShowAd()],
+				['navigateHome', _ => this._NavigateHome()],
+				['navigateTo', data => this._NavigateTo(data)],
+				['requestPersistentData', data => this._RequestPersistentData(data)],
+				['storePersistentData', data => this._StorePersistentData(data)],
+				['editProfile', _ => this._EditProfile()],
+				['setOrientation', data => this._SetOrientation(data)],
+				['getPremium', _ => this._GetPremium()],
+				['vibrate', data => this._Vibrate(data)],
 			])
 
 			this.airConsole = null
@@ -18,6 +37,100 @@
 			this.orientation = null
 			this.syncTime = null
 			this.deviceMotion = null
+		}
+
+		_IsPremium(deviceId) {
+			return this.airConsole.isPremium(deviceId)
+		}
+
+		_IsUserLoggedIn(deviceId) {
+			return this.airConsole.isUserLoggedIn(deviceId)
+		}
+
+		_GetControllerDeviceIds() {
+			return this.airConsole.getControllerDeviceIds()
+		}
+
+		_OnConnect(deviceId) {
+			return this.airConsole.onConnect(deviceId)
+		}
+
+		_Message(data) {
+			this.airConsole.message(data['deviceId'], data['value'])
+		}
+
+		_Broadcast(message) {
+			this.airConsole.broadcast(message)
+		}
+
+		_SetCustomDeviceState(data) {
+			this.airConsole.setCustomDeviceState(data['property'], data['value'])
+		}
+
+		_RequestHighScores(data){
+			this.airConsole.requestHighScores(
+				data['level_name'],
+				data['level_version'],
+				data['uidsArray'],
+				data['ranksArray'],
+				data['total'],
+				data['top']
+			)
+		}
+
+		_StoreHighScores(data) {
+			this.airConsole.storeHighScore(
+				data['level_name'],
+				data['level_version'],
+				data['score'],
+				data['uidArray'],
+				data['data'],
+				data['score_string']
+			)
+		}
+
+		_SetActivePlayers(maxPlayers) {
+			this.airConsole.setActivePlayers(maxPlayers)
+		}
+
+		_ShowAd() {
+			this.airConsole.showAd()
+		}
+
+		_NavigateHome() {
+			this.airConsole.navigateHome()
+		}
+
+		_NavigateTo(url) {
+			this.airConsole.navigateTo(url)
+		}
+
+		_RequestPersistentData(uidsArray) {
+			this.airConsole.requestPersistentData(uidsArray)
+		}
+
+		_StorePersistentData(data) {
+			this.airConsole.storePersistentData(
+				data['key'],
+				data['value'],
+				data['uid']
+			)
+		}
+
+		_EditProfile() {
+			this.airConsole.editProfile()
+		}
+
+		_SetOrientation(orientation) {
+			this.airConsole.setOrientation((orientation === 1) ? this.airConsole.ORIENTATION_PORTRAIT : this.airConsole.ORIENTATION_LANDSCAPE)
+		}
+
+		_GetPremium() {
+			this.airConsole.getPremium()
+		}
+
+		_Vibrate(time) {
+			this.airConsole.vibrate(time)
 		}
 
 		_OnInitAirconsole(properties) {
@@ -160,16 +273,6 @@
 				}
 			}
 			return data
-		}
-
-		parseJSON(string) {
-			let obj
-			try {
-				obj = JSON.parse(string)
-			} catch (e) {
-				obj = false
-			}
-			return obj
 		}
 	}
 

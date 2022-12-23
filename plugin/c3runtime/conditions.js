@@ -40,7 +40,12 @@ self.C3.Plugins.ndream_AirConsole.Cnds = {
 		return (this.message.hasOwnProperty(property))
 	},
 	IsUserLoggedIn(deviceId) {
-		return this.airConsole.isUserLoggedIn(deviceId)
+		this.PostToDOMAsync('isUserLoggedIn', deviceId).then(data => {
+			return data
+		}).catch(r => {
+			console.warn('Failed checking AirConsole isUserLoggedIn:', r)
+			return false
+		})
 	},
 	OnAdComplete() {
 		return true
@@ -69,11 +74,15 @@ self.C3.Plugins.ndream_AirConsole.Cnds = {
 		return true
 	},
 	IsPremium(deviceId) {
-		return this.airConsole.isPremium(deviceId)
+		this.PostToDOMAsync('isPremium', deviceId).then(data => {
+			return data
+		}).catch(r => {
+			console.warn('Failed checking AirConsole premium state:', r)
+			return false
+		})
 	},
 	IsPluginOffline() {
-		//return this.runningOffline
-		return true
+		return this.runningOffline
 	},
 	IsMultipartMessage() {
 		return (this.message !== null && typeof this.message === 'object' && Object.keys(this.message).length > 1)

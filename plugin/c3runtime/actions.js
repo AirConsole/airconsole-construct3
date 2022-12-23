@@ -1,30 +1,38 @@
 self.C3.Plugins.ndream_AirConsole.Acts =
 	{
 		GameReady() {
-			/*			this.gameReady = true
-						let deviceIds = this.airConsole.getControllerDeviceIds()
-						for (let i = 0; i < deviceIds.length; i++) {
-							this.airConsole.onConnect(deviceIds[i])
-						}*/
-			console.log('This is the \'Log to console\' action. Test property = ' + this.maxPlayers())
+			this.gameReady = true
+			this.PostToDOMAsync('getControllerDeviceIds').then(deviceIds => {
+				for (let i = 0; i < deviceIds.length; i++) {
+					this.PostToDOM('onConnect', deviceIds[i])
+				}
+			}).catch(r => {
+				console.warn('Failed getting controller device ids:', r)
+			})
 		},
 		Message(deviceId, property, value) {
 			if (property !== 'message') {
 				console.warn('Property other than "message" isn\'t currently supported')
+				return
 			}
 
 			let obj = this.parseJSON(value)
 			if (obj !== false) {
 				value = obj
+			} else {
+				if (obj instanceof String) {
+					value = JSON.stringify({
+						'message': value
+					})
+				}
 			}
-
-			this.airConsole.message(deviceId, value)
+			this.PostToDOM('message', {'deviceId': deviceId, 'value': value})
 		},
 		Broadcast(property, message) {
-			this.airConsole.broadcast(message)
+			this.PostToDOM('broadcast', message)
 		},
 		SetCustomDeviceStateProperty(property, value) {
-			this.airConsole.setCustomDeviceState(property, value)
+			this.PostToDOM('setCustomDeviceState', {'property': property, 'value': value})
 		},
 		RequestHighScores(level_name, level_version, uids, ranks, total, top) {
 			this.highscores = null
@@ -37,40 +45,59 @@ self.C3.Plugins.ndream_AirConsole.Acts =
 				uidsArray = [uids]
 			}
 			let ranksArray = (ranks === 'world') ? [ranks] : ranks.split(',')
-			this.airConsole.requestHighScores(level_name, level_version, uidsArray, ranksArray, total, top)
+
+			this.PostToDOM('requestHighScores', {
+				'level_name': level_name,
+				'level_version': level_version,
+				'uidsArray': uidsArray,
+				'ranksArray': ranksArray,
+				'total': total,
+				'top': top
+			})
 		},
 		StoreHighScores(level_name, level_version, score, uid, data, score_string) {
 			let uidArray = uid.split(',')
-			this.airConsole.storeHighScore(level_name, level_version, score, uidArray, data, score_string)
+			this.PostToDOM('storeHighScores', {
+				'level_name': level_name,
+				'level_version': level_version,
+				'score': score,
+				'uidArray': uidArray,
+				'data': data,
+				'score_string': score_string
+			})
 		},
 		SetActivePlayers(max_players) {
-			this.airConsole.setActivePlayers(max_players)
+			this.PostToDOM('setActivePlayers', max_players)
 		},
 		ShowAd() {
-			this.airConsole.showAd()
+			this.PostToDOM('showAd')
 		},
 		NavigateHome() {
-			this.airConsole.navigateHome()
+			this.PostToDOM('navigateHome')
 		},
 		NavigateTo(url) {
-			this.airConsole.navigateTo(url)
+			this.PostToDOM('navigateTo', url)
 		},
 		RequestPersistentData(uids) {
 			this.persistentData = null
 			let uidsArray = (uids.indexOf(',') > -1) ? uids.split(',') : [uids]
-			this.airConsole.requestPersistentData(uidsArray)
+			this.PostToDOM('requestPersistentData', uidsArray)
 		},
 		StorePersistentData(key, value, uid) {
-			this.airConsole.storePersistentData(key, value, uid)
+			this.PostToDOM('storePersistentData', {
+				'key': key,
+				'value': value,
+				'uid': uid
+			})
 		},
 		SendPresetMessage(deviceId) {
 			if (this.runningOffline) return
 
-			this.airConsole.message(deviceId, this.presetMessage)
+			this.PostToDOM('message', {'deviceId': deviceId, 'value': this.presetMessage})
 			this.presetMessage = {}
 		},
 		BroadcastPresetMessage() {
-			this.airConsole.broadcast(this.presetMessage)
+			this.PostToDOM('broadcast', this.presetMessage)
 			this.presetMessage = {}
 		},
 		SetPresetMessage(key, value) {
@@ -81,22 +108,22 @@ self.C3.Plugins.ndream_AirConsole.Acts =
 		},
 		EditProfile() {
 			if (this.isController) {
-				this.airConsole.editProfile()
+				this.PostToDOM('editProfile')
 			} else {
 				console.warn('You can\' use "Edit profile" on screen')
 			}
 		},
 		SetOrientation(orientation) {
 			if (this.isController) {
-				this.airConsole.setOrientation((orientation === 1) ? AirConsole.ORIENTATION_PORTRAIT : AirConsole.ORIENTATION_LANDSCAPE)
+				this.PostToDOM('setOrientation', orientation)
 			}
 		},
 		GetPremium() {
-			this.airConsole.getPremium()
+			this.PostToDOM('getPremium')
 		},
 		Vibrate(time) {
 			if (this.properties[1] === 1 && time > 0) {
-				this.airConsole.vibrate(time)
+				this.PostToDOM('vibrate', time)
 			}
 		}
 	}
