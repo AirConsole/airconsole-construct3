@@ -35,23 +35,31 @@ self.C3.Plugins.ndream_AirConsole.Exps =
 				return 0
 			}
 		},
-		MessageAsJSON() {
+		MessageAsJSON() { //TODO c3 dict?
 			let c3Dictionary = {}
 			c3Dictionary['c3dictionary'] = true
 			c3Dictionary['data'] = this.getProperties(this.message)
 			return JSON.stringify(c3Dictionary)
 		},
 		GetProfilePicture(deviceId) {
-			return this.airConsole.getProfilePicture(deviceId) || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?f=y'
+			this.PostToDOMAsync('getProfilePicture', deviceId).then(data => {
+				return data
+			})
 		},
 		GetProfilePictureWithSize(deviceId, pictureSize) {
-			return this.airConsole.getProfilePicture(deviceId, pictureSize) || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?f=y'
+			this.PostToDOMAsync('getProfilePictureWithSize', {'deviceId': deviceId, 'pictureSize': pictureSize}).then(data => {
+				return data
+			})
 		},
 		GetNickname(deviceId) {
-			return this.airConsole.getNickname(deviceId) || 'Nickname not found'
+			this.PostToDOMAsync('getNickname', deviceId).then(data => {
+				return data
+			})
 		},
 		GetUID(deviceId) {
-			return this.airConsole.getUID(deviceId) || 'Unknown UID'
+			this.PostToDOMAsync('getUID', deviceId).then(data => {
+				return data
+			})
 		},
 		GetMessagePropertiesCount() {
 			if (this.message !== null && typeof this.message === 'object') {
@@ -61,33 +69,39 @@ self.C3.Plugins.ndream_AirConsole.Exps =
 			}
 		},
 		GetMasterControllerDeviceId() {
-			let id = this.airConsole.getMasterControllerDeviceId()
-			return (typeof id !== 'number' || isNaN(id)) ? -1 : id
+			this.PostToDOMAsync('getMasterControllerDeviceId').then(id => {
+				return id
+			})
 		},
 		ConvertPlayerNumberToDeviceId(playerNumber) {
-			let id = this.airConsole.convertPlayerNumberToDeviceId(playerNumber)
-			return (typeof id !== 'number') ? -1 : id
+			this.PostToDOMAsync('convertPlayerNumberToDeviceId', playerNumber).then(id => {
+				return id
+			})
 		},
 		ConvertDeviceIdToPlayerNumber(deviceId) {
-			let playerNumber = this.airConsole.convertDeviceIdToPlayerNumber(deviceId)
-			return (typeof playerNumber !== 'number') ? -1 : playerNumber
+			this.PostToDOMAsync('convertDeviceIdToPlayerNumber').then(playerNumber => {
+				return playerNumber
+			})
 		},
 		IsPremium(deviceId) {
-			return (this.airConsole.isPremium(deviceId) !== false) ? 1 : 0
+			this.PostToDOMAsync('isPremium', deviceId).then(isPremium => {
+				return isPremium !== false ? 1 : 0
+			})
 		},
 		GetControllerDeviceIds() {
-			let arr = this.airConsole.getControllerDeviceIds()
+			this.PostToDOMAsync('getControllerDeviceIds').then(arr => {
+				// noinspection DuplicatedCode
+				let c3array = {}
+				c3array['c3array'] = true
+				c3array['size'] = [arr.length, 1, 1]
+				let data = []
+				for (let i in arr) {
+					data.push([[arr[i]]])
+				}
+				c3array['data'] = data
 
-			let c3array = {}
-			c3array['c3array'] = true
-			c3array['size'] = [arr.length, 1, 1]
-			let data = []
-			for (let i in arr) {
-				data.push([[arr[i]]])
-			}
-			c3array['data'] = data
-
-			return JSON.stringify(c3array)
+				return JSON.stringify(c3array)
+			})
 		},
 		GetPersistentData() {
 			if (this.persistentData !== null) {
@@ -119,18 +133,9 @@ self.C3.Plugins.ndream_AirConsole.Exps =
 			}
 		},
 		GetActivePlayerDeviceIds() {
-			let arr = this.airConsole.getActivePlayerDeviceIds()
-
-			let c3array = {}
-			c3array['c3array'] = true
-			c3array['size'] = [arr.length, 1, 1]
-			let data = []
-			for (let i in arr) {
-				data.push([[arr[i]]])
-			}
-			c3array['data'] = data
-
-			return JSON.stringify(c3array)
+			this.PostToDOMAsync('getActivePlayerDeviceIds').then(data => {
+				return data
+			})
 		},
 		IsAddShowing() {
 			return this.adShowing
@@ -140,7 +145,9 @@ self.C3.Plugins.ndream_AirConsole.Exps =
 		},
 		GetThisDeviceId() {
 			if (this.isController) {
-				return this.airConsole.getDeviceId()
+				this.PostToDOMAsync('getDeviceId').then(id => {
+					return id
+				})
 			} else {
 				return 0
 			}
@@ -157,15 +164,17 @@ self.C3.Plugins.ndream_AirConsole.Exps =
 		},
 		GetLanguage(deviceId) {
 			if (!this.useTranslation) {
-				console.log('Translation support not enabled. Please turn it on in your Construct 2 project settings.')
+				console.log('Translation support not enabled. Please turn it on in your Construct 3 project settings.')
 				return ''
 			} else {
-				return this.airConsole.getLanguage(deviceId) || 'en-US'
+				this.PostToDOMAsync('getLanguage', deviceId).then(lang => {
+					return lang
+				})
 			}
 		},
 		GetTranslation(id, values) {
 			if (!this.useTranslation) {
-				console.warn('Translation support not enabled. Please turn it on in your Construct 2 project settings.')
+				console.warn('Translation support not enabled. Please turn it on in your Construct 3 project settings.')
 				return ''
 			}
 
@@ -188,6 +197,9 @@ self.C3.Plugins.ndream_AirConsole.Exps =
 			} else {
 				values = {}
 			}
-			return this.airConsole.getTranslation(id, values) || ''
+
+			this.PostToDOMAsync('getTranslation', {'id' : id, 'values': values}).then(string => {
+				return string
+			})
 		}
 	}

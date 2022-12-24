@@ -31,6 +31,7 @@ C3.Plugins.ndream_AirConsole.Instance = class ndream_AirConsoleInstance extends 
 		this.gameReady = false
 		this.runningOffline = true
 
+		// noinspection DuplicatedCode
 		this.maxPlayers = properties[0]
 		this.isController = properties[1]
 		this.useTranslation = properties[2]
@@ -191,5 +192,27 @@ C3.Plugins.ndream_AirConsole.Instance = class ndream_AirConsoleInstance extends 
 			obj = false
 		}
 		return obj
+	}
+
+	getProperties(object) {
+		if (object === null || typeof object === 'object') {
+			return
+		}
+
+		let data = {}
+		for (let [property, value] of Object.entries(object)) {
+			if (typeof value === 'object') {
+				let c3Dictionary = {}
+				c3Dictionary['c2dictionary'] = true
+				c3Dictionary['data'] = this.getProperties(value)
+				data[property] = JSON.stringify(c3Dictionary)
+			} else {
+				if (typeof value === 'boolean') {
+					value = (!value) ? 0 : 1
+				}
+				data[property] = value
+			}
+		}
+		return data
 	}
 }

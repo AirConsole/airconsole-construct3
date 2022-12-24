@@ -28,6 +28,17 @@
 				['setOrientation', data => this._SetOrientation(data)],
 				['getPremium', _ => this._GetPremium()],
 				['vibrate', data => this._Vibrate(data)],
+				['getProfilePicture', data => this._GetProfilePicture(data)],
+				['getProfilePictureWithSize', data => this._GetProfilePictureWithSize(data)],
+				['getNickname', data => this._GetNickname(data)],
+				['getUID', data => this._GetUID(data)],
+				['getMasterControllerDeviceId', _ => this._GetMasterControllerDeviceId()],
+				['convertPlayerNumberToDeviceId', data => this._ConvertPlayerNumberToDeviceId(data)],
+				['convertDeviceIdToPlayerNumber', data => this._ConvertDeviceIdToPlayerNumber(data)],
+				['getActivePlayerDeviceIds', _ => this._GetActivePlayerDeviceIds()],
+				['getLanguage', data => this._GetLanguage(data)],
+				['getTranslation', data => this._GetTranslation(data)],
+				['getDeviceId', _ => this._GetDeviceId()],
 			])
 
 			this.airConsole = null
@@ -133,9 +144,67 @@
 			this.airConsole.vibrate(time)
 		}
 
+		_GetProfilePicture(deviceId) {
+			return this.airConsole.getProfilePicture(deviceId) || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?f=y'
+		}
+
+		_GetProfilePictureWithSize(data) {
+			return this.airConsole.getProfilePicture(data['deviceId'], data['pictureSize']) || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?f=y'
+		}
+
+		_GetNickname(deviceId) {
+			return this.airConsole.getNickname(deviceId) || 'Nickname not found'
+		}
+
+		_GetUID(deviceId) {
+			return this.airConsole.getUID(deviceId) || 'Unknown UID'
+		}
+
+		_GetMasterControllerDeviceId() {
+			const id = this.airConsole.getMasterControllerDeviceId()
+			return (typeof id !== 'number' || isNaN(id)) ? -1 : id
+		}
+
+		_ConvertPlayerNumberToDeviceId(playerNumber) {
+			const id = this.airConsole.convertPlayerNumberToDeviceId(playerNumber)
+			return (typeof id !== 'number') ? -1 : id
+		}
+
+		_ConvertDeviceIdToPlayerNumber(deviceId) {
+			const playerNumber = this.airConsole.convertDeviceIdToPlayerNumber(deviceId)
+			return (typeof playerNumber !== 'number') ? -1 : playerNumber
+		}
+
+		_GetActivePlayerDeviceIds() {
+			let arr = this.airConsole.getActivePlayerDeviceIds()
+
+			let c3array = {}
+			c3array['c3array'] = true
+			c3array['size'] = [arr.length, 1, 1]
+			let data = []
+			for (let i in arr) {
+				data.push([[arr[i]]])
+			}
+			c3array['data'] = data
+			return JSON.stringify(c3array)
+		}
+
+		_GetLanguage(deviceId) {
+			return this.airConsole.getLanguage(deviceId) || 'en-US'
+		}
+
+		_GetTranslation(data) {
+			return this.airConsole.getTranslation(data['id'], data['values']) || ''
+		}
+
+		_GetDeviceId() {
+			return this.airConsole.getDeviceId()
+		}
+
 		_OnInitAirconsole(properties) {
 			console.log('Initializing AirConsole')
 
+			// noinspection DuplicatedCode
 			this.maxPlayers = properties[0]
 			this.isController = properties[1]
 			this.useTranslation = properties[2]
@@ -251,28 +320,6 @@
 			return {
 				'runningOffline': runningOffline
 			}
-		}
-
-		getProperties(object) {
-			if (object === null || typeof object === 'object') {
-				return
-			}
-
-			let data = {}
-			for (let [property, value] of Object.entries(object)) {
-				if (typeof value === 'object') {
-					let c3Dictionary = {}
-					c3Dictionary['c2dictionary'] = true
-					c3Dictionary['data'] = this.getProperties(value)
-					data[property] = JSON.stringify(c3Dictionary)
-				} else {
-					if (typeof value === 'boolean') {
-						value = (!value) ? 0 : 1
-					}
-					data[property] = value
-				}
-			}
-			return data
 		}
 	}
 
