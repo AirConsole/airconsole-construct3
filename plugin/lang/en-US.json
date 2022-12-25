@@ -496,7 +496,7 @@
 			}
 		  },
 		  "clear-preset-message": {
-			"list-name": "Broadcast preset message",
+			"list-name": "Clear preset message",
 			"display-text": "Clear preset message",
 			"description": "Clear the preset message."
 		  },
