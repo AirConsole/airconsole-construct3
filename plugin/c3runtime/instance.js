@@ -29,7 +29,7 @@ C3.Plugins.ndream_AirConsole.Instance = class ndream_AirConsoleInstance extends 
 
 		this.properties = properties
 		this.gameReady = false
-		this.runningOffline = true
+		//this.runningOffline = true
 
 		// noinspection DuplicatedCode
 		this.maxPlayers = properties[0]
@@ -50,15 +50,22 @@ C3.Plugins.ndream_AirConsole.Instance = class ndream_AirConsoleInstance extends 
 		this.presetMessage = {}
 		this.motionData = {}
 
-		this._runtime.AddLoadPromise(
-			this.PostToDOMAsync('initAirConsole', properties).then(data => {
-				this.gameReady = true
-				this.runningOffline = data['runningOffline']
-			}).catch(r => {
-				console.warn('Initializing AirConsole failed')
-				this.gameReady = false
-			})
-		)
+		/***
+		 * AirConsole sends onConnect directly after being instantiated, so we need to
+		 * use an action to do it, to insure everything's ready
+		 */
+/*				this._runtime.AddLoadPromise(
+					this.PostToDOMAsync('initAirConsole', properties).then(data => {
+						this.gameReady = true
+						this.runningOffline = data['runningOffline']
+					}).catch(r => {
+						console.warn('Initializing AirConsole failed')
+						this.gameReady = false
+					})
+				)*/
+			this._runtime.AddLoadPromise(
+				this.PostToDOMAsync('loadProperties', properties).then()
+			)
 	}
 
 	Release() {

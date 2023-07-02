@@ -10,6 +10,16 @@ self.C3.Plugins.ndream_AirConsole.Acts =
 				console.warn('Failed getting controller device ids:', r)
 			})
 		},
+		StartAirconsole() {
+			this.airconsoleStarted = true
+			this.PostToDOMAsync('getControllerDeviceIds').then(deviceIds => {
+				for (let i = 0; i < deviceIds.length; i++) {
+					this.PostToDOM('onConnect', deviceIds[i])
+				}
+			}).catch(_ => {
+				console.warn('Failed starting Airconsole')
+			})
+		},
 		Message(deviceId, property, value) {
 			if (property !== 'message') {
 				console.warn('Property other than "message" isn\'t currently supported')

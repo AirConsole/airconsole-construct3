@@ -584,6 +584,12 @@
 						]
 					}
 				]
+			},
+			{
+				"id": "start-airconsole",
+				"c2id": 20,
+				"scriptName": "StartAirconsole",
+				"highlight": true
 			}
 		],
 		"expressions": [

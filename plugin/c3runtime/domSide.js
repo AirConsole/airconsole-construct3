@@ -8,7 +8,8 @@
 			super(iRuntime, DOM_COMPONENT_ID)
 
 			this.AddRuntimeMessageHandlers([
-				['initAirConsole', data => this._OnInitAirconsole(data)],
+				//['initAirConsole', data => this._OnInitAirconsole(data)],
+				['loadProperties', data => this._LoadProperties(data)],
 				['isPremium', deviceId => this._IsPremium(deviceId)],
 				['isUserLoggedIn', deviceId => this._IsUserLoggedIn(deviceId)],
 				['getControllerDeviceIds', _ => this._GetControllerDeviceIds()],
@@ -39,6 +40,7 @@
 				['getLanguage', data => this._GetLanguage(data)],
 				['getTranslation', data => this._GetTranslation(data)],
 				['getDeviceId', _ => this._GetDeviceId()],
+				['startAirConsole', _ => this._OnInitAirconsole()],
 			])
 
 			this.airConsole = null
@@ -48,6 +50,17 @@
 			this.orientation = null
 			this.syncTime = null
 			this.deviceMotion = null
+			this.airconsoleStarted = false
+		}
+
+		_LoadProperties(properties) {
+			// noinspection DuplicatedCode
+			this.maxPlayers = properties[0]
+			this.isController = properties[1]
+			this.useTranslation = properties[2]
+			this.orientation = properties[3]
+			this.syncTime = properties[4]
+			this.deviceMotion = properties[5]
 		}
 
 		_IsPremium(deviceId) {
@@ -201,16 +214,8 @@
 			return this.airConsole.getDeviceId()
 		}
 
-		_OnInitAirconsole(properties) {
+		_OnInitAirconsole() {
 			console.log('Initializing AirConsole')
-
-			// noinspection DuplicatedCode
-			this.maxPlayers = properties[0]
-			this.isController = properties[1]
-			this.useTranslation = properties[2]
-			this.orientation = properties[3]
-			this.syncTime = properties[4]
-			this.deviceMotion = properties[5]
 
 			/* Ok, because this took me a week to remember...
 			   AirConsole needs to run in the main window to be able to post messages. This is not an issue when running a compiled game
@@ -394,9 +399,11 @@
 			}
 			this.convertPlayerNumberToDeviceId = function () {
 				console.log('AirConsole mock-up: Converting player number to device id')
+				return -1
 			}
 			this.convertDeviceIdToPlayerNumber = function () {
 				console.log('AirConsole mock-up: Converting device id to player number')
+				return -1
 			}
 		}
 	}
