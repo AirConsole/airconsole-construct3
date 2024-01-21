@@ -12,7 +12,7 @@
 	const PLUGIN_ID = "AirConsole";
 	////////////////////////////////////////////
 	
-	const PLUGIN_VERSION = "1.7.0.7";
+	const PLUGIN_VERSION = "1.8.0.0";
 	const PLUGIN_CATEGORY = "web";
 	
 	let app = null;
@@ -29,13 +29,14 @@
 			this._info.SetDescription(lang(".description"));
 			this._info.SetVersion(PLUGIN_VERSION);
 			this._info.SetCategory(PLUGIN_CATEGORY);
-			this._info.SetAuthor("Psychokiller1888");
+			this._info.SetAuthor("Psychokiller1888, Marc 'Dreamora' Schaerer");
 			this._info.SetHelpUrl(lang(".help-url"));
+      this._info.SetIcon("icon.svg", "image/svg");
 			this._info.SetIsSingleGlobal(true);
-			/*this._info.AddFileDependency({
-				filename: "airconsole-1.7.0.js",
-				type: "external-script"
-			});*/
+			// this._info.AddFileDependency({
+			// 	filename: "airconsole-1.8.0.js",
+			// 	type: "inline-script" //"copy-to-output"
+			// });
 			
 			SDK.Lang.PushContext(".properties");
 			
