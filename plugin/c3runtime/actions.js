@@ -12,11 +12,7 @@ self.C3.Plugins.ndream_AirConsole.Acts =
 		},
 		StartAirconsole() {
 			this.airconsoleStarted = true
-			this.PostToDOMAsync('getControllerDeviceIds').then(deviceIds => {
-				for (let i = 0; i < deviceIds.length; i++) {
-					this.PostToDOM('onConnect', deviceIds[i])
-				}
-			}).catch(_ => {
+			this.PostToDOMAsync('startAirConsole').catch(_ => {
 				console.warn('Failed starting Airconsole')
 			})
 		},
