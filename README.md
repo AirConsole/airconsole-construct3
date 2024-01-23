@@ -1,29 +1,23 @@
-⚡ ⚡ ⚡ **ATTENTION:** THIS PLUGIN IS NOT MAINTAINED ANYMORE. We, however, appreciate any pull requests. Thank you for your understanding
-
-
 # AirConsole Construct3 - Community Plugin
+
 An AirConsole plugin for Construct 3
 
 You can find a c3p example file of our good old Pong game
 
-You can use the backward compatibility plugin to import any games you made with Construct2
-
-**Always** use the normal plugin for new Construct3 projects
-
 Please report any bugs you encounter
 
-This plugin allows you to build both games and the controllers with Construct3! Don't forget to check out the external merging tool when you need to package your game before testing: https://github.com/Psychokiller1888/AirConsoleMerger/releases
+This plugin allows you to build both games and the controllers with Construct3! Don't forget to check out the external merging tool when you need to package your game before testing: [AirConsoleMerger](https://github.com/Psychokiller1888/AirConsoleMerger/releases)
 
 ## How to use
+
 More information and demos in the [wiki](https://github.com/AirConsole/airconsole-construct3/wiki)
 
 ## Installation for new Construct3 projects
+
 [Download the latest plugin](https://github.com/AirConsole/airconsole-construct3/releases) and add it to your Construct3 project
 
-## Installation for Construct2 imported games
-[Download the backward compatible plugin](backwardCompatibility/c3airconsole-backcomp.c3addon) and add it to your Construct3 project
-
 ## About this Plugin
+
 This plugin was created and is maintained by Psychokiller1888 and not by the AirConsole Team. It has become so popular that the AirConsole Team has decided to host it in the official AirConsole GitHub account.
 
 ## About AirConsole

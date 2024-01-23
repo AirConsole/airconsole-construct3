@@ -46,6 +46,38 @@
 				"highlight": false,
 				"isTrigger": true,
 				"isInvertible": false
+			},
+			{
+				"id": "on-mute",
+				"c2id": 25,
+				"scriptName": "OnMute",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			},
+			{
+				"id": "on-unmute",
+				"c2id": 26,
+				"scriptName": "OnUnmute",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			},
+			{
+				"id": "on-pause",
+				"c2id": 27,
+				"scriptName": "OnPause",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
+			},
+			{
+				"id": "on-resume",
+				"c2id": 28,
+				"scriptName": "OnResume",
+				"highlight": false,
+				"isTrigger": true,
+				"isInvertible": false
 			}
 		]
 	},
@@ -546,9 +578,18 @@
 					{
 						"id": "orientation",
 						"type": "combo",
-						"items": ["landscape", "portrait"]
+						"items": [
+							"landscape",
+							"portrait"
+						]
 					}
 				]
+			},
+			{
+				"id": "start-airconsole",
+				"c2id": 20,
+				"scriptName": "StartAirconsole",
+				"highlight": true
 			}
 		],
 		"expressions": [
@@ -839,6 +880,40 @@
 				"c2id": 15,
 				"scriptName": "ClearPresetMessage",
 				"highlight": false
+			}
+		]
+	},
+	"translations": {
+		"expressions": [
+			{
+				"id": "get-language",
+				"c2id": 24,
+				"expressionName": "GetLanguage",
+				"returnType": "string",
+				"isVariadicParameters": false,
+				"params": [
+					{
+						"id": "device-id",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"id": "get-translation",
+				"c2id": 25,
+				"expressionName": "GetTranslation",
+				"returnType": "string",
+				"isVariadicParameters": false,
+				"params": [
+					{
+						"id": "string-id",
+						"type": "string"
+					},
+					{
+						"id": "replacements",
+						"type": "string"
+					}
+				]
 			}
 		]
 	}

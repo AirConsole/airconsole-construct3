@@ -3,10 +3,10 @@
 	"fileDescription": "Extend your game with local multiplayer fun",
 	"text": {
 		"plugins": {
-			"airconsole": {
+			"ndream_airconsole": {
 				"name": "AirConsole",
 				"description": "Extend your game with local multiplayer fun",
-				"help-url": "https://github.com/Psychokiller1888/c3airconsole",
+				"help-url": "https://github.com/AirConsole/airconsole-construct3/wiki",
 				"properties": {
 					"max-players": {
 						"name": "Max players",
@@ -35,6 +35,10 @@
 					"device-motion": {
 						"name": "Device motion",
 						"desc": "CONTROLLER ONLY - If set > 0, onDeviceMotion gets called every 'Device motion' milliseconds with the data from the accelerometer and gyroscope"
+					},
+					"use-translations": {
+						"name": "Use translation",
+						"desc": "Use AirConsole server translations service"
 					}
 				},
 				"aceCategories": {
@@ -52,7 +56,8 @@
 					"data": "Data",
 					"profile": "Profile",
 					"controller-only": "Controller only",
-					"preset-message": "Preset message"
+					"preset-message": "Preset message",
+					"translations": "Translations"
 				},
 				"conditions": {
 					"on-connect": {
@@ -61,14 +66,14 @@
 						"description": "Triggered when a device connects to the game."
 					},
 					"on-disconnect": {
-						"list-name": "On disconnect",
-						"display-text": "On disconnection",
-						"description": "Triggered when a device disconnects from the game."
+						"list-name": "On any disconnect",
+						"display-text": "On any disconnection",
+						"description": "Triggered when any device disconnects from the game."
 					},
 					"on-device-disconnect": {
 						"list-name": "On device disconnect",
 						"display-text": "On device id {0} disconnects",
-						"description": "Triggered when a device disconnects from the game.",
+						"description": "Triggered when a specific device disconnects from the game.",
 						"params": {
 							"device-id": {
 								"name": "Device id",
@@ -238,9 +243,34 @@
 						"list-name": "On device motion",
 						"display-text": "On device motion",
 						"description": "Triggered every X millisecond if the plugin property has the 'Device motion' property set higher than 0. This only works for controllers."
+					},
+					"on-mute": {
+						"list-name": "On mute",
+						"display-text": "On mute",
+						"description": "Triggered when the game should mute any sound."
+					},
+					"on-unmute": {
+						"list-name": "On unmute",
+						"display-text": "On unmute",
+						"description": "Triggered when the game should unmute all sounds."
+					},
+					"on-pause": {
+						"list-name": "On pause",
+						"display-text": "On pause",
+						"description": "Triggered when the game should be paused."
+					},
+					"on-resume": {
+						"list-name": "On resume",
+						"display-text": "On resume",
+						"description": "Triggered when the game should be resumed."
 					}
 				},
 				"actions": {
+					"start-airconsole": {
+						"list-name": "Start Airconsole",
+						"display-text": "Start Airconsole",
+						"description": "Instantiates AirConsole. Must be your very first action, as without it, no AirConsole!"
+					},
 					"game-ready": {
 						"list-name": "Game ready",
 						"display-text": "Set the game as ready",
@@ -471,7 +501,7 @@
 						}
 					},
 					"clear-preset-message": {
-						"list-name": "Broadcast preset message",
+						"list-name": "Clear preset message",
 						"display-text": "Clear preset message",
 						"description": "Clear the preset message."
 					},
@@ -592,7 +622,7 @@
 						}
 					},
 					"get-controller-device-ids": {
-						"description": "Returns a JSON converted C3Array of all the device ids that have loaded your game.",
+						"description": "Returns a JSON converted Array of all the device ids that have loaded your game.",
 						"translated-name": "GetControllerDeviceIDs"
 					},
 					"is-premium": {
@@ -606,15 +636,15 @@
 						}
 					},
 					"get-active-player-device-ids": {
-						"description": "Returns a JSON converted C3Array of device_ids of the active players previously set by the screen by calling setActivePlayers. The first device_id in the array is the first player, the second device_id in the array is the second player etc.",
+						"description": "Returns a JSON converted Array of device_ids of the active players previously set by the screen by calling setActivePlayers. The first device_id in the array is the first player, the second device_id in the array is the second player etc.",
 						"translated-name": "GetActivePlayerDeviceIds"
 					},
 					"get-persistent-data": {
-						"description": "Returns a JSON converted C3Dictionary of the last loaded persistent data.",
+						"description": "Returns a JSON converted Dictionary of the last loaded persistent data.",
 						"translated-name": "GetPersistentData"
 					},
 					"get-highscores": {
-						"description": "Returns a JSON converted C3Dictionary of the last loaded highscores.",
+						"description": "Returns a JSON converted Dictionary of the last loaded highscores.",
 						"translated-name": "GetHighscores"
 					},
 					"is-plugin-offline": {
@@ -644,6 +674,30 @@
 					"motion-data": {
 						"description": "Returns a JSON converted C2Dictionary containing the device motion data. This works for controllers only, and the plugin should have it's 'Device motion' property set higher than 0.",
 						"translated-name": "MotionData"
+					},
+					"get-language": {
+						"description": "Returns the current IETF language tag of a device e.g. \"en\" or \"en-US\"",
+						"translated-name": "GetLanguage",
+						"params": {
+							"device-id": {
+								"name": "Device id",
+								"desc": "The device id to get language tag from"
+							}
+						}
+					},
+					"get-translation": {
+						"description": "Gets a translation for the users current language See https://developers.airconsole.com/#!/guides/translations",
+						"translated-name": "GetTranslation",
+						"params": {
+							"string-id": {
+								"name": "String id",
+								"desc": "The id of the translation string."
+							},
+							"replacements": {
+								"name": "Replacements values",
+								"desc": "A dictionary of values that should be used for replacement in the translated string. E.g. if a translated string is \"Hi %name%\" and values is {\"name\": \"Tom\"} then this will be replaced to \"Hi Tom\"."
+							}
+						}
 					}
 				}
 			}
