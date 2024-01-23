@@ -8,7 +8,7 @@
 			super(iRuntime, DOM_COMPONENT_ID)
 
 			this.AddRuntimeMessageHandlers([
-				//['initAirConsole', data => this._OnInitAirconsole(data)],
+				['startAirConsole', _ => this._OnInitAirconsole()],
 				['loadProperties', data => this._LoadProperties(data)],
 				['isPremium', deviceId => this._IsPremium(deviceId)],
 				['isUserLoggedIn', deviceId => this._IsUserLoggedIn(deviceId)],
@@ -40,7 +40,6 @@
 				['getLanguage', data => this._GetLanguage(data)],
 				['getTranslation', data => this._GetTranslation(data)],
 				['getDeviceId', _ => this._GetDeviceId()],
-				['startAirConsole', _ => this._OnInitAirconsole()],
 			])
 
 			this.airConsole = null
@@ -50,7 +49,6 @@
 			this.orientation = null
 			this.syncTime = null
 			this.deviceMotion = null
-			this.airconsoleStarted = false
 		}
 
 		_LoadProperties(properties) {
@@ -192,7 +190,7 @@
 			let arr = this.airConsole.getActivePlayerDeviceIds()
 
 			let c3array = {}
-			c3array['c3array'] = true
+			c3array['c2array'] = true
 			c3array['size'] = [arr.length, 1, 1]
 			let data = []
 			for (let i in arr) {
@@ -220,7 +218,7 @@
 			/* Ok, because this took me a week to remember...
 			   AirConsole needs to run in the main window to be able to post messages. This is not an issue when running a compiled game
 			   but becomes an issue when previewing your Construct 2/3 projects as the preview runs in a separate window. This is why, if we are in preview mode
-			   we need to fall back to the offline mockup of AirConsole
+			   we need to fall back to the offline mockup of AirConsole. 2024 - Psycho
 			 */
 			let runningOffline = true
 			if (typeof AirConsole !== 'undefined' && window.location.href.indexOf('preview.construct.net') === -1) {
@@ -321,7 +319,6 @@
 				this.PostToRuntime('onDeviceMotion', {'motionData': data})
 			}
 
-			console.log('AirConsole initialization success')
 			return {
 				'runningOffline': runningOffline
 			}

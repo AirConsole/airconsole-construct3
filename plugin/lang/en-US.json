@@ -622,7 +622,7 @@
 						}
 					},
 					"get-controller-device-ids": {
-						"description": "Returns a JSON converted C3Array of all the device ids that have loaded your game.",
+						"description": "Returns a JSON converted Array of all the device ids that have loaded your game.",
 						"translated-name": "GetControllerDeviceIDs"
 					},
 					"is-premium": {
@@ -636,15 +636,15 @@
 						}
 					},
 					"get-active-player-device-ids": {
-						"description": "Returns a JSON converted C3Array of device_ids of the active players previously set by the screen by calling setActivePlayers. The first device_id in the array is the first player, the second device_id in the array is the second player etc.",
+						"description": "Returns a JSON converted Array of device_ids of the active players previously set by the screen by calling setActivePlayers. The first device_id in the array is the first player, the second device_id in the array is the second player etc.",
 						"translated-name": "GetActivePlayerDeviceIds"
 					},
 					"get-persistent-data": {
-						"description": "Returns a JSON converted C3Dictionary of the last loaded persistent data.",
+						"description": "Returns a JSON converted Dictionary of the last loaded persistent data.",
 						"translated-name": "GetPersistentData"
 					},
 					"get-highscores": {
-						"description": "Returns a JSON converted C3Dictionary of the last loaded highscores.",
+						"description": "Returns a JSON converted Dictionary of the last loaded highscores.",
 						"translated-name": "GetHighscores"
 					},
 					"is-plugin-offline": {

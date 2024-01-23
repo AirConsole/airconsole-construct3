@@ -37,7 +37,7 @@ self.C3.Plugins.ndream_AirConsole.Exps =
 		},
 		MessageAsJSON() { //TODO c3 dict?
 			let c3Dictionary = {}
-			c3Dictionary['c3dictionary'] = true
+			c3Dictionary['c2dictionary'] = true
 			c3Dictionary['data'] = this.getProperties(this.message)
 			return JSON.stringify(c3Dictionary)
 		},
@@ -92,7 +92,7 @@ self.C3.Plugins.ndream_AirConsole.Exps =
 			this.PostToDOMAsync('getControllerDeviceIds').then(arr => {
 				// noinspection DuplicatedCode
 				let c3array = {}
-				c3array['c3array'] = true
+				c3array['c2array'] = true
 				c3array['size'] = [arr.length, 1, 1]
 				let data = []
 				for (let i in arr) {
@@ -106,7 +106,7 @@ self.C3.Plugins.ndream_AirConsole.Exps =
 		GetPersistentData() {
 			if (this.persistentData !== null) {
 				let c3Dictionary = {}
-				c3Dictionary['c3dictionary'] = true
+				c3Dictionary['c2dictionary'] = true
 				c3Dictionary['data'] = this.getProperties(this.persistentData)
 				return JSON.stringify(c3Dictionary)
 			} else {
@@ -117,7 +117,7 @@ self.C3.Plugins.ndream_AirConsole.Exps =
 		GetHighscores() {
 			if (this.highscores !== null) {
 				let c3Dictionary = {}
-				c3Dictionary['c3dictionary'] = true
+				c3Dictionary['c2dictionary'] = true
 				c3Dictionary['data'] = this.getProperties(this.highscores)
 				return JSON.stringify(c3Dictionary)
 			} else {

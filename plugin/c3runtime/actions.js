@@ -6,13 +6,20 @@ self.C3.Plugins.ndream_AirConsole.Acts =
 				for (let i = 0; i < deviceIds.length; i++) {
 					this.PostToDOM('onConnect', deviceIds[i])
 				}
+				console.log(`Your game is ready to communicate with the ${deviceIds.length} returned controllers`)
 			}).catch(r => {
 				console.warn('Failed getting controller device ids:', r)
 			})
 		},
 		StartAirconsole() {
-			this.airconsoleStarted = true
-			this.PostToDOMAsync('startAirConsole').catch(_ => {
+			this.PostToDOMAsync('startAirConsole').then(offline => {
+				if (offline) {
+					console.log('AirConsole successfully initialized, but running offline')
+				} else {
+					console.log('AirConsole successfully initialized')
+				}
+				console.log('Don\'t forget to call Game Ready when your layout and game is ready to start communicating with AirConsole')
+			}).catch(_ => {
 				console.warn('Failed starting Airconsole')
 			})
 		},
