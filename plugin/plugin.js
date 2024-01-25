@@ -1,6 +1,6 @@
 const SDK = self.SDK
 const PLUGIN_ID = 'ndream_AirConsole'
-const PLUGIN_VERSION = '1.8.0.0'
+const PLUGIN_VERSION = '1.8.0.1'
 const PLUGIN_CATEGORY = 'web'
 const API_URL = 'https://www.airconsole.com/api/airconsole-1.8.0.js'
 

@@ -95,5 +95,8 @@ self.C3.Plugins.ndream_AirConsole.Cnds = {
 	},
 	OnDeviceMotion() {
 		return true
+	},
+	IsController() {
+		return this.isController
 	}
 }
